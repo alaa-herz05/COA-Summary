@@ -120,7 +120,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="badge">Chapters 1 · 2 · 4 — Computer Organization & Architecture</div>
   <h1>Comprehensive <span>Practice Quiz</span></h1>
   <div class="ar-title">اختبار شامل — أسئلة MCQ & True/False & دائرة</div>
-  <p>170 questions total: the original 60 questions plus 100 extra Chapter 1 questions from the PDF and 10 extra True/False questions from the exam image. Chapter 4 includes circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
+  <p>370 questions total: Chapter 1 includes 130 questions, Chapter 2 includes 120 questions, and Chapter 4 now includes 120 cache-memory questions. Chapter 4 includes MCQ, True/False, and circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
 </div>
 
 <div class="lang-bar">
@@ -130,9 +130,9 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
 <div class="container">
 
 <div class="progress-wrap">
-  <span class="progress-text">Answered: <strong id="answered-count">0</strong> / 170</span>
+  <span class="progress-text">Answered: <strong id="answered-count">0</strong> / 370</span>
   <div class="progress-bar-outer"><div class="progress-bar-inner" id="progress-bar"></div></div>
-  <span class="progress-score">Score: <span id="live-score">0</span> / 170</span>
+  <span class="progress-score">Score: <span id="live-score">0</span> / 370</span>
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -159,7 +159,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="sec-titles">
     <h2>Chapter 2 — Instructions: Language of the Computer</h2>
     <div class="ar">التعليمات: لغة الحاسوب</div>
-    <div class="sub">MCQ + True/False — Questions 21–40</div>
+    <div class="sub">MCQ + True/False — Original Q21–Q40 + Extra Chapter 2 Q171–Q270</div>
   </div>
 </div>
 
@@ -175,7 +175,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="sec-titles">
     <h2>Chapter 4 — Cache Memory</h2>
     <div class="ar">ذاكرة الكاش</div>
-    <div class="sub">MCQ + True/False + Circle the Answer — Questions 41–60</div>
+    <div class="sub">MCQ + True/False + Circle the Answer — Questions 41–60 + Extra Q271–Q370</div>
   </div>
 </div>
 
@@ -188,16 +188,16 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
 <div class="results-panel" id="results-panel">
   <h2>Quiz Complete!</h2>
   <div class="score-big" id="score-pct">0%</div>
-  <div class="score-label" id="score-label">0 out of 170 correct</div>
+  <div class="score-label" id="score-label">0 out of 370 correct</div>
   <div class="score-breakdown">
     <div class="score-stat sc-correct"><div class="val" id="res-correct">0</div><div class="lbl">Correct</div></div>
     <div class="score-stat sc-wrong"><div class="val" id="res-wrong">0</div><div class="lbl">Wrong</div></div>
-    <div class="score-stat sc-total"><div class="val">170</div><div class="lbl">Total</div></div>
+    <div class="score-stat sc-total"><div class="val">370</div><div class="lbl">Total</div></div>
   </div>
   <div class="chapter-stats">
     <div class="ch-stat"><div class="ch-name">Chapter 1</div><div class="ch-val" id="ch1-score" style="color:var(--accent)">0/130</div></div>
-    <div class="ch-stat"><div class="ch-name">Chapter 2</div><div class="ch-val" id="ch2-score" style="color:var(--accent2)">0/20</div></div>
-    <div class="ch-stat"><div class="ch-name">Chapter 4</div><div class="ch-val" id="ch4-score" style="color:var(--green)">0/20</div></div>
+    <div class="ch-stat"><div class="ch-name">Chapter 2</div><div class="ch-val" id="ch2-score" style="color:var(--accent2)">0/120</div></div>
+    <div class="ch-stat"><div class="ch-name">Chapter 4</div><div class="ch-val" id="ch4-score" style="color:var(--green)">0/120</div></div>
   </div>
   <div class="grade-msg" id="grade-msg"></div>
   <button class="retry-btn" onclick="location.reload()">Retry Quiz</button>
@@ -206,7 +206,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
 </div>
 
 <script>
-const TOTAL = 170;
+const TOTAL = 370;
 let score = 0, answered = 0;
 const chScores = {1:0,2:0,4:0};
 
@@ -2012,6 +2012,1212 @@ const questions = [
  text:"Microprocessor without interlocked pipeline stages (MIPS) has a 32 × 16-bit register file.",
  correct:'FALSE',
  exp:"FALSE. Standard MIPS has 32 general-purpose registers, each 32 bits wide, so it is 32 × 32-bit."}
+,
+
+// ── EXTRA CHAPTER 2 QUESTIONS (Q171–Q270) ─────────────────────────
+{
+  "id": "q171",
+  "ch": 2,
+  "type": "mcq",
+  "text": "ISA stands for:",
+  "opts": [
+    "A. Internal System Access",
+    "B. Instruction Set Architecture",
+    "C. Integrated Software Architecture",
+    "D. Instruction Storage Access"
+  ],
+  "correct": "B",
+  "exp": "ISA means Instruction Set Architecture."
+},
+{
+  "id": "q172",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Machine language consists of:",
+  "opts": [
+    "A. English words",
+    "B. Assembly code",
+    "C. 1s and 0s",
+    "D. Java code"
+  ],
+  "correct": "C",
+  "exp": "Machine language is binary: 1s and 0s."
+},
+{
+  "id": "q173",
+  "ch": 2,
+  "type": "mcq",
+  "text": "CISC stands for:",
+  "opts": [
+    "A. Complex Instruction Set Computer",
+    "B. Computer Internal System Controller",
+    "C. Central Instruction Storage Computer",
+    "D. Compact ISA System Computer"
+  ],
+  "correct": "A",
+  "exp": "CISC means Complex Instruction Set Computer."
+},
+{
+  "id": "q174",
+  "ch": 2,
+  "type": "mcq",
+  "text": "RISC stands for:",
+  "opts": [
+    "A. Reduced Instruction Set Computer",
+    "B. Register Instruction System Computer",
+    "C. Rapid ISA Computer",
+    "D. Reduced Internal Storage Controller"
+  ],
+  "correct": "A",
+  "exp": "RISC means Reduced Instruction Set Computer."
+},
+{
+  "id": "q175",
+  "ch": 2,
+  "type": "mcq",
+  "text": "CISC instructions are:",
+  "opts": [
+    "A. Fixed length",
+    "B. Variable length",
+    "C. Always 32-bit",
+    "D. Always 16-bit"
+  ],
+  "correct": "B",
+  "exp": "CISC instructions are variable-length instructions."
+},
+{
+  "id": "q176",
+  "ch": 2,
+  "type": "mcq",
+  "text": "RISC instructions are:",
+  "opts": [
+    "A. Variable length",
+    "B. Fixed length",
+    "C. Memory only",
+    "D. Stack only"
+  ],
+  "correct": "B",
+  "exp": "RISC instructions are fixed-size/same-length instructions."
+},
+{
+  "id": "q177",
+  "ch": 2,
+  "type": "mcq",
+  "text": "In RISC, each instruction usually performs:",
+  "opts": [
+    "A. Multiple operations",
+    "B. One operation",
+    "C. Two operations",
+    "D. Three operations"
+  ],
+  "correct": "B",
+  "exp": "RISC instructions are simple and each instruction performs one operation."
+},
+{
+  "id": "q178",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Example of CISC architecture:",
+  "opts": [
+    "A. MIPS",
+    "B. ARM",
+    "C. x86",
+    "D. SPARC"
+  ],
+  "correct": "C",
+  "exp": "Intel x86 is an example of CISC."
+},
+{
+  "id": "q179",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Example of RISC architecture:",
+  "opts": [
+    "A. x86",
+    "B. MIPS",
+    "C. 8086",
+    "D. Pentium"
+  ],
+  "correct": "B",
+  "exp": "MIPS is used in the chapter as a RISC example."
+},
+{
+  "id": "q180",
+  "ch": 2,
+  "type": "mcq",
+  "text": "RISC accesses memory using:",
+  "opts": [
+    "A. Arithmetic instructions",
+    "B. Load/Store instructions",
+    "C. Branch instructions",
+    "D. Jump instructions"
+  ],
+  "correct": "B",
+  "exp": "RISC systems access memory only with explicit load and store instructions."
+},
+{
+  "id": "q181",
+  "ch": 2,
+  "type": "mcq",
+  "text": "MIPS stands for:",
+  "opts": [
+    "A. Multiple Instruction Processing System",
+    "B. Microprocessor without Interlocked Pipeline Stages",
+    "C. Memory Integrated Processing System",
+    "D. Main Instruction Processing Structure"
+  ],
+  "correct": "B",
+  "exp": "MIPS stands for Microprocessor without Interlocked Pipeline Stages."
+},
+{
+  "id": "q182",
+  "ch": 2,
+  "type": "mcq",
+  "text": "MIPS instructions are generally:",
+  "opts": [
+    "A. 16 bits",
+    "B. 24 bits",
+    "C. 32 bits",
+    "D. 64 bits"
+  ],
+  "correct": "C",
+  "exp": "MIPS instructions are 32 bits each."
+},
+{
+  "id": "q183",
+  "ch": 2,
+  "type": "mcq",
+  "text": "MIPS contains approximately:",
+  "opts": [
+    "A. 50 instructions",
+    "B. 100 instructions",
+    "C. 200 instructions",
+    "D. 1000 instructions"
+  ],
+  "correct": "C",
+  "exp": "The slides state MIPS has approximately 200 instructions."
+},
+{
+  "id": "q184",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Design Principle 1 is:",
+  "opts": [
+    "A. Smaller is faster",
+    "B. Simplicity favors regularity",
+    "C. Make common case fast",
+    "D. Good compromises"
+  ],
+  "correct": "B",
+  "exp": "Design Principle 1: Simplicity favors regularity."
+},
+{
+  "id": "q185",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Design Principle 2 is:",
+  "opts": [
+    "A. Simplicity favors regularity",
+    "B. Smaller is faster",
+    "C. Prediction",
+    "D. Parallelism"
+  ],
+  "correct": "B",
+  "exp": "Design Principle 2: Smaller is faster."
+},
+{
+  "id": "q186",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Design Principle 3 is:",
+  "opts": [
+    "A. Make the common case fast",
+    "B. Regularity",
+    "C. Simplicity",
+    "D. Locality"
+  ],
+  "correct": "A",
+  "exp": "Design Principle 3: Make the common case fast."
+},
+{
+  "id": "q187",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Design Principle 4 is:",
+  "opts": [
+    "A. Smaller is faster",
+    "B. Good design demands good compromises",
+    "C. Prediction",
+    "D. Redundancy"
+  ],
+  "correct": "B",
+  "exp": "Design Principle 4: Good design demands good compromises."
+},
+{
+  "id": "q188",
+  "ch": 2,
+  "type": "mcq",
+  "text": "MIPS register file contains:",
+  "opts": [
+    "A. 16 registers",
+    "B. 32 registers",
+    "C. 64 registers",
+    "D. 128 registers"
+  ],
+  "correct": "B",
+  "exp": "MIPS has a 32-register file."
+},
+{
+  "id": "q189",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Each MIPS register is:",
+  "opts": [
+    "A. 8 bits",
+    "B. 16 bits",
+    "C. 32 bits",
+    "D. 64 bits"
+  ],
+  "correct": "C",
+  "exp": "MIPS registers are 32-bit registers."
+},
+{
+  "id": "q190",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Registers $t0–$t9 are:",
+  "opts": [
+    "A. Saved registers",
+    "B. Temporary registers",
+    "C. Argument registers",
+    "D. Return registers"
+  ],
+  "correct": "B",
+  "exp": "$t0–$t9 are temporary registers."
+},
+{
+  "id": "q191",
+  "ch": 2,
+  "type": "tf",
+  "text": "MIPS has 32 registers.",
+  "correct": "TRUE",
+  "exp": "MIPS has a 32 × 32-bit register file."
+},
+{
+  "id": "q192",
+  "ch": 2,
+  "type": "tf",
+  "text": "MIPS registers are 16-bit.",
+  "correct": "FALSE",
+  "exp": "MIPS registers are 32-bit, not 16-bit."
+},
+{
+  "id": "q193",
+  "ch": 2,
+  "type": "tf",
+  "text": "$s0–$s7 are saved registers.",
+  "correct": "TRUE",
+  "exp": "$s0–$s7 are saved variables/registers."
+},
+{
+  "id": "q194",
+  "ch": 2,
+  "type": "tf",
+  "text": "$t0–$t9 are temporary registers.",
+  "correct": "TRUE",
+  "exp": "$t0–$t9 are used for temporary values."
+},
+{
+  "id": "q195",
+  "ch": 2,
+  "type": "tf",
+  "text": "Memory in MIPS is byte-addressed.",
+  "correct": "TRUE",
+  "exp": "Each memory address identifies an 8-bit byte."
+},
+{
+  "id": "q196",
+  "ch": 2,
+  "type": "tf",
+  "text": "Every memory address refers to 32 bits.",
+  "correct": "FALSE",
+  "exp": "Each memory address refers to one byte, not 32 bits."
+},
+{
+  "id": "q197",
+  "ch": 2,
+  "type": "tf",
+  "text": "One byte equals 8 bits.",
+  "correct": "TRUE",
+  "exp": "A byte is 8 bits."
+},
+{
+  "id": "q198",
+  "ch": 2,
+  "type": "tf",
+  "text": "MIPS uses Big Endian.",
+  "correct": "TRUE",
+  "exp": "The slides state MIPS is Big Endian."
+},
+{
+  "id": "q199",
+  "ch": 2,
+  "type": "tf",
+  "text": "Big Endian stores the least significant byte first.",
+  "correct": "FALSE",
+  "exp": "Big Endian stores the most significant byte at the lowest address."
+},
+{
+  "id": "q200",
+  "ch": 2,
+  "type": "tf",
+  "text": "Words must be aligned on addresses divisible by 4.",
+  "correct": "TRUE",
+  "exp": "MIPS words are aligned; a word address must be a multiple of 4."
+},
+{
+  "id": "q201",
+  "ch": 2,
+  "type": "tf",
+  "text": "The instruction lw loads a word from memory.",
+  "correct": "TRUE",
+  "exp": "lw means load word."
+},
+{
+  "id": "q202",
+  "ch": 2,
+  "type": "tf",
+  "text": "The instruction sw stores a word into memory.",
+  "correct": "TRUE",
+  "exp": "sw means store word."
+},
+{
+  "id": "q203",
+  "ch": 2,
+  "type": "tf",
+  "text": "A[8] has an offset of 32 bytes.",
+  "correct": "TRUE",
+  "exp": "Word arrays use 4 bytes per word, so 8 × 4 = 32."
+},
+{
+  "id": "q204",
+  "ch": 2,
+  "type": "tf",
+  "text": "Immediate operands are constants inside instructions.",
+  "correct": "TRUE",
+  "exp": "Immediate operands are constant data specified in an instruction."
+},
+{
+  "id": "q205",
+  "ch": 2,
+  "type": "tf",
+  "text": "MIPS contains a subi instruction.",
+  "correct": "FALSE",
+  "exp": "MIPS has no subtract immediate instruction; use addi with a negative constant."
+},
+{
+  "id": "q206",
+  "ch": 2,
+  "type": "tf",
+  "text": "addi can use negative constants.",
+  "correct": "TRUE",
+  "exp": "addi can add a negative immediate such as -1."
+},
+{
+  "id": "q207",
+  "ch": 2,
+  "type": "tf",
+  "text": "Register $zero always contains 0.",
+  "correct": "TRUE",
+  "exp": "$zero is the constant zero register."
+},
+{
+  "id": "q208",
+  "ch": 2,
+  "type": "tf",
+  "text": "$zero can be overwritten.",
+  "correct": "FALSE",
+  "exp": "$zero cannot be overwritten."
+},
+{
+  "id": "q209",
+  "ch": 2,
+  "type": "tf",
+  "text": "add $t0,$s1,$zero copies $s1 into $t0.",
+  "correct": "TRUE",
+  "exp": "Adding $zero is used to move/copy values between registers."
+},
+{
+  "id": "q210",
+  "ch": 2,
+  "type": "tf",
+  "text": "Unsigned integers can represent negative values.",
+  "correct": "FALSE",
+  "exp": "Unsigned integers represent values from 0 to 2^n − 1."
+},
+{
+  "id": "q211",
+  "ch": 2,
+  "type": "tf",
+  "text": "Two's complement is used for signed integers.",
+  "correct": "TRUE",
+  "exp": "The slides use two's complement for signed integers."
+},
+{
+  "id": "q212",
+  "ch": 2,
+  "type": "tf",
+  "text": "Bit 31 is the sign bit.",
+  "correct": "TRUE",
+  "exp": "For a 32-bit two's complement number, bit 31 is the sign bit."
+},
+{
+  "id": "q213",
+  "ch": 2,
+  "type": "tf",
+  "text": "Sign bit = 1 means positive.",
+  "correct": "FALSE",
+  "exp": "Sign bit 1 means negative; 0 means non-negative."
+},
+{
+  "id": "q214",
+  "ch": 2,
+  "type": "tf",
+  "text": "Negation in two's complement is done by complementing and adding 1.",
+  "correct": "TRUE",
+  "exp": "Signed negation: complement the bits and add 1."
+},
+{
+  "id": "q215",
+  "ch": 2,
+  "type": "tf",
+  "text": "Sign extension copies the sign bit.",
+  "correct": "TRUE",
+  "exp": "Sign extension replicates the sign bit to the left."
+},
+{
+  "id": "q216",
+  "ch": 2,
+  "type": "tf",
+  "text": "Positive numbers are extended with zeros.",
+  "correct": "TRUE",
+  "exp": "Positive numbers have sign bit 0, so extension adds 0s."
+},
+{
+  "id": "q217",
+  "ch": 2,
+  "type": "tf",
+  "text": "Negative numbers are extended with ones.",
+  "correct": "TRUE",
+  "exp": "Negative numbers have sign bit 1, so extension adds 1s."
+},
+{
+  "id": "q218",
+  "ch": 2,
+  "type": "tf",
+  "text": "Instructions in MIPS are encoded in binary.",
+  "correct": "TRUE",
+  "exp": "Instructions are encoded as machine code in binary."
+},
+{
+  "id": "q219",
+  "ch": 2,
+  "type": "tf",
+  "text": "R-format contains rs, rt, rd, shamt, funct, and opcode.",
+  "correct": "TRUE",
+  "exp": "R-format fields include op, rs, rt, rd, shamt, and funct."
+},
+{
+  "id": "q220",
+  "ch": 2,
+  "type": "tf",
+  "text": "Hexadecimal is base 16.",
+  "correct": "TRUE",
+  "exp": "Hexadecimal is base 16."
+},
+{
+  "id": "q221",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which MIPS instruction performs bitwise AND?",
+  "opts": [
+    "A. or",
+    "B. nor",
+    "C. and",
+    "D. sll"
+  ],
+  "correct": "C",
+  "exp": "The bitwise AND instruction is and."
+},
+{
+  "id": "q222",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which MIPS instruction performs bitwise OR?",
+  "opts": [
+    "A. and",
+    "B. or",
+    "C. nor",
+    "D. srl"
+  ],
+  "correct": "B",
+  "exp": "The bitwise OR instruction is or."
+},
+{
+  "id": "q223",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which MIPS instruction is used to implement NOT?",
+  "opts": [
+    "A. addi",
+    "B. xor",
+    "C. nor with $zero",
+    "D. lw"
+  ],
+  "correct": "C",
+  "exp": "MIPS can implement NOT using nor with $zero."
+},
+{
+  "id": "q224",
+  "ch": 2,
+  "type": "mcq",
+  "text": "sll stands for:",
+  "opts": [
+    "A. Shift Right Logical",
+    "B. Shift Left Logical",
+    "C. Store Logical Left",
+    "D. Sign Left Logical"
+  ],
+  "correct": "B",
+  "exp": "sll means Shift Left Logical."
+},
+{
+  "id": "q225",
+  "ch": 2,
+  "type": "mcq",
+  "text": "srl stands for:",
+  "opts": [
+    "A. Shift Right Logical",
+    "B. Shift Register Left",
+    "C. Store Right Logical",
+    "D. Sign Right Logical"
+  ],
+  "correct": "A",
+  "exp": "srl means Shift Right Logical."
+},
+{
+  "id": "q226",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Shifting left by i bits is equivalent to:",
+  "opts": [
+    "A. Divide by 2^i",
+    "B. Multiply by 2^i",
+    "C. Add i",
+    "D. Subtract i"
+  ],
+  "correct": "B",
+  "exp": "sll by i bits multiplies by 2^i."
+},
+{
+  "id": "q227",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Shifting right by i bits is equivalent to:",
+  "opts": [
+    "A. Multiply by 2^i",
+    "B. Divide by 2^i",
+    "C. Add i",
+    "D. Subtract i"
+  ],
+  "correct": "B",
+  "exp": "srl by i bits divides by 2^i for unsigned values."
+},
+{
+  "id": "q228",
+  "ch": 2,
+  "type": "mcq",
+  "text": "AND operation is commonly used to:",
+  "opts": [
+    "A. Add bits",
+    "B. Mask bits",
+    "C. Shift bits",
+    "D. Compare bits"
+  ],
+  "correct": "B",
+  "exp": "AND is useful for masking bits: selecting some bits and clearing others to 0."
+},
+{
+  "id": "q229",
+  "ch": 2,
+  "type": "mcq",
+  "text": "OR operation is commonly used to:",
+  "opts": [
+    "A. Set bits to 1",
+    "B. Clear bits",
+    "C. Divide numbers",
+    "D. Compare registers"
+  ],
+  "correct": "A",
+  "exp": "OR is useful for setting selected bits to 1 while leaving others unchanged."
+},
+{
+  "id": "q230",
+  "ch": 2,
+  "type": "mcq",
+  "text": "NOR operation means:",
+  "opts": [
+    "A. NOT(A AND B)",
+    "B. NOT(A OR B)",
+    "C. A XOR B",
+    "D. A + B"
+  ],
+  "correct": "B",
+  "exp": "a NOR b equals NOT(a OR b)."
+},
+{
+  "id": "q231",
+  "ch": 2,
+  "type": "tf",
+  "text": "sll fills new positions with zeros.",
+  "correct": "TRUE",
+  "exp": "Shift left logical fills the new positions with 0 bits."
+},
+{
+  "id": "q232",
+  "ch": 2,
+  "type": "tf",
+  "text": "srl fills new positions with zeros.",
+  "correct": "TRUE",
+  "exp": "Shift right logical fills the new positions with 0 bits."
+},
+{
+  "id": "q233",
+  "ch": 2,
+  "type": "tf",
+  "text": "andi is an immediate version of AND.",
+  "correct": "TRUE",
+  "exp": "andi is bitwise AND with an immediate constant."
+},
+{
+  "id": "q234",
+  "ch": 2,
+  "type": "tf",
+  "text": "ori is an immediate version of OR.",
+  "correct": "TRUE",
+  "exp": "ori is bitwise OR with an immediate constant."
+},
+{
+  "id": "q235",
+  "ch": 2,
+  "type": "tf",
+  "text": "MIPS has a direct NOT instruction.",
+  "correct": "FALSE",
+  "exp": "MIPS uses nor with $zero to invert bits."
+},
+{
+  "id": "q236",
+  "ch": 2,
+  "type": "tf",
+  "text": "NOR can be used to invert bits.",
+  "correct": "TRUE",
+  "exp": "nor $t0, $t1, $zero computes NOT of $t1."
+},
+{
+  "id": "q237",
+  "ch": 2,
+  "type": "tf",
+  "text": "beq means Branch if Equal.",
+  "correct": "TRUE",
+  "exp": "beq branches if two registers are equal."
+},
+{
+  "id": "q238",
+  "ch": 2,
+  "type": "tf",
+  "text": "bne means Branch if Not Equal.",
+  "correct": "TRUE",
+  "exp": "bne branches if two registers are not equal."
+},
+{
+  "id": "q239",
+  "ch": 2,
+  "type": "tf",
+  "text": "j means unconditional jump.",
+  "correct": "TRUE",
+  "exp": "j jumps to a labeled instruction unconditionally."
+},
+{
+  "id": "q240",
+  "ch": 2,
+  "type": "tf",
+  "text": "Branch instructions are used for decision making.",
+  "correct": "TRUE",
+  "exp": "Conditional operations branch based on a condition."
+},
+{
+  "id": "q241",
+  "ch": 2,
+  "type": "tf",
+  "text": "beq branches when two registers are different.",
+  "correct": "FALSE",
+  "exp": "beq branches when two registers are equal."
+},
+{
+  "id": "q242",
+  "ch": 2,
+  "type": "tf",
+  "text": "bne branches when two registers are equal.",
+  "correct": "FALSE",
+  "exp": "bne branches when two registers are not equal."
+},
+{
+  "id": "q243",
+  "ch": 2,
+  "type": "tf",
+  "text": "Jump instructions always require register comparison.",
+  "correct": "FALSE",
+  "exp": "j is an unconditional jump and does not compare registers."
+},
+{
+  "id": "q244",
+  "ch": 2,
+  "type": "tf",
+  "text": "Branch instructions continue sequentially when condition is false.",
+  "correct": "TRUE",
+  "exp": "If the branch condition is false, execution continues with the next instruction."
+},
+{
+  "id": "q245",
+  "ch": 2,
+  "type": "tf",
+  "text": "If statements in MIPS commonly use bne and j.",
+  "correct": "TRUE",
+  "exp": "The slide example compiles if/else using bne and j."
+},
+{
+  "id": "q246",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Registers $a0–$a3 are used for:",
+  "opts": [
+    "A. Results",
+    "B. Arguments",
+    "C. Saved values",
+    "D. Return addresses"
+  ],
+  "correct": "B",
+  "exp": "$a0–$a3 are argument registers."
+},
+{
+  "id": "q247",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Registers $v0–$v1 are used for:",
+  "opts": [
+    "A. Arguments",
+    "B. Results/Return values",
+    "C. Saved values",
+    "D. Stack"
+  ],
+  "correct": "B",
+  "exp": "$v0 and $v1 hold result values."
+},
+{
+  "id": "q248",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Register $ra stores:",
+  "opts": [
+    "A. Stack address",
+    "B. Return address",
+    "C. Result value",
+    "D. Argument"
+  ],
+  "correct": "B",
+  "exp": "$ra is the return address register."
+},
+{
+  "id": "q249",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Register $sp is:",
+  "opts": [
+    "A. Global pointer",
+    "B. Stack pointer",
+    "C. Saved register",
+    "D. Temporary register"
+  ],
+  "correct": "B",
+  "exp": "$sp is the stack pointer."
+},
+{
+  "id": "q250",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Register $gp is:",
+  "opts": [
+    "A. Global pointer",
+    "B. General processor",
+    "C. Graphics pointer",
+    "D. Group pointer"
+  ],
+  "correct": "A",
+  "exp": "$gp is the global pointer."
+},
+{
+  "id": "q251",
+  "ch": 2,
+  "type": "mcq",
+  "text": "$t registers:",
+  "opts": [
+    "A. Must be preserved by callee",
+    "B. Can be overwritten by callee",
+    "C. Hold return addresses",
+    "D. Hold constants"
+  ],
+  "correct": "B",
+  "exp": "$t registers are temporaries and can be overwritten by the callee."
+},
+{
+  "id": "q252",
+  "ch": 2,
+  "type": "mcq",
+  "text": "$s registers:",
+  "opts": [
+    "A. Temporary",
+    "B. Saved registers",
+    "C. Results",
+    "D. Arguments"
+  ],
+  "correct": "B",
+  "exp": "$s registers are saved registers and must be saved/restored by the callee."
+},
+{
+  "id": "q253",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which register number corresponds to $sp?",
+  "opts": [
+    "A. 28",
+    "B. 29",
+    "C. 30",
+    "D. 31"
+  ],
+  "correct": "B",
+  "exp": "$sp is register 29."
+},
+{
+  "id": "q254",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which register number corresponds to $ra?",
+  "opts": [
+    "A. 31",
+    "B. 30",
+    "C. 29",
+    "D. 28"
+  ],
+  "correct": "A",
+  "exp": "$ra is register 31."
+},
+{
+  "id": "q255",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which register number corresponds to $gp?",
+  "opts": [
+    "A. 28",
+    "B. 29",
+    "C. 30",
+    "D. 31"
+  ],
+  "correct": "A",
+  "exp": "$gp is register 28."
+},
+{
+  "id": "q256",
+  "ch": 2,
+  "type": "tf",
+  "text": "Text segment contains program code.",
+  "correct": "TRUE",
+  "exp": "The text segment contains program code."
+},
+{
+  "id": "q257",
+  "ch": 2,
+  "type": "tf",
+  "text": "Heap stores dynamically allocated memory.",
+  "correct": "TRUE",
+  "exp": "Dynamic data is stored in the heap."
+},
+{
+  "id": "q258",
+  "ch": 2,
+  "type": "tf",
+  "text": "Stack stores automatic variables.",
+  "correct": "TRUE",
+  "exp": "The stack is used for automatic storage."
+},
+{
+  "id": "q259",
+  "ch": 2,
+  "type": "tf",
+  "text": "malloc allocates memory from the stack.",
+  "correct": "FALSE",
+  "exp": "malloc allocates dynamic memory from the heap."
+},
+{
+  "id": "q260",
+  "ch": 2,
+  "type": "tf",
+  "text": "new in Java/C++ uses dynamic memory.",
+  "correct": "TRUE",
+  "exp": "Dynamic data examples include malloc in C and new in Java/C++."
+},
+{
+  "id": "q261",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Branch addressing uses:",
+  "opts": [
+    "A. Direct addressing",
+    "B. PC-relative addressing",
+    "C. Register indirect",
+    "D. Immediate only"
+  ],
+  "correct": "B",
+  "exp": "Branch instructions use PC-relative addressing."
+},
+{
+  "id": "q262",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Branch target address is calculated using:",
+  "opts": [
+    "A. PC + offset × 4",
+    "B. PC − offset",
+    "C. Register value",
+    "D. Memory address"
+  ],
+  "correct": "A",
+  "exp": "Branch target address = PC + offset × 4."
+},
+{
+  "id": "q263",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Jump instructions use:",
+  "opts": [
+    "A. 16-bit address",
+    "B. 20-bit address",
+    "C. 26-bit address",
+    "D. 32-bit address"
+  ],
+  "correct": "C",
+  "exp": "Jump instructions encode a 26-bit address field."
+},
+{
+  "id": "q264",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which instructions use pseudo-direct addressing?",
+  "opts": [
+    "A. beq, bne",
+    "B. lw, sw",
+    "C. j, jal",
+    "D. add, sub"
+  ],
+  "correct": "C",
+  "exp": "j and jal use pseudo-direct jump addressing."
+},
+{
+  "id": "q265",
+  "ch": 2,
+  "type": "mcq",
+  "text": "jal stands for:",
+  "opts": [
+    "A. Jump And Load",
+    "B. Jump And Link",
+    "C. Jump Address Label",
+    "D. Jump Arithmetic Logic"
+  ],
+  "correct": "B",
+  "exp": "jal means Jump And Link."
+},
+{
+  "id": "q266",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Branch instructions are usually:",
+  "opts": [
+    "A. Near the current PC",
+    "B. Anywhere in memory",
+    "C. In cache only",
+    "D. In registers"
+  ],
+  "correct": "A",
+  "exp": "Most branch targets are near the branch instruction."
+},
+{
+  "id": "q267",
+  "ch": 2,
+  "type": "mcq",
+  "text": "PC is incremented by:",
+  "opts": [
+    "A. 1",
+    "B. 2",
+    "C. 4",
+    "D. 8"
+  ],
+  "correct": "C",
+  "exp": "The PC is already incremented by 4 when calculating branch targets."
+},
+{
+  "id": "q268",
+  "ch": 2,
+  "type": "mcq",
+  "text": "MIPS mainly supports how many instruction formats?",
+  "opts": [
+    "A. 2",
+    "B. 3",
+    "C. 4",
+    "D. 5"
+  ],
+  "correct": "B",
+  "exp": "The slides state MIPS has 3 formats."
+},
+{
+  "id": "q269",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which instruction class has the highest percentage in SPEC2006 Int?",
+  "opts": [
+    "A. Arithmetic",
+    "B. Jump",
+    "C. Data Transfer",
+    "D. Logical"
+  ],
+  "correct": "C",
+  "exp": "Data transfer is 35% in SPEC2006 Int, the highest listed percentage."
+},
+{
+  "id": "q270",
+  "ch": 2,
+  "type": "mcq",
+  "text": "Which instruction class has the lowest percentage in SPEC2006 Int?",
+  "opts": [
+    "A. Data Transfer",
+    "B. Conditional Branch",
+    "C. Jump",
+    "D. Arithmetic"
+  ],
+  "correct": "C",
+  "exp": "Jump is 2% in SPEC2006 Int, the lowest listed percentage."
+}
+,
+
+// ── EXTRA CHAPTER 4 QUESTIONS FROM CH4 PPT (Q271–Q370) ─────────────────────────
+{"id": "q271", "ch": 4, "type": "mcq", "text": "Computer memory systems can be classified by which key characteristic?", "opts": ["A. Location", "B. Keyboard type", "C. Screen resolution", "D. Operating system"], "correct": "A", "exp": "Location is one of the key characteristics of memory systems."},
+{"id": "q272", "ch": 4, "type": "mcq", "text": "Internal memory is often equated with:", "opts": ["A. External storage", "B. Main memory", "C. Tape storage", "D. I/O modules"], "correct": "B", "exp": "Internal memory is often equated with main memory."},
+{"id": "q273", "ch": 4, "type": "mcq", "text": "Which of the following is another form of internal memory?", "opts": ["A. Tape", "B. Disk", "C. Cache", "D. Printer"], "correct": "C", "exp": "Cache is another form of internal memory."},
+{"id": "q274", "ch": 4, "type": "mcq", "text": "External memory consists of devices accessible via:", "opts": ["A. Registers", "B. ALU", "C. I/O controllers", "D. Cache tags"], "correct": "C", "exp": "External memory consists of peripheral storage devices accessible via I/O controllers."},
+{"id": "q275", "ch": 4, "type": "mcq", "text": "Memory capacity is typically expressed in terms of:", "opts": ["A. Bytes", "B. Clock cycles", "C. Instructions", "D. Pixels"], "correct": "A", "exp": "Memory capacity is typically expressed in bytes."},
+{"id": "q276", "ch": 4, "type": "mcq", "text": "For internal memory, unit of transfer is related to:", "opts": ["A. Number of electrical lines into and out of the memory module", "B. Number of keyboard keys", "C. Monitor refresh rate", "D. Number of programs"], "correct": "A", "exp": "The unit of transfer equals the number of electrical lines into and out of the memory module."},
+{"id": "q277", "ch": 4, "type": "mcq", "text": "The natural unit of organization of memory is called:", "opts": ["A. Block", "B. Word", "C. Tag", "D. Bus"], "correct": "B", "exp": "A word is the natural unit of organization of memory."},
+{"id": "q278", "ch": 4, "type": "mcq", "text": "The relationship between address length A and number of addressable units N is:", "opts": ["A. A = 2N", "B. 2^A = N", "C. N = A/2", "D. A = N^2"], "correct": "B", "exp": "The slides state that 2^A = N."},
+{"id": "q279", "ch": 4, "type": "mcq", "text": "In sequential access memory, data are organized into:", "opts": ["A. Tags", "B. Records", "C. Cache lines", "D. Sets"], "correct": "B", "exp": "Sequential access memory is organized into records."},
+{"id": "q280", "ch": 4, "type": "mcq", "text": "Which access method requires access in a specific linear sequence?", "opts": ["A. Sequential access", "B. Random access", "C. Associative access", "D. Immediate access"], "correct": "A", "exp": "Sequential access must be made in a specific linear sequence."},
+{"id": "q281", "ch": 4, "type": "mcq", "text": "Disk units are an example of:", "opts": ["A. Sequential access", "B. Direct access", "C. Associative access", "D. Register access"], "correct": "B", "exp": "Disk units are direct access devices."},
+{"id": "q282", "ch": 4, "type": "mcq", "text": "Main memory is typically:", "opts": ["A. Sequential access", "B. Direct access only", "C. Random access", "D. Tape access"], "correct": "C", "exp": "Main memory is random access."},
+{"id": "q283", "ch": 4, "type": "mcq", "text": "Associative memory retrieves a word based on:", "opts": ["A. A portion of its contents", "B. Only its physical address", "C. Its disk sector", "D. Its file name"], "correct": "A", "exp": "Associative access retrieves a word based on a portion of its contents rather than its address."},
+{"id": "q284", "ch": 4, "type": "mcq", "text": "For random-access memory, access time means:", "opts": ["A. Time to position tape head", "B. Time from presenting address until data are stored or available", "C. Time to boot OS", "D. Time to compile code"], "correct": "B", "exp": "Access time is the time from presenting an address to storing or making data available."},
+{"id": "q285", "ch": 4, "type": "mcq", "text": "Memory cycle time equals:", "opts": ["A. Access time only", "B. Access time plus additional time before a second access can begin", "C. Transfer rate only", "D. Processor clock period"], "correct": "B", "exp": "Memory cycle time includes access time plus additional recovery/regeneration time."},
+{"id": "q286", "ch": 4, "type": "mcq", "text": "Transfer rate is:", "opts": ["A. Rate at which data can be transferred into or out of memory", "B. Number of cache tags", "C. Number of CPU registers", "D. Number of instructions per program"], "correct": "A", "exp": "Transfer rate is the rate data can be transferred into or out of memory."},
+{"id": "q287", "ch": 4, "type": "mcq", "text": "Going down the memory hierarchy generally causes:", "opts": ["A. Increasing cost per bit", "B. Decreasing capacity", "C. Increasing access time", "D. Increasing frequency of processor access"], "correct": "C", "exp": "As one goes down the hierarchy, access time increases."},
+{"id": "q288", "ch": 4, "type": "mcq", "text": "The principle that memory references tend to cluster is called:", "opts": ["A. Write back", "B. Locality of reference", "C. Thrashing", "D. Associativity"], "correct": "B", "exp": "Locality of reference means memory references tend to cluster."},
+{"id": "q289", "ch": 4, "type": "mcq", "text": "Cache memory is designed to combine fast access of high-speed memory with:", "opts": ["A. The large size of lower-speed memory", "B. The cost of registers only", "C. Tape capacity only", "D. I/O speed only"], "correct": "A", "exp": "Cache combines high-speed access with the large size of cheaper slower memory."},
+{"id": "q290", "ch": 4, "type": "mcq", "text": "When the processor reads a word and it is in cache, the word is:", "opts": ["A. Ignored", "B. Delivered to the processor", "C. Sent to disk", "D. Deleted"], "correct": "B", "exp": "If the word is in the cache, it is delivered to the processor."},
+{"id": "q291", "ch": 4, "type": "mcq", "text": "If a word is not in cache, what is loaded into cache?", "opts": ["A. The whole program only", "B. A block of main memory containing the word", "C. The keyboard buffer", "D. The cache directory only"], "correct": "B", "exp": "On a miss, a block containing the word is read into cache."},
+{"id": "q292", "ch": 4, "type": "mcq", "text": "In multilevel caches, L2 is usually compared with L1 as:", "opts": ["A. Faster and smaller", "B. Slower and larger", "C. Same speed and same size", "D. External memory only"], "correct": "B", "exp": "L2 cache is slower and typically larger than L1."},
+{"id": "q293", "ch": 4, "type": "mcq", "text": "Because cache has fewer lines than main memory blocks, it needs a:", "opts": ["A. Mapping function", "B. Printer driver", "C. Compiler parser", "D. Screen buffer"], "correct": "A", "exp": "A mapping function maps main memory blocks into cache lines."},
+{"id": "q294", "ch": 4, "type": "mcq", "text": "The three cache mapping techniques are:", "opts": ["A. Direct, associative, set associative", "B. Sequential, random, tape", "C. FIFO, LRU, LFU", "D. Write-through, write-back, write-once"], "correct": "A", "exp": "The slides list direct, associative, and set-associative mapping."},
+{"id": "q295", "ch": 4, "type": "mcq", "text": "Direct mapping maps each main memory block to:", "opts": ["A. Any cache line", "B. Only one possible cache line", "C. Every cache line", "D. No cache line"], "correct": "B", "exp": "Direct mapping maps each block into only one possible cache line."},
+{"id": "q296", "ch": 4, "type": "mcq", "text": "The direct mapping formula is:", "opts": ["A. i = j modulo m", "B. i = m modulo j", "C. tag = s + r", "D. v = i + j"], "correct": "A", "exp": "Direct mapping is expressed as i = j modulo m."},
+{"id": "q297", "ch": 4, "type": "mcq", "text": "In direct mapping, i represents:", "opts": ["A. Main memory block number", "B. Cache line number", "C. Number of words", "D. Tag size"], "correct": "B", "exp": "i is the cache line number."},
+{"id": "q298", "ch": 4, "type": "mcq", "text": "In direct mapping, j represents:", "opts": ["A. Cache line number", "B. Main memory block number", "C. Word offset only", "D. Set size"], "correct": "B", "exp": "j is the main memory block number."},
+{"id": "q299", "ch": 4, "type": "mcq", "text": "In direct mapping, m represents:", "opts": ["A. Number of lines in cache", "B. Number of processors", "C. Number of words per program", "D. Number of bytes in a register"], "correct": "A", "exp": "m is the number of lines in the cache."},
+{"id": "q300", "ch": 4, "type": "mcq", "text": "For direct mapping, address length is:", "opts": ["A. (s + w) bits", "B. (r + d) bits only", "C. 2^w bits", "D. s - r bits"], "correct": "A", "exp": "The address length is (s + w) bits."},
+{"id": "q301", "ch": 4, "type": "mcq", "text": "In direct mapping, block size equals:", "opts": ["A. 2^w words or bytes", "B. 2^r lines", "C. s - r bits", "D. m tags"], "correct": "A", "exp": "Block size = line size = 2^w words or bytes."},
+{"id": "q302", "ch": 4, "type": "mcq", "text": "In direct mapping, number of cache lines is:", "opts": ["A. m = 2^r", "B. m = 2^s", "C. m = s - r", "D. m = k*v only"], "correct": "A", "exp": "Number of cache lines is m = 2^r."},
+{"id": "q303", "ch": 4, "type": "mcq", "text": "In direct mapping, tag size is:", "opts": ["A. s bits", "B. s - r bits", "C. s - d bits", "D. w bits"], "correct": "B", "exp": "For direct mapping, tag size is (s - r) bits."},
+{"id": "q304", "ch": 4, "type": "mcq", "text": "The main disadvantage of direct mapping is:", "opts": ["A. Complex circuitry", "B. Fixed cache location can cause thrashing", "C. No tag field", "D. No memory blocks"], "correct": "B", "exp": "Direct mapping can cause thrashing when blocks map to the same line."},
+{"id": "q305", "ch": 4, "type": "mcq", "text": "A victim cache is used to reduce:", "opts": ["A. Conflict misses of direct-mapped caches", "B. CPU clock speed", "C. Register size", "D. Disk latency only"], "correct": "A", "exp": "Victim cache reduces conflict misses of direct-mapped caches."},
+{"id": "q306", "ch": 4, "type": "mcq", "text": "A victim cache is typically:", "opts": ["A. Fully associative", "B. Sequential only", "C. A tape unit", "D. A write policy"], "correct": "A", "exp": "Victim cache is a fully associative cache."},
+{"id": "q307", "ch": 4, "type": "mcq", "text": "Typical victim cache size is:", "opts": ["A. 4 to 16 cache lines", "B. 1 GB", "C. 128 registers", "D. 1 byte"], "correct": "A", "exp": "The slides say a victim cache is typically 4 to 16 cache lines."},
+{"id": "q308", "ch": 4, "type": "mcq", "text": "A victim cache resides between:", "opts": ["A. Direct-mapped L1 cache and next level memory", "B. Keyboard and monitor", "C. ALU and control unit", "D. Disk and tape"], "correct": "A", "exp": "It resides between direct mapped L1 cache and the next memory level."},
+{"id": "q309", "ch": 4, "type": "mcq", "text": "Associative mapping permits each main memory block to be loaded into:", "opts": ["A. Any line of the cache", "B. Only line 0", "C. Only one fixed line", "D. Only main memory"], "correct": "A", "exp": "Associative mapping allows a block to be loaded into any cache line."},
+{"id": "q310", "ch": 4, "type": "mcq", "text": "Associative mapping interprets an address as:", "opts": ["A. Tag and Word fields", "B. Tag, Set, Word fields", "C. Only line field", "D. Only opcode"], "correct": "A", "exp": "Associative mapping uses Tag and Word fields."},
+{"id": "q311", "ch": 4, "type": "mcq", "text": "Associative mapping requires checking:", "opts": ["A. Every line tag simultaneously", "B. Only one fixed line", "C. Only disk sector", "D. Only set index"], "correct": "A", "exp": "Cache control logic examines every line tag for a match."},
+{"id": "q312", "ch": 4, "type": "mcq", "text": "For associative mapping, tag size is:", "opts": ["A. s bits", "B. s - r bits", "C. s - d bits", "D. r bits"], "correct": "A", "exp": "Associative mapping tag size is s bits."},
+{"id": "q313", "ch": 4, "type": "mcq", "text": "The principal disadvantage of associative mapping is:", "opts": ["A. Complex circuitry to examine all tags in parallel", "B. No flexibility", "C. No replacement algorithms", "D. It cannot store blocks"], "correct": "A", "exp": "Associative mapping needs complex parallel tag-comparison circuitry."},
+{"id": "q314", "ch": 4, "type": "mcq", "text": "Set-associative mapping is a compromise between:", "opts": ["A. Direct and associative mapping", "B. Sequential and tape access", "C. Write back and write through", "D. Registers and disks"], "correct": "A", "exp": "Set-associative mapping combines strengths of direct and associative approaches."},
+{"id": "q315", "ch": 4, "type": "mcq", "text": "In set-associative mapping, the cache consists of:", "opts": ["A. Sets, each containing lines", "B. Only one line", "C. Only one tag", "D. Records only"], "correct": "A", "exp": "The cache consists of a number of sets, each with a number of lines."},
+{"id": "q316", "ch": 4, "type": "mcq", "text": "The set-associative relationship for total cache lines is:", "opts": ["A. m = v * k", "B. m = v + k", "C. m = j modulo v", "D. m = s - d"], "correct": "A", "exp": "For set associative mapping, m = v*k."},
+{"id": "q317", "ch": 4, "type": "mcq", "text": "The set-associative mapping formula is:", "opts": ["A. i = j modulo v", "B. i = j modulo m only", "C. i = s - r", "D. i = k + v"], "correct": "A", "exp": "Set-associative mapping uses i = j modulo v."},
+{"id": "q318", "ch": 4, "type": "mcq", "text": "In k-way set-associative mapping, k is:", "opts": ["A. Number of lines in each set", "B. Number of bits in tag", "C. Number of processors", "D. Address length"], "correct": "A", "exp": "k is the number of lines in each set."},
+{"id": "q319", "ch": 4, "type": "mcq", "text": "For set-associative mapping, the address fields are:", "opts": ["A. Tag, Set, Word", "B. Opcode, rs, rt", "C. Tag only", "D. Word only"], "correct": "A", "exp": "Set-associative mapping uses Tag, Set, and Word fields."},
+{"id": "q320", "ch": 4, "type": "mcq", "text": "For set-associative mapping, tag size is:", "opts": ["A. s - d bits", "B. s bits", "C. s - r bits", "D. w bits"], "correct": "A", "exp": "In set associative mapping, tag size is (s - d) bits."},
+{"id": "q321", "ch": 4, "type": "tf", "text": "Internal memory is often equated with main memory.", "correct": "TRUE", "exp": "Internal memory is often equated with main memory."},
+{"id": "q322", "ch": 4, "type": "tf", "text": "Cache is a form of external memory.", "correct": "FALSE", "exp": "Cache is an internal memory form, not external memory."},
+{"id": "q323", "ch": 4, "type": "tf", "text": "External memory is accessed by the processor via I/O controllers.", "correct": "TRUE", "exp": "External storage devices are accessible via I/O controllers."},
+{"id": "q324", "ch": 4, "type": "tf", "text": "Memory capacity is typically expressed in bytes.", "correct": "TRUE", "exp": "The slides state that capacity is typically expressed in bytes."},
+{"id": "q325", "ch": 4, "type": "tf", "text": "Sequential access has constant access time independent of location.", "correct": "FALSE", "exp": "Sequential access time is highly variable."},
+{"id": "q326", "ch": 4, "type": "tf", "text": "Tape units are sequential access devices.", "correct": "TRUE", "exp": "Tape units are given as examples of sequential access."},
+{"id": "q327", "ch": 4, "type": "tf", "text": "Disk units are direct access devices.", "correct": "TRUE", "exp": "Disk units are direct access devices."},
+{"id": "q328", "ch": 4, "type": "tf", "text": "Random access time is independent of prior access sequence.", "correct": "TRUE", "exp": "Random access has constant time independent of previous accesses."},
+{"id": "q329", "ch": 4, "type": "tf", "text": "Associative memory retrieves a word only by its numerical address.", "correct": "FALSE", "exp": "Associative memory retrieves based on a portion of contents."},
+{"id": "q330", "ch": 4, "type": "tf", "text": "Access time is also called latency.", "correct": "TRUE", "exp": "The slides call access time latency."},
+{"id": "q331", "ch": 4, "type": "tf", "text": "Memory cycle time is concerned with the processor, not the system bus.", "correct": "FALSE", "exp": "The slides state memory cycle time is concerned with the system bus, not the processor."},
+{"id": "q332", "ch": 4, "type": "tf", "text": "For random-access memory, transfer rate equals 1 divided by cycle time.", "correct": "TRUE", "exp": "For random-access memory, transfer rate = 1/(cycle time)."},
+{"id": "q333", "ch": 4, "type": "tf", "text": "Going down the hierarchy generally decreases cost per bit.", "correct": "TRUE", "exp": "Cost per bit decreases down the hierarchy."},
+{"id": "q334", "ch": 4, "type": "tf", "text": "Going down the hierarchy generally decreases capacity.", "correct": "FALSE", "exp": "Capacity increases down the hierarchy."},
+{"id": "q335", "ch": 4, "type": "tf", "text": "Going down the hierarchy generally increases access time.", "correct": "TRUE", "exp": "Access time increases down the hierarchy."},
+{"id": "q336", "ch": 4, "type": "tf", "text": "Locality of reference means memory references tend to cluster.", "correct": "TRUE", "exp": "Locality means references cluster during execution."},
+{"id": "q337", "ch": 4, "type": "tf", "text": "Cache contains a copy of portions of main memory.", "correct": "TRUE", "exp": "Cache stores copies of portions of main memory."},
+{"id": "q338", "ch": 4, "type": "tf", "text": "If the requested word is in cache, it is delivered to the processor.", "correct": "TRUE", "exp": "On a cache hit, the word is delivered to the processor."},
+{"id": "q339", "ch": 4, "type": "tf", "text": "If a requested word is not in cache, only one bit is loaded into cache.", "correct": "FALSE", "exp": "A block of main memory containing the word is loaded."},
+{"id": "q340", "ch": 4, "type": "tf", "text": "L2 cache is usually slower and larger than L1 cache.", "correct": "TRUE", "exp": "L2 is slower and typically larger than L1."},
+{"id": "q341", "ch": 4, "type": "tf", "text": "Direct mapping allows each block to go into any cache line.", "correct": "FALSE", "exp": "Direct mapping maps each block to one possible line."},
+{"id": "q342", "ch": 4, "type": "tf", "text": "Associative mapping allows a block to be loaded into any cache line.", "correct": "TRUE", "exp": "Associative mapping permits loading into any line."},
+{"id": "q343", "ch": 4, "type": "tf", "text": "Set-associative mapping is a compromise between direct and associative mapping.", "correct": "TRUE", "exp": "It combines strengths and reduces disadvantages of both."},
+{"id": "q344", "ch": 4, "type": "tf", "text": "Direct mapping uses i = j modulo m.", "correct": "TRUE", "exp": "The direct mapping formula is i = j modulo m."},
+{"id": "q345", "ch": 4, "type": "tf", "text": "In direct mapping, m is the number of cache lines.", "correct": "TRUE", "exp": "m represents the number of lines in cache."},
+{"id": "q346", "ch": 4, "type": "tf", "text": "Direct mapping has no fixed cache location for a given block.", "correct": "FALSE", "exp": "Direct mapping has a fixed cache location for any given block."},
+{"id": "q347", "ch": 4, "type": "tf", "text": "Thrashing can occur when two frequently used blocks map to the same direct-mapped line.", "correct": "TRUE", "exp": "This is the stated disadvantage of direct mapping."},
+{"id": "q348", "ch": 4, "type": "tf", "text": "Victim cache is used to reduce conflict misses of direct-mapped caches.", "correct": "TRUE", "exp": "Victim cache was proposed for reducing conflict misses."},
+{"id": "q349", "ch": 4, "type": "tf", "text": "A victim cache is typically very large, such as several gigabytes.", "correct": "FALSE", "exp": "A victim cache is typically small: 4 to 16 cache lines."},
+{"id": "q350", "ch": 4, "type": "tf", "text": "A victim cache is fully associative.", "correct": "TRUE", "exp": "Victim cache is fully associative."},
+{"id": "q351", "ch": 4, "type": "tf", "text": "Associative mapping checks every line tag in parallel.", "correct": "TRUE", "exp": "Associative cache logic simultaneously examines every line tag."},
+{"id": "q352", "ch": 4, "type": "tf", "text": "Associative mapping has simpler circuitry than direct mapping.", "correct": "FALSE", "exp": "Associative mapping has more complex circuitry."},
+{"id": "q353", "ch": 4, "type": "tf", "text": "For associative mapping, tag size is s bits.", "correct": "TRUE", "exp": "Associative mapping summary lists tag size as s bits."},
+{"id": "q354", "ch": 4, "type": "tf", "text": "In set-associative mapping, m = v * k.", "correct": "TRUE", "exp": "Set-associative mapping uses m = v*k."},
+{"id": "q355", "ch": 4, "type": "tf", "text": "In set-associative mapping, i = j modulo v.", "correct": "TRUE", "exp": "Set-associative mapping uses i = j modulo v."},
+{"id": "q356", "ch": 4, "type": "tf", "text": "In set-associative mapping, k means the number of lines in each set.", "correct": "TRUE", "exp": "k is the number of lines in each set."},
+{"id": "q357", "ch": 4, "type": "tf", "text": "When k = 1 and v = m, set-associative mapping reduces to direct mapping.", "correct": "TRUE", "exp": "The slides state this extreme case reduces to direct mapping."},
+{"id": "q358", "ch": 4, "type": "tf", "text": "When v = 1 and k = m, set-associative mapping reduces to associative mapping.", "correct": "TRUE", "exp": "The slides state this extreme case reduces to associative mapping."},
+{"id": "q359", "ch": 4, "type": "tf", "text": "Two-way set associative means two lines per set.", "correct": "TRUE", "exp": "Two-way set associative has two lines in each set."},
+{"id": "q360", "ch": 4, "type": "tf", "text": "Increasing associativity always gives a large performance improvement with no added cost.", "correct": "FALSE", "exp": "Further increases have little effect and add complexity/cost."},
+{"id": "q361", "ch": 4, "type": "tf", "text": "Direct mapping requires a replacement algorithm.", "correct": "FALSE", "exp": "For direct mapping there is no choice; no replacement algorithm is needed."},
+{"id": "q362", "ch": 4, "type": "tf", "text": "Associative and set-associative caches need replacement algorithms.", "correct": "TRUE", "exp": "Replacement algorithms are needed for associative and set associative techniques."},
+{"id": "q363", "ch": 4, "type": "tf", "text": "LRU replaces the block that has been longest without reference.", "correct": "TRUE", "exp": "LRU replaces the least recently used block."},
+{"id": "q364", "ch": 4, "type": "tf", "text": "FIFO replaces the block that has experienced the fewest references.", "correct": "FALSE", "exp": "FIFO replaces the block that has been in cache the longest."},
+{"id": "q365", "ch": 4, "type": "tf", "text": "LFU replaces the block with the fewest references.", "correct": "TRUE", "exp": "LFU replaces the least frequently used block."},
+{"id": "q366", "ch": 4, "type": "tf", "text": "Write-through writes all updates to both cache and main memory.", "correct": "TRUE", "exp": "Write-through makes all writes to cache and main memory."},
+{"id": "q367", "ch": 4, "type": "tf", "text": "Write-through generates substantial memory traffic.", "correct": "TRUE", "exp": "Its main disadvantage is substantial memory traffic and possible bottleneck."},
+{"id": "q368", "ch": 4, "type": "tf", "text": "Write-back updates are made only in the cache until replacement.", "correct": "TRUE", "exp": "Write-back updates only cache and writes to memory on replacement if dirty."},
+{"id": "q369", "ch": 4, "type": "tf", "text": "A dirty bit indicates a cache line was updated and may need to be written back.", "correct": "TRUE", "exp": "Write-back sets a dirty bit when an update occurs."},
+{"id": "q370", "ch": 4, "type": "tf", "text": "Larger block size always increases hit ratio forever.", "correct": "FALSE", "exp": "Hit ratio first increases, then can decrease when blocks become too large."}
 
 ];
 
@@ -2155,8 +3361,8 @@ function showResults() {
   document.getElementById('res-correct').textContent = score;
   document.getElementById('res-wrong').textContent = TOTAL - score;
   document.getElementById('ch1-score').textContent = chScores[1] + '/130';
-  document.getElementById('ch2-score').textContent = chScores[2] + '/20';
-  document.getElementById('ch4-score').textContent = chScores[4] + '/20';
+  document.getElementById('ch2-score').textContent = chScores[2] + '/120';
+  document.getElementById('ch4-score').textContent = chScores[4] + '/120';
 
   const gEl = document.getElementById('grade-msg');
   if (pct >= 90) { gEl.textContent = '🏆 Outstanding! You have mastered all three chapters!'; gEl.className = 'grade-msg grade-A'; }
