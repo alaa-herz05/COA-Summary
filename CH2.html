@@ -15,38 +15,273 @@
 <div class="lang-bar">📘 <strong>English</strong> — Main content &nbsp;|&nbsp; 🌙 <strong style="color:var(--gold)">العربي</strong> — Translation & explanation boxes</div>
 <div class="container">
 <hr class="div">
-<div class="section-header"><div class="sec-num">0</div><div class="sec-titles"><h2>Addressability & Memory Fundamentals</h2><div class="ar">العنونة وأساسيات الذاكرة</div></div></div>
 
-<div class="card"><div class="card-title">Bits, Bytes and Words <span class="ar">البت والبايت والكلمة</span></div>
-<p><strong>Bit</strong> = 0 or 1</p>
-<p><strong>Byte</strong> = 8 Bits</p>
-<p><strong>Word (MIPS)</strong> = 32 Bits = 4 Bytes</p>
-<div class="ar-box"><div class="ar-label">Arabic</div>البايت يحتوي 8 بت، أما الكلمة Word في MIPS فتساوي 32 بت أي 4 بايت.</div>
+<div class="section-header">
+<div class="sec-num">0</div>
+<div class="sec-titles">
+<h2>Addressability & Memory Locations</h2>
+<div class="ar">العنونة ومواقع الذاكرة</div>
+</div>
 </div>
 
-<div class="card"><div class="card-title">Addressability <span class="ar">العنونة Addressability</span></div>
-<p>MIPS uses <strong>Byte Addressing</strong>. Each address refers to one byte.</p>
-<div class="formula">Word = 4 Bytes → Addresses 100,101,102,103 belong to the same word.</div>
-<div class="ar-box"><div class="ar-label">Arabic</div>كل عنوان في الذاكرة يشير إلى بايت واحد، لذلك الكلمة الواحدة (4 بايت) تشغل 4 عناوين متتالية.</div>
+<div class="card">
+<div class="card-title">What is Addressability? <span class="ar">ما هي العنونة؟</span></div>
+
+<p>
+Every memory location must have a unique address. The CPU uses these addresses
+to identify and access data stored in memory.
+</p>
+
+<div class="highlight">
+Each address is a unique identifier for a specific memory location.
 </div>
 
-<div class="card"><div class="card-title">Word Alignment <span class="ar">محاذاة الكلمات</span></div>
-<p>Word addresses should be multiples of 4.</p>
-<div class="formula">Valid: 0, 4, 8, 12 ...<br>Invalid: 1, 2, 3, 5 ...</div>
-<div class="ar-box"><div class="ar-label">Arabic</div>العنوان الصحيح للكلمة يجب أن يقبل القسمة على 4 بدون باقٍ.</div>
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+كل موقع داخل الذاكرة يمتلك عنواناً فريداً خاصاً به.
+يستخدم المعالج هذا العنوان للوصول إلى البيانات المخزنة داخل الذاكرة.
+وتسمى عملية تحديد مواقع الذاكرة بواسطة العناوين باسم Addressability.
+</div>
 </div>
 
-<div class="card"><div class="card-title">Address Calculation <span class="ar">حساب العنوان</span></div>
-<div class="formula">Address = Base + (Index × 4)</div>
-<pre>Base = 1000
-A[5] = 1000 + (5 × 4) = 1020</pre>
-<div class="ar-box"><div class="ar-label">Arabic</div>لحساب عنوان عنصر في مصفوفة نضرب رقم العنصر في 4 ثم نضيفه إلى عنوان البداية.</div>
+<div class="card">
+<div class="card-title">Address Bus & Memory Locations <span class="ar">خط العناوين وعدد مواقع الذاكرة</span></div>
+
+<p>
+The width of the Address Bus determines how many memory locations can be addressed.
+</p>
+
+<div class="formula">
+Number of Memory Locations = 2<sup>n</sup>
 </div>
 
-<div class="card"><div class="card-title">Big Endian <span class="ar">الترتيب Big Endian</span></div>
-<p>MIPS stores the Most Significant Byte first.</p>
-<pre>12345678 → 12 34 56 78</pre>
-<div class="ar-box"><div class="ar-label">Arabic</div>يتم تخزين البايت الأكثر أهمية أولاً في أصغر عنوان.</div>
+<p>
+Where:
+</p>
+
+<ul>
+<li>n = Number of Address Bus Bits</li>
+</ul>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+عدد المواقع التي يمكن الوصول إليها يعتمد مباشرة على عدد خطوط الـ Address Bus.
+كلما زاد عدد البتات زاد عدد العناوين المتاحة.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Examples of Address Bus Width <span class="ar">أمثلة على عدد البتات</span></div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Address Bus</th>
+<th>Addresses</th>
+<th>Memory Locations</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>1 Bit</td>
+<td>0,1</td>
+<td>2¹ = 2</td>
+</tr>
+
+<tr>
+<td>2 Bits</td>
+<td>00,01,10,11</td>
+<td>2² = 4</td>
+</tr>
+
+<tr>
+<td>3 Bits</td>
+<td>000 → 111</td>
+<td>2³ = 8</td>
+</tr>
+
+<tr>
+<td>8 Bits</td>
+<td>00000000 → 11111111</td>
+<td>2⁸ = 256</td>
+</tr>
+
+<tr>
+<td>16 Bits</td>
+<td>---</td>
+<td>2¹⁶ = 65,536</td>
+</tr>
+
+<tr>
+<td>32 Bits</td>
+<td>---</td>
+<td>2³² = 4,294,967,296</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+احفظ القاعدة المهمة للامتحان:
+عدد المواقع = 2 أس عدد بتات Address Bus.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Calculating Addressable Memory <span class="ar">حساب الذاكرة القابلة للعنونة</span></div>
+
+<p>
+Knowing the number of locations alone is not enough.
+We must also know the size of each memory location.
+</p>
+
+<p>
+The size of each location is determined by the Data Bus Width.
+</p>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+حتى نحسب حجم الذاكرة الحقيقي يجب معرفة:
+1- عدد المواقع.
+2- حجم كل موقع تخزين.
+ويتم تحديد حجم الموقع بواسطة Data Bus.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Addressable Memory Formula <span class="ar">قانون الذاكرة القابلة للعنونة</span></div>
+
+<div class="formula">
+Addressable Memory =
+(Number of Storage Locations)
+×
+(Size of Each Location)
+</div>
+
+<div class="formula">
+Addressable Memory =
+(2<sup>Address Bus Bits</sup>)
+×
+(Data Bus Width)
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+هذا أهم قانون في جزء Addressability.
+غالباً يأتي عليه سؤال مباشر في الامتحان.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Solved Example 1 <span class="ar">مثال محلول 1</span></div>
+
+<p>
+Address Bus = 3 Bits
+</p>
+
+<p>
+Data Bus = 2 Bits
+</p>
+
+<div class="formula">
+Number of Locations = 2³ = 8
+</div>
+
+<div class="formula">
+Addressable Memory = 8 × 2 = 16 Bits
+</div>
+
+<div class="formula">
+16 Bits ÷ 8 = 2 Bytes
+</div>
+
+<div class="highlight">
+Answer = 2 Bytes
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+لدينا 8 مواقع وكل موقع يخزن 2 بت،
+إذن الحجم الكلي = 16 بت = 2 بايت.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Solved Example 2 <span class="ar">مثال محلول 2</span></div>
+
+<p>
+Address Bus = 16 Bits
+</p>
+
+<p>
+Data Bus = 8 Bits
+</p>
+
+<div class="formula">
+Number of Locations = 2¹⁶ = 65,536
+</div>
+
+<div class="formula">
+Addressable Memory =
+65,536 × 8
+=
+524,288 Bits
+</div>
+
+<div class="formula">
+524,288 ÷ 8
+=
+65,536 Bytes
+=
+64 KB
+</div>
+
+<div class="highlight">
+Answer = 64 KB
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+هذا المثال موجود حرفياً في السلايدات ويعتبر من أشهر أسئلة الامتحان.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Exam Questions <span class="ar">أسئلة امتحانية</span></div>
+
+<ul>
+<li>
+Computer with a 10-bit Address Bus:
+2¹⁰ = 1024 locations
+</li>
+
+<li>
+Computer with a 12-bit Address Bus:
+2¹² = 4096 locations
+</li>
+
+<li>
+Which bus determines the number of memory locations?
+<strong>Address Bus</strong>
+</li>
+
+<li>
+Which bus determines the size of each location?
+<strong>Data Bus</strong>
+</li>
+
+</ul>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+إذا رأيت سؤالاً عن عدد المواقع → استخدم Address Bus.
+إذا طلب حجم الذاكرة الكامل → استخدم Address Bus و Data Bus معاً.
+</div>
 </div>
 
 
