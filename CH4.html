@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 — Cache Memory | Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #07111f;
+    --deep:      #0b1a2e;
+    --mid-blue:  #102340;
+    --card-bg:   rgba(16, 35, 64, 0.6);
+    --border:    rgba(0, 200, 255, 0.18);
+    --accent:    #00c8ff;
+    --accent2:   #ff6b35;
+    --gold:      #ffc940;
+    --green:     #3effa0;
+    --red:       #ff5f6d;
+    --purple:    #b48aff;
+    --text:      #dce8f5;
+    --muted:     #607a9a;
+    --highlight: rgba(0, 200, 255, 0.07);
+    --ar-bg:     rgba(255, 201, 64, 0.05);
+    --ar-border: rgba(255, 201, 64, 0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 14.5px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(160deg, #07111f 0%, #0b1a2e 45%, #130c30 100%);
+    padding: 64px 40px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--accent);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(0,200,255,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero .ar-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 18px;
+    direction: rtl;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ─── LANG SWITCHER ─── */
+  .lang-bar {
+    background: var(--deep);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .lang-bar strong { color: var(--accent); }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 36px 24px 90px;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 52px 0 20px;
+  }
+  .sec-num {
+    width: 46px; height: 46px;
+    background: var(--accent);
+    color: var(--navy);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .sec-titles h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .sec-titles .ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.92rem;
+    color: var(--gold);
+    direction: rtl;
+    text-align: right;
+    margin-top: 1px;
+  }
+
+  /* ─── CARD ─── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(4px);
+  }
+  .card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-title::before { content: '▸'; color: var(--accent2); font-size: 11px; }
+  .card-title .ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 600;
+    direction: rtl;
+  }
+  .card p, .card li { margin-bottom: 5px; }
+  .card ul { padding-left: 20px; }
+  .card ul li { list-style: disc; }
+
+  /* ─── ARABIC TRANSLATION BOX ─── */
+  .ar-box {
+    background: var(--ar-bg);
+    border: 1px solid var(--ar-border);
+    border-right: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 13px 16px;
+    margin-top: 12px;
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+    font-size: 13.5px;
+    color: #ccd6e8;
+    line-height: 1.9;
+  }
+  .ar-box .ar-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* ─── HIGHLIGHT ─── */
+  .highlight {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 10px 0;
+    font-size: 13.5px;
+  }
+  .highlight strong { color: var(--accent); }
+
+  /* ─── NOTE BOX ─── */
+  .note {
+    background: rgba(255, 107, 53, 0.07);
+    border: 1px solid rgba(255, 107, 53, 0.28);
+    border-radius: 10px;
+    padding: 13px 16px;
+    margin: 10px 0;
+    font-size: 13.5px;
+  }
+  .note .note-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  /* ─── FORMULA ─── */
+  .formula {
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255, 201, 64, 0.25);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin: 10px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--gold);
+    direction: ltr;
+  }
+  .formula .flabel {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ─── TABLE ─── */
+  .table-wrap { overflow-x: auto; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    background: var(--mid-blue);
+    color: var(--accent);
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid rgba(0,200,255,0.07); }
+  tbody tr:hover { background: var(--highlight); }
+  tbody td { padding: 10px 14px; }
+  tbody td:first-child { font-weight: 600; color: var(--gold); white-space: nowrap; }
+  .g { color: var(--green); }
+  .r { color: var(--red); }
+  .y { color: var(--gold); }
+  .p { color: var(--purple); }
+
+  /* ─── TAGS ─── */
+  .tag {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: rgba(0,200,255,0.1);
+    border-radius: 5px;
+    padding: 1px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    margin: 2px 2px;
+  }
+  .tag.o { border-color: var(--accent2); color: var(--accent2); background: rgba(255,107,53,0.1); }
+  .tag.g { border-color: var(--green);   color: var(--green);   background: rgba(62,255,160,0.08); }
+  .tag.y { border-color: var(--gold);    color: var(--gold);    background: rgba(255,201,64,0.08); }
+  .tag.r { border-color: var(--red);     color: var(--red);     background: rgba(255,95,109,0.08); }
+
+  /* ─── GRID ─── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+
+  /* ─── FLOW ─── */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 14px 0;
+    overflow-x: auto;
+  }
+  .fbox {
+    background: var(--mid-blue);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 9px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .fbox.a { border-color: var(--accent);  color: var(--accent);  background: rgba(0,200,255,0.1); }
+  .fbox.o { border-color: var(--accent2); color: var(--accent2); background: rgba(255,107,53,0.1); }
+  .fbox.p { border-color: var(--purple);  color: var(--purple);  background: rgba(180,138,255,0.1); }
+  .arrow { color: var(--muted); font-size: 18px; padding: 0 8px; }
+
+  /* ─── DIVIDER ─── */
+  hr.div {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.2;
+    margin: 44px 0;
+  }
+
+  /* ─── FINAL SUMMARY ─── */
+  .final {
+    background: linear-gradient(135deg, rgba(0,200,255,0.06), rgba(7,17,31,0.8));
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 52px;
+  }
+  .final h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 18px;
+    letter-spacing: -0.2px;
+  }
+  .final h2 .ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 600;
+    direction: rtl;
+    display: block;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Chapter 4 · Computer Organization & Architecture</div>
+  <h1>Cache <span>Memory</span></h1>
+  <div class="ar-title">ذاكرة الكاش — دليل الدراسة الشامل</div>
+  <p>Complete bilingual study guide · English primary with Arabic translation & explanation</p>
+</div>
+
+<div class="lang-bar">
+  📘 <strong>English</strong> — Main content &nbsp;|&nbsp; 🌙 <strong style="color:var(--gold)">العربي</strong> — Translation & explanation boxes
+</div>
+
+<div class="container">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §1  CHARACTERISTICS OF MEMORY SYSTEMS       -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">1</div>
+    <div class="sec-titles">
+      <h2>Characteristics of Memory Systems</h2>
+      <div class="ar">خصائص أنظمة الذاكرة</div>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div class="card">
+    <div class="card-title">Location <span class="ar">الموقع</span></div>
+    <p>Refers to whether memory is <strong>internal</strong> or <strong>external</strong> to the computer.</p>
+    <ul>
+      <li><strong>Internal memory</strong> — includes main memory (RAM), cache, and CPU registers.</li>
+      <li><strong>Cache</strong> — a special form of internal memory; faster than RAM, closer to the CPU.</li>
+      <li><strong>External memory</strong> — peripheral storage (HDD, SSD) accessed via I/O controllers.</li>
+    </ul>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      الذاكرة تُقسَّم حسب موقعها إلى داخلية وخارجية.<br>
+      الداخلية تشمل: <strong>الـ RAM</strong> (الذاكرة الرئيسية)، <strong>الكاش</strong> (أسرع من RAM وأقرب للمعالج)، و<strong>السجلات (Registers)</strong> داخل المعالج نفسه.<br>
+      الخارجية: الهارد والـ SSD — يصل إليها المعالج عبر وحدات الـ I/O فقط.
+    </div>
+  </div>
+
+  <!-- Capacity + Unit -->
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Capacity <span class="ar">السعة</span></div>
+      <p>Memory size is typically expressed in <strong>bytes</strong> (KB, MB, GB…).</p>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        السعة = كمية البيانات التي تستوعبها الذاكرة، تُقاس بالبايت.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Unit of Transfer <span class="ar">وحدة النقل</span></div>
+      <p>For internal memory, equals the number of electrical lines into/out of the memory module.</p>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        عدد الخطوط الكهربائية الداخلة والخارجة من وحدة الذاكرة — يحدد كم بيانات تُنقل في كل عملية.
+      </div>
+    </div>
+  </div>
+
+  <!-- Access Methods -->
+  <div class="card">
+    <div class="card-title">Methods of Accessing Data <span class="ar">طرق الوصول للبيانات</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Method</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Sequential</td><td>Must traverse data in order to reach target</td><td>Magnetic Tape</td></tr>
+          <tr><td>Direct</td><td>Jump to a region, then search sequentially within it</td><td>HDD</td></tr>
+          <tr><td>Random</td><td>Any address accessible in equal, constant time</td><td>RAM, Cache</td></tr>
+          <tr><td>Associative</td><td>Search by content, not address (content-addressable)</td><td>Cache (Associative Mapping)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      <strong>Sequential:</strong> تسلسلي — لازم تمر على البيانات بالترتيب (مثل الشريط المغناطيسي). بطيء.<br>
+      <strong>Direct:</strong> مباشر — تقفز لمنطقة تقريبية ثم تبحث بداخلها (مثل HDD).<br>
+      <strong>Random:</strong> عشوائي — أي عنوان تصله مباشرةً بنفس الوقت (مثل RAM والكاش). الأسرع.<br>
+      <strong>Associative:</strong> ترابطي — تبحث بالمحتوى مش بالعنوان، يُستخدم في الكاش.
+    </div>
+  </div>
+
+  <!-- Performance -->
+  <div class="card">
+    <div class="card-title">Capacity & Performance Metrics <span class="ar">مقاييس الأداء</span></div>
+    <ul>
+      <li><strong>Access Time</strong> — Time to read or write a unit of data.</li>
+      <li><strong>Cycle Time</strong> — Minimum time between two successive accesses (access time + recovery).</li>
+      <li><strong>Transfer Rate</strong> — Rate at which data is moved to/from memory.</li>
+    </ul>
+    <div class="highlight">
+      <strong>Key rule:</strong> Faster memory = smaller capacity = higher cost. Cache is the optimal middle ground between register speed and RAM capacity.
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      <strong>Access Time:</strong> وقت القراءة/الكتابة.<br>
+      <strong>Cycle Time:</strong> الحد الأدنى بين عمليتَي وصول متتاليتين (يشمل وقت الاسترداد بعد كل عملية).<br>
+      <strong>Transfer Rate:</strong> سرعة نقل البيانات.<br><br>
+      القاعدة الذهبية: كلما زادت السرعة قلّت السعة وارتفع السعر. الكاش هو الحل الوسط بين سرعة السجلات وسعة الـ RAM.
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §2  CACHE PRINCIPLE                         -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">2</div>
+    <div class="sec-titles">
+      <h2>The Cache Principle</h2>
+      <div class="ar">مبدأ الكاش وآلية عمله</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Why Cache Exists <span class="ar">لماذا يوجد الكاش؟</span></div>
+    <p>The CPU is far faster than main memory. Without cache, the CPU wastes cycles waiting for data — a <em>speed gap bottleneck</em>. Cache stores the most frequently used data right next to the CPU.</p>
+    <div class="flow">
+      <div class="fbox o">CPU<br><small style="color:var(--muted)">fastest</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox a">Cache<br><small style="color:var(--muted)">L1/L2/L3</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox">Main Memory<br><small style="color:var(--muted)">RAM</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox p">Storage<br><small style="color:var(--muted)">HDD/SSD</small></div>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      المعالج أسرع بكثير من الـ RAM، فبدون الكاش يضطر للانتظار عند كل طلب بيانات (Bottleneck). الكاش ذاكرة صغيرة جداً وسريعة جداً تجلس بين المعالج والـ RAM وتحتفظ بأكثر البيانات استخداماً.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Principle of Locality <span class="ar">مبدأ المحلية</span></div>
+    <p>Cache works because real programs exhibit <strong>locality of reference</strong>:</p>
+    <div class="grid2">
+      <div class="highlight">
+        <strong>Temporal Locality</strong><br>
+        Data used recently will likely be used again soon.<br>
+        <small style="color:var(--muted)">Example: a loop variable accessed every iteration.</small>
+      </div>
+      <div class="highlight">
+        <strong>Spatial Locality</strong><br>
+        If one address is accessed, nearby addresses will likely be accessed soon.<br>
+        <small style="color:var(--muted)">Example: sequential array elements.</small>
+      </div>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      الكاش يعمل بسبب ظاهرة طبيعية في البرامج تسمى "المحلية":<br>
+      <strong>المحلية الزمنية (Temporal):</strong> البيانات المستخدمة مؤخراً ستُستخدم مجدداً قريباً (مثل متغير في حلقة loop).<br>
+      <strong>المحلية المكانية (Spatial):</strong> إذا استُخدم عنوان معين، العناوين المجاورة له ستُستخدم قريباً (مثل عناصر مصفوفة متتالية).
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cache Hit & Miss <span class="ar">الإصابة والإخفاق</span></div>
+    <ul>
+      <li><span class="g">✓ Cache Hit</span> — Requested data found in cache → served immediately (fast).</li>
+      <li><span class="r">✗ Cache Miss</span> — Data not in cache → must fetch from slower RAM.</li>
+      <li><strong>Hit Rate</strong> — Fraction of accesses that result in a hit. Higher = better performance.</li>
+    </ul>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      <strong>Cache Hit (إصابة):</strong> المعالج وجد البيانات في الكاش ← سريع جداً ✓<br>
+      <strong>Cache Miss (إخفاق):</strong> البيانات غير موجودة في الكاش ← يرجع للـ RAM ✗<br>
+      <strong>Hit Rate:</strong> النسبة المئوية للعمليات التي تجد بياناتها في الكاش — كلما ارتفعت كان الأداء أفضل.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cache Design Elements (Table 4.2) <span class="ar">عناصر تصميم الكاش</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Element</th><th>What it controls</th><th>بالعربي</th></tr></thead>
+        <tbody>
+          <tr><td>Cache Size</td><td>Larger → higher hit rate, but more expensive & slightly slower</td><td>الحجم — أكبر = أفضل لكن أغلى</td></tr>
+          <tr><td>Mapping Function</td><td>How RAM blocks are assigned to cache lines</td><td>كيف تُخصَّص كتل RAM لخطوط الكاش</td></tr>
+          <tr><td>Replacement Algorithm</td><td>Which block to evict when cache is full</td><td>أي كتلة تُحذف عند الامتلاء</td></tr>
+          <tr><td>Write Policy</td><td>How/when RAM is updated after a write to cache</td><td>متى تُحدَّث الـ RAM بعد الكتابة</td></tr>
+          <tr><td>Line Size</td><td>Amount of data transferred per miss</td><td>حجم الكتلة المنقولة في كل عملية</td></tr>
+          <tr><td>Number of Caches</td><td>Single vs. multilevel (L1, L2, L3)</td><td>عدد مستويات الكاش</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §3  MAPPING FUNCTIONS                       -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">3</div>
+    <div class="sec-titles">
+      <h2>Mapping Functions</h2>
+      <div class="ar">دوال التعيين — كيف تُخصَّص كتل RAM لخطوط الكاش</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Core Problem</div>
+    There are far fewer cache lines than main memory blocks. An algorithm is required to decide which cache line hosts which RAM block. Three techniques exist.
+    <div class="ar-box" style="margin-top:10px">
+      <div class="ar-label">Arabic</div>
+      عدد خطوط الكاش أقل بكثير من عدد كتل الذاكرة الرئيسية، لذلك نحتاج خوارزمية لتحديد أي خط كاش يستضيف أي كتلة RAM. هناك ثلاث طرق.
+    </div>
+  </div>
+
+  <!-- DIRECT MAPPING -->
+  <div class="card">
+    <div class="card-title">① Direct Mapping <span class="ar">التعيين المباشر</span></div>
+    <p><strong>Principle:</strong> Each RAM block maps to exactly one specific cache line — no flexibility.</p>
+    <div class="highlight">
+      <strong>Formula:</strong> &nbsp; i = j mod m &nbsp;&nbsp;
+      <span style="color:var(--muted)">( i = cache line, j = RAM block number, m = total cache lines )</span>
+    </div>
+    <p style="margin-top:10px"><strong>Address structure:</strong></p>
+    <div class="formula">
+      <div class="flabel">Direct Mapping — Address Breakdown</div>
+      | &nbsp;Tag (s-r bits)&nbsp; | &nbsp;Line Number (r bits)&nbsp; | &nbsp;Word/Byte (w bits)&nbsp; |
+    </div>
+    <div class="formula">
+      <div class="flabel">Key Equations</div>
+      Address length          = (s + w) bits
+      Number of blocks in RAM = 2^s
+      Number of cache lines   = m = 2^r
+      Tag size                = (s - r) bits
+    </div>
+    <div class="grid2" style="margin-top:10px">
+      <div class="note" style="border-color:rgba(62,255,160,0.3); background:rgba(62,255,160,0.05)">
+        <div class="note-label" style="color:var(--green)">Advantages ✓</div>
+        <ul><li>Simple & fast lookup</li><li>Low hardware cost</li><li>No replacement algorithm needed</li></ul>
+      </div>
+      <div class="note">
+        <div class="note-label">Disadvantage ✗</div>
+        <ul><li><strong>Conflict Misses</strong> — if two frequently used blocks map to the same line, they constantly evict each other → thrashing.</li></ul>
+      </div>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      كل كتلة RAM لها خط واحد فقط محدد مسبقاً في الكاش ولا تستطيع الذهاب لغيره.<br>
+      المعادلة: <strong>i = j mod m</strong> (رقم الخط = رقم الكتلة % عدد الخطوط).<br>
+      العنوان مقسّم لثلاثة أجزاء: Tag (يعرّف الكتلة) + Line Number (يحدد الخط) + Word (يحدد البايت داخل الكتلة).<br>
+      <strong>المشكلة:</strong> Conflict Miss — إذا احتاج البرنامج كتلتين تذهبان لنفس الخط، ستطرد كل منهما الأخرى باستمرار وهذا يُبطّئ الأداء كثيراً.
+    </div>
+  </div>
+
+  <!-- VICTIM CACHE -->
+  <div class="card">
+    <div class="card-title">① Victim Cache <span class="ar">ذاكرة الكاش الضحية</span></div>
+    <p>Proposed to reduce <strong>conflict misses</strong> of direct-mapped caches without losing their fast access time.</p>
+    <ul>
+      <li>A <strong>fully associative</strong> cache, typically 4–16 lines.</li>
+      <li>Sits <strong>between L1 (direct-mapped) and L2</strong>.</li>
+      <li>Its job: catch "victims" — blocks evicted from L1 due to conflicts.</li>
+    </ul>
+    <p style="margin-top:8px"><strong>How it works:</strong></p>
+    <ul>
+      <li><strong>Eviction:</strong> A block kicked out of L1 goes to the Victim Cache instead of L2.</li>
+      <li><strong>On L1 miss:</strong> CPU simultaneously checks the Victim Cache.</li>
+      <li><strong>Hit in Victim Cache:</strong> the block is swapped back into L1; the displaced L1 block moves to Victim Cache.</li>
+      <li><strong>Miss in both:</strong> CPU fetches from L2 or main memory.</li>
+    </ul>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      الـ Victim Cache كاش صغير جداً (4–16 خط) Fully Associative يجلس بين L1 و L2.<br>
+      مهمته: يستقبل الكتل التي طُردت من L1 بسبب Conflict — بدل ما تضيع في L2 مباشرةً.<br>
+      <strong>عند Miss في L1:</strong> المعالج يفحص Victim Cache في نفس الوقت.<br>
+      <strong>إذا وجدها (Victim Hit):</strong> تُبادَل الكتلتان بين L1 والـ Victim Cache (Swap).<br>
+      <strong>إذا لم يجدها:</strong> يذهب للـ L2 أو الـ RAM.<br>
+      الفائدة: يحل مشكلة Conflict Misses دون التأثير على سرعة L1.
+    </div>
+  </div>
+
+  <!-- ASSOCIATIVE MAPPING -->
+  <div class="card">
+    <div class="card-title">② Associative (Fully Associative) Mapping <span class="ar">التعيين الترابطي الكامل</span></div>
+    <p><strong>Principle:</strong> Any RAM block can go into <em>any</em> cache line — complete flexibility.</p>
+    <div class="formula">
+      <div class="flabel">Address Breakdown — Associative</div>
+      | &nbsp;Tag (s bits) — full block identifier&nbsp; | &nbsp;Word/Byte (w bits)&nbsp; |
+      (No line-number field needed)
+    </div>
+    <div class="formula">
+      <div class="flabel">Key Equations</div>
+      Address length          = (s + w) bits
+      Tag size                = s bits  ← entire block identity
+      Number of cache lines   = undetermined (flexible)
+    </div>
+    <div class="grid2" style="margin-top:10px">
+      <div class="note" style="border-color:rgba(62,255,160,0.3); background:rgba(62,255,160,0.05)">
+        <div class="note-label" style="color:var(--green)">Advantages ✓</div>
+        <ul><li>Maximum flexibility → highest potential hit rate</li><li>No conflict misses</li></ul>
+      </div>
+      <div class="note">
+        <div class="note-label">Disadvantages ✗</div>
+        <ul><li>Must compare tag against ALL cache lines simultaneously → complex parallel hardware</li><li>Expensive; impractical for large caches</li></ul>
+      </div>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      أي كتلة من RAM تستطيع الذهاب لأي خط في الكاش — لا قيود على الإطلاق.<br>
+      العنوان مقسّم لجزأين فقط: Tag (يمثل كامل معرّف الكتلة) + Word.<br>
+      <strong>لماذا Tag كبير؟</strong> لأنه يجب مقارنة كامل هوية الكتلة مع كل الخطوط دفعةً واحدة.<br>
+      <strong>المشكلة:</strong> البحث عن الكتلة يتطلب مقارنة كل الخطوط في نفس اللحظة → دوائر إلكترونية معقدة ومكلفة جداً.
+    </div>
+  </div>
+
+  <!-- SET ASSOCIATIVE -->
+  <div class="card">
+    <div class="card-title">③ Set Associative Mapping <span class="ar">التعيين الترابطي بالمجموعات</span></div>
+    <p><strong>Principle:</strong> The best of both worlds. Cache is divided into <strong>sets</strong>; each set contains <strong>k lines</strong>. A given block always maps to one specific set (like direct mapping), but can occupy <em>any</em> line within that set (like associative).</p>
+    <div class="highlight" style="margin-top:10px">
+      Block → fixed set (determined by address bits) → any line within that set
+    </div>
+    <div class="formula">
+      <div class="flabel">Address Breakdown — Set Associative</div>
+      | &nbsp;Tag (s-d bits)&nbsp; | &nbsp;Set Number (d bits)&nbsp; | &nbsp;Word/Byte (w bits)&nbsp; |
+    </div>
+    <div class="formula">
+      <div class="flabel">Key Equations</div>
+      Number of sets          = v = 2^d
+      Lines per set           = k
+      Total lines in cache    = m = k × v = k × 2^d
+      Cache size              = k × 2^(d+w) words or bytes
+      Tag size                = (s - d) bits
+    </div>
+    <p style="margin-top:10px"><strong>Special cases:</strong></p>
+    <ul>
+      <li><span class="tag r">k = 1</span> → Degenerates into <strong>Direct Mapping</strong></li>
+      <li><span class="tag y">k = 2</span> → 2-Way Set Associative (most common in CPUs)</li>
+      <li><span class="tag">k = 4 or 8</span> → 4-Way / 8-Way Set Associative</li>
+      <li><span class="tag g">k = m</span> → Degenerates into <strong>Fully Associative</strong></li>
+    </ul>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      الحل الوسط الذكي بين Direct وAssociative.<br>
+      الكاش مقسّم لمجموعات (Sets)، كل مجموعة تحتوي k خطوط.<br>
+      الكتلة تذهب دائماً لمجموعة واحدة محددة بناءً على بتات العنوان (مثل Direct Mapping)، لكن داخل المجموعة تذهب لأي خط (مثل Associative).<br>
+      <strong>مثال:</strong> 2-Way Set Associative = كل مجموعة فيها خطّان، الكتلة تختار بينهما بحرية.<br>
+      العنوان = Tag + Set Number (يحدد المجموعة) + Word.<br>
+      هذا الأسلوب هو <strong>الأكثر استخداماً في المعالجات الحديثة</strong>.
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="card">
+    <div class="card-title">Mapping Functions — Full Comparison <span class="ar">مقارنة شاملة بين الطرق الثلاث</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Direct</th>
+            <th>Associative</th>
+            <th>Set Associative</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Address length</td>
+            <td>(s + w) bits</td>
+            <td>(s + w) bits</td>
+            <td>(s + w) bits</td>
+          </tr>
+          <tr>
+            <td>Tag size</td>
+            <td class="y">(s – r) → small</td>
+            <td class="r">s bits → largest</td>
+            <td class="g">(s – d) → medium</td>
+          </tr>
+          <tr>
+            <td>Placement flexibility</td>
+            <td class="r">One line only ✗</td>
+            <td class="g">Any line ✓</td>
+            <td class="y">Any line in set ✓</td>
+          </tr>
+          <tr>
+            <td>Conflict misses</td>
+            <td class="r">High ✗</td>
+            <td class="g">None ✓</td>
+            <td class="g">Low ✓</td>
+          </tr>
+          <tr>
+            <td>Hardware complexity</td>
+            <td class="g">Simplest ✓</td>
+            <td class="r">Most complex ✗</td>
+            <td class="y">Moderate ✓</td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td class="g">Lowest ✓</td>
+            <td class="r">Highest ✗</td>
+            <td class="y">Medium ✓</td>
+          </tr>
+          <tr>
+            <td>Replacement algo needed?</td>
+            <td class="g">No ✓</td>
+            <td class="r">Yes</td>
+            <td class="r">Yes</td>
+          </tr>
+          <tr>
+            <td>Real-world usage</td>
+            <td>Simple L1</td>
+            <td>Rarely</td>
+            <td class="g">Standard in modern CPUs ✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Summary</div>
+      Direct: بسيط وسريع لكن مشكلة Conflict Misses.<br>
+      Associative: مرن تماماً ولا conflicts لكن مكلف جداً وصعب التصميم للكاشات الكبيرة.<br>
+      Set Associative: الحل الوسط — مرن بما يكفي لتقليل الـ conflicts، وبسيط بما يكفي للتطبيق الفعلي. <strong>الأكثر شيوعاً في جميع المعالجات الحديثة.</strong>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §4  REPLACEMENT ALGORITHMS                  -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">4</div>
+    <div class="sec-titles">
+      <h2>Replacement Algorithms</h2>
+      <div class="ar">خوارزميات الاستبدال</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>When the cache is full and a new block must be loaded, an existing block must be evicted. <strong>Direct mapping has no choice</strong> (one line per block). Associative and set-associative caches need a replacement policy. Must be <strong>implemented in hardware</strong> for speed.</p>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      عند امتلاء الكاش وجلب كتلة جديدة، يجب حذف كتلة قديمة.<br>
+      الـ Direct Mapping لا يحتاج خوارزمية (خط واحد = لا خيار).<br>
+      الـ Associative والـ Set Associative يحتاجان خوارزمية — ويجب تنفيذها بالـ Hardware لضمان السرعة.
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">LRU — Least Recently Used <span class="ar">الأقل استخداماً مؤخراً</span></div>
+      <p><span class="tag g">Most Effective</span></p>
+      <p>Evicts the block that has gone the <strong>longest without being referenced</strong>. Exploits temporal locality.</p>
+      <p><em>Implementation:</em> a use-time counter per line; simplest and most popular.</p>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        يحذف الكتلة التي مضى على آخر استخدام لها أطول وقت. يعتمد على مبدأ المحلية الزمنية. <strong>الأفضل أداءً والأشهر استخداماً.</strong> يُنفَّذ بعداد زمني لكل خط.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">FIFO — First In, First Out <span class="ar">الأول دخولاً الأول خروجاً</span></div>
+      <p>Evicts the block that has been in cache the <strong>longest</strong>, regardless of recent use.</p>
+      <p><em>Implementation:</em> circular (round-robin) buffer — easy to build.</p>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        يحذف أقدم كتلة دخلت الكاش بغض النظر عن استخدامها الأخير. يُنفَّذ بـ Circular Buffer. سهل لكن أقل كفاءة من LRU.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LFU — Least Frequently Used <span class="ar">الأقل استخداماً إجمالاً</span></div>
+    <p>Evicts the block with the <strong>fewest total references</strong>. Implemented with a reference counter per line.</p>
+    <div class="note">
+      <div class="note-label">Drawback</div>
+      A historically popular block accumulates a high count and stays in cache even when it is no longer needed — hurting performance.
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      يحذف الكتلة الأقل استخداماً من حيث عدد المرات الكلية. يُنفَّذ بعداد تكرار لكل خط.<br>
+      <strong>عيبه:</strong> كتلة استُخدمت كثيراً تاريخياً لكنها غير مطلوبة الآن ستبقى في الكاش بسبب عدادها العالي.
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Algorithm</th><th>Eviction Criterion</th><th>Implementation</th><th>Effectiveness</th><th>بالعربي</th></tr></thead>
+      <tbody>
+        <tr><td>LRU</td><td>Least recently referenced</td><td>Timestamp / use-counter per line</td><td class="g">Best ✓</td><td>الأقل استخداماً مؤخراً</td></tr>
+        <tr><td>FIFO</td><td>Oldest entry</td><td>Circular buffer</td><td class="y">Average</td><td>الأقدم دخولاً</td></tr>
+        <tr><td>LFU</td><td>Fewest total references</td><td>Reference counter per line</td><td class="r">Lowest</td><td>الأقل استخداماً كلياً</td></tr>
+        <tr><td>Random</td><td>Random selection</td><td>Random number generator</td><td class="y">Acceptable</td><td>عشوائي</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §5  WRITE POLICY                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">5</div>
+    <div class="sec-titles">
+      <h2>Write Policy</h2>
+      <div class="ar">سياسة الكتابة</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p><strong>The problem:</strong> When the CPU writes data to cache, when should main memory be updated? Two strategies exist.</p>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      عندما يكتب المعالج بيانات للكاش، متى يجب تحديث الـ RAM؟ هناك مدرستان.
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Write Through <span class="ar">الكتابة المتزامنة</span></div>
+      <p>Every write to cache <strong>simultaneously</strong> writes to main memory.</p>
+      <ul>
+        <li>RAM always consistent with cache</li>
+        <li>Simplest design</li>
+        <li>Safe for I/O modules — they always see current data</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">Main Drawback ✗</div>
+        Every write goes to slow RAM → heavy bus traffic → potential bottleneck.
+      </div>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        عند كل كتابة في الكاش، تُكتب البيانات في نفس اللحظة في الـ RAM.<br>
+        الـ RAM دائماً محدّثة ومتزامنة ← آمن وبسيط.<br>
+        <strong>العيب:</strong> يولّد كثيراً من عمليات الكتابة للـ RAM ← ازدحام على الـ Bus (Bottleneck).
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Write Back <span class="ar">الكتابة المتأخرة</span></div>
+      <p>Writes go to cache only. RAM is updated <strong>only when the modified line is evicted</strong> (tracked by a <em>dirty bit</em>).</p>
+      <ul>
+        <li>Far fewer RAM writes → higher performance</li>
+        <li>Dirty bit marks lines that differ from RAM</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">Drawbacks ✗</div>
+        <ul>
+          <li>Complex circuitry and potential bottleneck at eviction</li>
+          <li>RAM may be stale → I/O modules must access data through cache</li>
+          <li>Data loss risk on power failure</li>
+        </ul>
+      </div>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        الكتابة في الكاش فقط. الـ RAM تُحدَّث فقط عند طرد الخط (يُستخدم "Dirty Bit" لتتبع الخطوط المعدَّلة).<br>
+        <strong>الميزة:</strong> أقل عمليات كتابة للـ RAM ← أسرع أداء.<br>
+        <strong>العيوب:</strong> تصميم أكثر تعقيداً، الـ RAM قد تكون outdated ← مشكلة مع الـ I/O.
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Criterion</th><th>Write Through</th><th>Write Back</th></tr></thead>
+      <tbody>
+        <tr><td>RAM update timing</td><td class="r">Every write (immediate)</td><td class="g">Only on eviction</td></tr>
+        <tr><td>Number of RAM writes</td><td class="r">Many</td><td class="g">Few</td></tr>
+        <tr><td>Design complexity</td><td class="g">Simple</td><td class="r">Complex</td></tr>
+        <tr><td>RAM always current?</td><td class="g">Yes ✓</td><td class="r">No (may be stale)</td></tr>
+        <tr><td>I/O safety</td><td class="g">Safe ✓</td><td class="r">Needs special handling</td></tr>
+        <tr><td>Performance</td><td class="y">Lower</td><td class="g">Higher ✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §6  LINE SIZE                               -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">6</div>
+    <div class="sec-titles">
+      <h2>Line Size</h2>
+      <div class="ar">حجم السطر — كمية البيانات المنقولة عند كل Miss</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">What is Line Size? <span class="ar">ما هو حجم السطر؟</span></div>
+    <p>On a cache miss, the CPU does not fetch only the requested byte — it loads a whole <strong>block (line)</strong> from RAM. Line size = how large that block is.</p>
+    <div class="grid2" style="margin-top:12px">
+      <div class="highlight">
+        <strong class="g">Larger line size →</strong><br>
+        Exploits spatial locality — nearby data already in cache → fewer future misses.
+      </div>
+      <div class="note">
+        <div class="note-label">Too large ✗</div>
+        <ul>
+          <li>Loads unused data (cache pollution)</li>
+          <li>Longer transfer time per miss</li>
+          <li>Wastes cache space; fewer distinct lines fit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight" style="margin-top:10px">
+      <strong>Optimal:</strong> A moderate size — not too small, not too large. Modern CPUs: typically <strong>64 bytes</strong> per cache line.
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic Explanation</div>
+      عند Cache Miss، المعالج لا يجلب البيانات المطلوبة فقط — بل يجلب "كتلة" كاملة من الـ RAM.<br>
+      <strong>سطر كبير:</strong> يستفيد من Spatial Locality — البيانات المجاورة موجودة مسبقاً في الكاش ← أقل misses مستقبلاً.<br>
+      <strong>سطر كبير جداً:</strong> يجلب بيانات لن تُستخدم (Pollution) ← يضيع مساحة الكاش ويطول وقت كل Miss.<br>
+      <strong>الحجم المثالي في المعالجات الحديثة: 64 بايت.</strong>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- §7  MULTILEVEL CACHES                       -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="sec-num">7</div>
+    <div class="sec-titles">
+      <h2>Multilevel Caches</h2>
+      <div class="ar">الكاش متعدد المستويات — L1, L2, L3</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Why Multiple Levels? <span class="ar">لماذا تعدد المستويات؟</span></div>
+    <p>Advances in chip density made it possible to place cache <strong>on the same die as the CPU</strong> (on-chip cache). This eliminates external bus access for common data, dramatically reducing latency and freeing the bus for other transfers.</p>
+    <div class="flow" style="padding: 14px 0">
+      <div class="fbox o">CPU<br><small style="color:var(--muted)">GHz speeds</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox a">L1<br><small style="color:var(--muted)">~32–64KB · ~1ns</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox o" style="border-color:var(--accent2); color:var(--accent2)">L2<br><small style="color:var(--muted)">~256KB–4MB · ~4ns</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox p">L3<br><small style="color:var(--muted)">~4–64MB · ~10ns</small></div>
+      <div class="arrow">⇆</div>
+      <div class="fbox">RAM<br><small style="color:var(--muted)">GBs · ~60ns</small></div>
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      مع تطور تقنية الرقاقات، أصبح ممكناً وضع الكاش داخل نفس الشريحة مع المعالج. هذا يعني الوصول للبيانات الشائعة دون استخدام الـ Bus الخارجي إطلاقاً — أسرع بكثير ويُحرّر الـ Bus لعمليات أخرى.
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Level</th><th>Location</th><th>Typical Size</th><th>Speed</th><th>Purpose</th><th>بالعربي</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag o">L1</span></td>
+          <td>On-chip (per core)</td>
+          <td>32–64 KB</td>
+          <td class="g">~1 ns (fastest)</td>
+          <td>First-level, fastest access for CPU</td>
+          <td>داخل المعالج مباشرةً</td>
+        </tr>
+        <tr>
+          <td><span class="tag">L2</span></td>
+          <td>On-chip or near-chip</td>
+          <td>256 KB – 4 MB</td>
+          <td class="y">~4 ns</td>
+          <td>Handles L1 misses</td>
+          <td>يعالج ما فات L1</td>
+        </tr>
+        <tr>
+          <td><span class="tag y">L3</span></td>
+          <td>Shared across cores</td>
+          <td>4 – 64 MB</td>
+          <td class="r">~10 ns</td>
+          <td>Shared last-resort before RAM</td>
+          <td>مشترك بين الأنوية — آخر خط قبل RAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Benefits & Trade-offs <span class="ar">الفوائد والتعقيدات</span></div>
+    <ul>
+      <li><strong>Reduced bus traffic:</strong> If L1 hits, the external bus is never used — free for other transfers.</li>
+      <li><strong>Performance:</strong> Effective hit rate is compounded — even a modest L2 hit rate significantly cuts RAM accesses.</li>
+      <li><strong>Speed-capacity balance:</strong> L1 tiny & fast; L3 large & slightly slower — best of both.</li>
+    </ul>
+    <div class="note" style="margin-top:10px">
+      <div class="note-label">Complexity Trade-off ✗</div>
+      Using multiple levels complicates every design decision: size, replacement algorithm, and write policy — each level may need different settings.
+    </div>
+    <div class="ar-box">
+      <div class="ar-label">Arabic</div>
+      <strong>تقليل Bus Traffic:</strong> إذا وُجدت البيانات في L1، الـ Bus الخارجي لا يُستخدم إطلاقاً ← يبقى حراً لتحويلات أخرى.<br>
+      <strong>رفع الأداء:</strong> معدل الإصابة يُحسب بشكل مركّب — حتى Hit Rate متواضع في L2 يقلل كثيراً من الوصول للـ RAM.<br>
+      <strong>التوازن:</strong> L1 صغير وسريع جداً، L3 كبير وأبطأ قليلاً.<br>
+      <strong>التعقيد:</strong> تعدد المستويات يُعقّد جميع قرارات التصميم — الحجم، الاستبدال، وسياسة الكتابة.
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- FINAL QUICK-REFERENCE                       -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="final">
+    <h2>
+      Quick Reference — Everything You Need to Know
+      <span class="ar">مراجعة سريعة — كل ما تحتاجه</span>
+    </h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concept</th><th>Core Idea</th><th>Arabic — الجوهر</th></tr></thead>
+        <tbody>
+          <tr><td>Why Cache?</td><td>Bridge the CPU–RAM speed gap using locality of reference</td><td>سد فجوة السرعة بين CPU والـ RAM باستغلال مبدأ المحلية</td></tr>
+          <tr><td>Direct Mapping</td><td>1 block → 1 fixed line. Simple, fast, conflict misses</td><td>كل كتلة → خط واحد فقط. بسيط لكن conflict misses</td></tr>
+          <tr><td>Associative Mapping</td><td>1 block → any line. Flexible, costly, no conflicts</td><td>أي كتلة → أي خط. مرن ومكلف ولا conflicts</td></tr>
+          <tr><td>Set Associative</td><td>Best balance — fixed set, free line within set. Most used</td><td>الحل الوسط الأمثل — الأكثر استخداماً في المعالجات</td></tr>
+          <tr><td>Victim Cache</td><td>4–16-line FA cache between L1 & L2; rescues evicted blocks</td><td>كاش صغير بين L1 وL2 ينقذ الكتل المطرودة من conflicts</td></tr>
+          <tr><td>LRU</td><td>Evict the least recently used block — best algorithm</td><td>أفضل خوارزمية — يحذف الأقل استخداماً مؤخراً</td></tr>
+          <tr><td>FIFO</td><td>Evict the oldest entry — simple circular buffer</td><td>يحذف الأقدم دخولاً — سهل التنفيذ</td></tr>
+          <tr><td>LFU</td><td>Evict the least frequently referenced block</td><td>يحذف الأقل استخداماً كلياً — الأقل كفاءة</td></tr>
+          <tr><td>Write Through</td><td>Write to cache + RAM simultaneously. Simple, safe, slower</td><td>كتابة فورية للـ RAM — بسيط وآمن لكن أبطأ</td></tr>
+          <tr><td>Write Back</td><td>Write to cache only; update RAM on eviction. Faster, complex</td><td>كتابة للكاش فقط وتحديث RAM عند الطرد — أسرع وأعقد</td></tr>
+          <tr><td>Line Size</td><td>Moderate size balances spatial locality vs. pollution. ~64B typical</td><td>حجم وسط مثالي — 64 بايت في المعالجات الحديثة</td></tr>
+          <tr><td>L1 / L2 / L3</td><td>Layered caches: smaller+faster → larger+slower as level increases</td><td>كاش متعدد المستويات: كل مستوى أكبر وأبطأ قليلاً</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p style="text-align:center; color:var(--muted); font-size:12px; margin-top:36px">
+    Computer Organization & Architecture — Chapter 4: Cache Memory &nbsp;·&nbsp; © 2016 Pearson Education
+  </p>
+
+</div>
+</body>
+</html>

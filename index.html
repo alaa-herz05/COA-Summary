@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COA Study Guides | Chapters Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#07111f; --deep:#0b1a2e; --mid-blue:#102340;
+    --card-bg:rgba(16,35,64,.66); --border:rgba(0,200,255,.18);
+    --accent:#00c8ff; --accent2:#ff6b35; --gold:#ffc940;
+    --green:#3effa0; --red:#ff5f6d; --purple:#b48aff;
+    --text:#dce8f5; --muted:#607a9a; --highlight:rgba(0,200,255,.07);
+    --ar-bg:rgba(255,201,64,.05); --ar-border:rgba(255,201,64,.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);line-height:1.75;min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 15% 8%,rgba(0,200,255,.13),transparent 28%),radial-gradient(circle at 85% 18%,rgba(255,201,64,.08),transparent 24%),radial-gradient(circle at 50% 90%,rgba(180,138,255,.09),transparent 30%);pointer-events:none;z-index:-1}
+  .hero{background:linear-gradient(160deg,#07111f 0%,#0b1a2e 45%,#130c30 100%);padding:70px 28px 56px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--accent)}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(0,200,255,.16) 0%,transparent 70%);pointer-events:none}
+  .badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:800;letter-spacing:3px;padding:6px 22px;border-radius:30px;margin-bottom:20px;text-transform:uppercase;position:relative}
+  .hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;color:#fff;letter-spacing:-1.2px;position:relative;line-height:1.1}
+  .hero h1 span{color:var(--accent)}
+  .ar-title{font-family:'Cairo',sans-serif;font-size:1.16rem;color:var(--gold);margin-top:10px;direction:rtl;position:relative}
+  .hero p{color:var(--muted);font-size:14px;max-width:670px;margin:18px auto 0;position:relative}
+  .lang-bar{background:rgba(11,26,46,.92);border-bottom:1px solid var(--border);padding:11px 24px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;color:var(--muted);text-align:center;flex-wrap:wrap}
+  .lang-bar strong{color:var(--accent)}
+  .container{max-width:1080px;margin:0 auto;padding:42px 24px 70px}
+  .section-header{display:flex;align-items:flex-start;gap:16px;margin:24px 0 22px}
+  .sec-num{width:48px;height:48px;background:var(--accent);color:var(--navy);border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;flex-shrink:0;box-shadow:0 0 26px rgba(0,200,255,.18)}
+  .sec-titles h2{font-size:1.55rem;font-weight:850;color:#fff;letter-spacing:-.3px}
+  .sec-titles .ar{font-family:'Cairo',sans-serif;font-size:.94rem;color:var(--gold);direction:rtl;text-align:right;margin-top:1px}
+  .intro{background:linear-gradient(135deg,rgba(0,200,255,.07),rgba(16,35,64,.55));border:1px solid var(--border);border-radius:18px;padding:24px 28px;margin-bottom:28px;backdrop-filter:blur(4px)}
+  .intro p{margin-bottom:7px}.intro strong{color:var(--accent)}
+  .ar-box{background:var(--ar-bg);border:1px solid var(--ar-border);border-right:4px solid var(--gold);border-radius:0 10px 10px 0;padding:13px 16px;margin-top:12px;direction:rtl;text-align:right;font-family:'Cairo',sans-serif;font-size:13.5px;color:#ccd6e8;line-height:1.9}
+  .ar-label{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;direction:ltr;text-align:left}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  .chapter-card{position:relative;min-height:360px;background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:24px;overflow:hidden;backdrop-filter:blur(5px);transition:.22s ease;display:flex;flex-direction:column;justify-content:space-between}
+  .chapter-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 0%,rgba(0,200,255,.12),transparent 42%);pointer-events:none}
+  .chapter-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 42px rgba(0,0,0,.28),0 0 24px rgba(0,200,255,.12)}
+  .chapter-top,.chapter-bottom{position:relative}
+  .chapter-no{font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+  .chapter-card h3{font-size:1.35rem;color:#fff;line-height:1.2;margin-bottom:8px;font-weight:850}
+  .chapter-card h3 span{color:var(--accent)}
+  .chapter-card .ar{font-family:'Cairo',sans-serif;color:var(--gold);direction:rtl;text-align:right;font-size:.92rem;margin-bottom:16px;line-height:1.7}
+  .chapter-card p{color:#b8c8db;font-size:13.5px;margin-bottom:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 16px}
+  .tag{border:1px solid var(--accent);color:var(--accent);background:rgba(0,200,255,.1);border-radius:7px;padding:2px 9px;font-size:11px;font-weight:750}
+  .tag.o{border-color:var(--accent2);color:var(--accent2);background:rgba(255,107,53,.1)}
+  .tag.g{border-color:var(--green);color:var(--green);background:rgba(62,255,160,.08)}
+  .tag.y{border-color:var(--gold);color:var(--gold);background:rgba(255,201,64,.08)}
+  .tag.p{border-color:var(--purple);color:var(--purple);background:rgba(180,138,255,.09)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--navy);background:var(--accent);border:1px solid var(--accent);border-radius:12px;padding:10px 15px;font-size:13px;font-weight:850;transition:.2s;width:100%}
+  .btn:hover{filter:brightness(1.08);box-shadow:0 0 22px rgba(0,200,255,.18)}
+  .btn.secondary{background:transparent;color:var(--accent)}
+  .quick{margin-top:34px;background:rgba(16,35,64,.5);border:1px solid var(--border);border-radius:16px;padding:22px 24px}
+  .quick h3{color:var(--accent);font-size:1.08rem;margin-bottom:12px}.quick ul{padding-left:20px}.quick li{margin:5px 0;color:#cbd8e8}.quick strong{color:var(--gold)}
+  footer{border-top:1px solid var(--border);background:linear-gradient(180deg,rgba(11,26,46,.85),rgba(7,17,31,1));padding:28px 20px;text-align:center;color:var(--muted);font-size:13px}
+  footer strong{color:var(--gold)} footer a{color:var(--accent);text-decoration:none;font-weight:800} footer a:hover{text-decoration:underline}
+  .footer-ar{font-family:'Cairo',sans-serif;direction:rtl;color:#97aabe;margin-top:5px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}.chapter-card{min-height:auto}.container{padding:34px 18px 60px}.hero{padding:58px 20px 46px}}
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="badge">Computer Organization & Architecture</div>
+    <h1>COA Study <span>Guides</span></h1>
+    <div class="ar-title">دليل المراجعة المنظم — الفصول المطلوبة</div>
+    <p>Professional bilingual index for the complete study guides. English main explanation with Arabic support, examples, tables, formulas, and final review sections.</p>
+  </section>
+
+  <div class="lang-bar">
+    📘 <strong>English</strong> — Study guide pages &nbsp;|&nbsp; 🌙 <strong style="color:var(--gold)">العربي</strong> — شرح وترجمة داخل كل ملف
+  </div>
+
+  <main class="container">
+    <div class="intro">
+      <p><strong>Welcome.</strong> This page collects the prepared COA chapters in order for easy studying and quick access.</p>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        هاي الصفحة تجمع ملفات الملخصات الجاهزة بالترتيب المطلوب: الشابتر الأول، الثاني، والرابع فقط. كل ملف مرتب بنفس الستايل ويحتوي شرح إنجليزي + عربي + أمثلة + جداول مراجعة.
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="sec-num">★</div>
+      <div class="sec-titles">
+        <h2>Available Chapters</h2>
+        <div class="ar">الفصول المتوفرة للدراسة</div>
+      </div>
+    </div>
+
+    <section class="grid">
+      <article class="chapter-card">
+        <div class="chapter-top">
+          <div class="chapter-no">Chapter 01</div>
+          <h3>Computer Abstractions <span>& Technology</span></h3>
+          <div class="ar">تجريدات الحاسوب والتكنولوجيا</div>
+          <p>Introduces computer classes, abstraction, hardware/software layers, components, performance, CPU time, CPI, power wall, and multiprocessors.</p>
+          <div class="tags">
+            <span class="tag">Abstraction</span><span class="tag y">Performance</span><span class="tag o">CPI</span><span class="tag g">CPU Time</span>
+          </div>
+        </div>
+        <div class="chapter-bottom">
+          <a class="btn" href="CH1_Computer_Abstractions_Technology_Bilingual.html">Open Chapter 1 →</a>
+        </div>
+      </article>
+
+      <article class="chapter-card">
+        <div class="chapter-top">
+          <div class="chapter-no">Chapter 02</div>
+          <h3>Instructions: Language <span>of the Computer</span></h3>
+          <div class="ar">التعليمات: لغة الحاسوب</div>
+          <p>Covers ISA, RISC vs CISC, MIPS registers, arithmetic, memory operands, binary numbers, complements, instruction formats, logical and branch operations.</p>
+          <div class="tags">
+            <span class="tag">ISA</span><span class="tag y">MIPS</span><span class="tag o">RISC/CISC</span><span class="tag p">2's Comp</span>
+          </div>
+        </div>
+        <div class="chapter-bottom">
+          <a class="btn" href="CH2_Instructions_Language_Bilingual.html">Open Chapter 2 →</a>
+        </div>
+      </article>
+
+      <article class="chapter-card">
+        <div class="chapter-top">
+          <div class="chapter-no">Chapter 04</div>
+          <h3>Cache <span>Memory</span></h3>
+          <div class="ar">ذاكرة الكاش</div>
+          <p>Explains memory hierarchy, locality, cache hit/miss, mapping functions, replacement algorithms, write policies, line size, and multilevel caches.</p>
+          <div class="tags">
+            <span class="tag">Cache</span><span class="tag y">Mapping</span><span class="tag g">LRU</span><span class="tag o">Write Policy</span>
+          </div>
+        </div>
+        <div class="chapter-bottom">
+          <a class="btn" href="CH4_Cache_Memory_Bilingual(1).html">Open Chapter 4 →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="quick">
+      <h3>Recommended Study Order</h3>
+      <ul>
+        <li><strong>Start with Chapter 1:</strong> understand the big picture, abstraction, and performance equations.</li>
+        <li><strong>Then Chapter 2:</strong> focus on ISA, MIPS, binary conversion, complements, and assembly examples.</li>
+        <li><strong>Finish with Chapter 4:</strong> study cache concepts, mapping, replacement, and write policies.</li>
+      </ul>
+      <div class="ar-box">
+        <div class="ar-label">Arabic</div>
+        ادرسهم بهذا الترتيب: الأول لفهم الصورة العامة والأداء، الثاني لفهم لغة المعالج و MIPS والتحويلات، والرابع لفهم الكاش والتعيين وسياسات الكتابة والاستبدال.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 <strong>Alaa Herzallah</strong> — All Rights Reserved</div>
+    <div class="footer-ar">جميع الحقوق محفوظة</div>
+    <div>Instagram: <a href="https://www.instagram.com/alaaherzallah05" target="_blank" rel="noopener">@alaaherzallah05</a></div>
+  </footer>
+</body>
+</html>
