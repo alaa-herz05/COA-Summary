@@ -120,7 +120,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="badge">Chapters 1 · 2 · 4 — Computer Organization & Architecture</div>
   <h1>Comprehensive <span>Practice Quiz</span></h1>
   <div class="ar-title">اختبار شامل — أسئلة MCQ & True/False & دائرة</div>
-  <p>160 questions total: the original 60 questions plus 100 extra Chapter 1 questions from the PDF. Chapter 4 includes circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
+  <p>170 questions total: the original 60 questions plus 100 extra Chapter 1 questions from the PDF and 10 extra True/False questions from the exam image. Chapter 4 includes circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
 </div>
 
 <div class="lang-bar">
@@ -143,7 +143,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="sec-titles">
     <h2>Chapter 1 — Computer Abstractions & Technology</h2>
     <div class="ar">تجريدات الحاسوب والتكنولوجيا</div>
-    <div class="sub">MCQ + True/False — Original Q1–Q20 + PDF Q61–Q160</div>
+    <div class="sub">MCQ + True/False — Original Q1–Q20 + PDF Q61–Q160 + Image Q161–Q170</div>
   </div>
 </div>
 
@@ -195,7 +195,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
     <div class="score-stat sc-total"><div class="val">170</div><div class="lbl">Total</div></div>
   </div>
   <div class="chapter-stats">
-    <div class="ch-stat"><div class="ch-name">Chapter 1</div><div class="ch-val" id="ch1-score" style="color:var(--accent)">0/120</div></div>
+    <div class="ch-stat"><div class="ch-name">Chapter 1</div><div class="ch-val" id="ch1-score" style="color:var(--accent)">0/130</div></div>
     <div class="ch-stat"><div class="ch-name">Chapter 2</div><div class="ch-val" id="ch2-score" style="color:var(--accent2)">0/20</div></div>
     <div class="ch-stat"><div class="ch-name">Chapter 4</div><div class="ch-val" id="ch4-score" style="color:var(--green)">0/20</div></div>
   </div>
@@ -559,7 +559,6 @@ const questions = [
  opts:["Randomness","Locality of Reference","High Instruction Count","Large Data Sets"],
  correct:'Locality of Reference',
  exp:"Cache works because programs exhibit locality of reference: temporal locality (reuse of recently accessed data) and spatial locality (access to nearby addresses). Without locality, caching would be ineffective."},
-,
 
 // ── EXTRA CHAPTER 1 QUESTIONS FROM PDF (Q61–Q160) ─────────────────────────
 {
@@ -1961,7 +1960,59 @@ const questions = [
     ],
     "correct": "C",
     "exp": "Correct answer: C."
-  }
+  },
+
+// ── EXTRA TRUE/FALSE QUESTIONS FROM IMAGE (Q161–Q170) ─────────────────────
+{id:'q161',ch:1,type:'tf',
+ text:"If time taken to run Program A is 20ms and Program B is 40ms, Program B is 2 times faster than Program A.",
+ correct:'FALSE',
+ exp:"FALSE. Program A is faster because it takes 20ms, while Program B takes 40ms. A is 2× faster than B, not the opposite."},
+
+{id:'q162',ch:1,type:'tf',
+ text:"Big Endian method means the least-significant byte is stored at the least memory address.",
+ correct:'FALSE',
+ exp:"FALSE. Big Endian stores the most-significant byte at the lowest memory address. Little Endian stores the least-significant byte first."},
+
+{id:'q163',ch:1,type:'tf',
+ text:"Throughput means the total work done per unit time.",
+ correct:'TRUE',
+ exp:"TRUE. Throughput measures how many tasks or how much work is completed per unit time."},
+
+{id:'q164',ch:1,type:'tf',
+ text:"The process of manufacturing ICs begins in bond die to package.",
+ correct:'FALSE',
+ exp:"FALSE. Bonding the die to the package is a later packaging step, not the beginning of IC manufacturing."},
+
+{id:'q165',ch:1,type:'tf',
+ text:"Elapsed time is the total response time, including all aspects of processing, I/O, OS overhead, and idle time.",
+ correct:'TRUE',
+ exp:"TRUE. Elapsed time, or wall-clock time, includes processing time, I/O, operating system overhead, and idle/wait time."},
+
+{id:'q166',ch:1,type:'tf',
+ text:"Embedded computers are any computer system that is hidden as components of systems.",
+ correct:'TRUE',
+ exp:"TRUE. Embedded computers are built into larger systems, such as cars, appliances, and controllers."},
+
+{id:'q167',ch:1,type:'tf',
+ text:"Registers $s0, $s1, ..., $s7 in the CPU are used for temporary values.",
+ correct:'FALSE',
+ exp:"FALSE. In MIPS, $s0-$s7 are saved registers. Temporary values are usually stored in $t0-$t9."},
+
+{id:'q168',ch:1,type:'tf',
+ text:"Reduced Instruction Set Computer (RISC) has a large number of instructions of variable lengths.",
+ correct:'FALSE',
+ exp:"FALSE. RISC uses a smaller set of simple instructions, usually fixed-length. Variable-length and many complex instructions describe CISC."},
+
+{id:'q169',ch:1,type:'tf',
+ text:"A single instruction can be complex and perform multiple operations in Complex Instruction Set Computer (CISC).",
+ correct:'TRUE',
+ exp:"TRUE. CISC instructions can be complex and may perform multiple low-level operations in one instruction."},
+
+{id:'q170',ch:1,type:'tf',
+ text:"Microprocessor without interlocked pipeline stages (MIPS) has a 32 × 16-bit register file.",
+ correct:'FALSE',
+ exp:"FALSE. Standard MIPS has 32 general-purpose registers, each 32 bits wide, so it is 32 × 32-bit."}
+
 ];
 
 // ── RENDER ENGINE ────────────────────────────────────────────────────────────
@@ -2043,18 +2094,7 @@ function answer(el, qid, choice) {
       if (!lt) return;
       const labels = q.type === 'tf'
         ? (o.textContent.trim().startsWith('True') ? 'TRUE' : 'FALSE')
-        : ['A','B','C','D'][[...opts].indexOf(o),
-{id:'q161',ch:1,type:'tf',text:"If time taken to run Program A is 20ms and Program B is 40ms, Program B is 2 times faster than Program A.",correct:'FALSE',exp:"FALSE. A is faster because it takes 20ms while B takes 40ms."},
-{id:'q162',ch:1,type:'tf',text:"Big Endian means the least-significant byte is stored at the lowest memory address.",correct:'FALSE',exp:"FALSE. Big Endian stores the most-significant byte at the lowest address."},
-{id:'q163',ch:1,type:'tf',text:"Throughput means the total work done per unit time.",correct:'TRUE',exp:"TRUE. Throughput measures how many tasks are completed per unit time."},
-{id:'q164',ch:1,type:'tf',text:"The process of manufacturing ICs begins in bond die to package.",correct:'FALSE',exp:"FALSE. Bonding the die to the package is a later stage, not the beginning."},
-{id:'q165',ch:1,type:'tf',text:"Elapsed time is the total response time, including processing, I/O, OS overhead, and idle time.",correct:'TRUE',exp:"TRUE. Elapsed time includes all delays from start to finish."},
-{id:'q166',ch:1,type:'tf',text:"Embedded computers are computer systems hidden as components inside larger systems.",correct:'TRUE',exp:"TRUE. Embedded systems are integrated into devices such as cars and appliances."},
-{id:'q167',ch:1,type:'tf',text:"Registers $s0, $s1, ..., $s7 in MIPS are used for temporary values.",correct:'FALSE',exp:"FALSE. Temporary values use $t0-$t9. The $s registers are saved registers."},
-{id:'q168',ch:1,type:'tf',text:"Reduced Instruction Set Computer (RISC) has a large number of variable-length instructions.",correct:'FALSE',exp:"FALSE. RISC uses a small set of simple, fixed-length instructions."},
-{id:'q169',ch:1,type:'tf',text:"A single instruction can be complex and perform multiple operations in a CISC architecture.",correct:'TRUE',exp:"TRUE. CISC instructions can perform multiple low-level operations."},
-{id:'q170',ch:1,type:'tf',text:"MIPS has a 32 × 16-bit register file.",correct:'FALSE',exp:"FALSE. Standard MIPS has 32 registers, each 32 bits wide (32 × 32-bit)."}
-];
+        : ['A','B','C','D'][[...opts].indexOf(o)];
       if (labels === q.correct && !o.classList.contains('wrong')) {
         o.classList.add('reveal-correct');
         lt.textContent = '✓';
@@ -2114,7 +2154,7 @@ function showResults() {
   document.getElementById('score-label').textContent = score + ' out of ' + TOTAL + ' correct';
   document.getElementById('res-correct').textContent = score;
   document.getElementById('res-wrong').textContent = TOTAL - score;
-  document.getElementById('ch1-score').textContent = chScores[1] + '/120';
+  document.getElementById('ch1-score').textContent = chScores[1] + '/130';
   document.getElementById('ch2-score').textContent = chScores[2] + '/20';
   document.getElementById('ch4-score').textContent = chScores[4] + '/20';
 
