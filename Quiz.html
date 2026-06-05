@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COA Quiz v2 — Chapters 1, 2 & 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#07111f;--deep:#0b1a2e;--mid-blue:#102340;--card-bg:rgba(16,35,64,.6);--border:rgba(0,200,255,.18);--accent:#00c8ff;--accent2:#ff6b35;--gold:#ffc940;--green:#3effa0;--red:#ff5f6d;--purple:#b48aff;--text:#dce8f5;--muted:#607a9a;--hi:rgba(0,200,255,.07)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);line-height:1.75;font-size:14.5px}
+.hero{background:linear-gradient(160deg,#07111f 0%,#0b1a2e 45%,#130c30 100%);padding:56px 40px 44px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--accent)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(0,200,255,.13),transparent 70%);pointer-events:none}
+.badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:3px;padding:5px 20px;border-radius:20px;margin-bottom:18px;text-transform:uppercase}
+.hero h1{font-size:2.6rem;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:6px}
+.hero h1 span{color:var(--accent)}
+.hero .ar-title{font-family:'Cairo',sans-serif;font-size:1rem;color:var(--gold);margin-bottom:14px;direction:rtl}
+.hero p{color:var(--muted);font-size:13px;max-width:580px;margin:0 auto}
+.lang-bar{background:var(--deep);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.lang-bar strong{color:var(--accent)}
+.container{max-width:940px;margin:0 auto;padding:36px 24px 90px}
+
+/* PROGRESS */
+.progress-wrap{background:var(--mid-blue);border:1px solid var(--border);border-radius:30px;padding:12px 20px;margin-bottom:28px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.progress-bar-outer{flex:1;height:7px;background:rgba(0,200,255,.1);border-radius:10px;overflow:hidden}
+.progress-bar-inner{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:10px;transition:width .4s ease}
+.progress-text{font-size:12px;color:var(--muted);white-space:nowrap}
+.progress-score{font-size:13px;font-weight:700;color:var(--gold);white-space:nowrap}
+
+/* SECTION HEADER */
+.section-header{display:flex;align-items:flex-start;gap:16px;margin:48px 0 18px}
+.sec-num{width:46px;height:46px;background:var(--accent);color:var(--navy);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;flex-shrink:0;margin-top:2px}
+.sec-num.o{background:var(--accent2)}
+.sec-num.g{background:var(--green)}
+.sec-num.p{background:var(--purple)}
+.sec-titles h2{font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:-.3px}
+.sec-titles .sub{font-size:12px;color:var(--muted);margin-top:2px}
+.sec-titles .ar{font-family:'Cairo',sans-serif;font-size:.88rem;color:var(--gold);direction:rtl;text-align:right;margin-top:2px}
+
+/* CHAPTER TAB */
+.ch-tab{display:inline-flex;align-items:center;gap:8px;background:rgba(0,200,255,.08);border:1px solid rgba(0,200,255,.25);border-radius:8px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:18px}
+
+/* Q CARD */
+.q-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:14px;backdrop-filter:blur(4px);transition:border-color .3s}
+.q-card.answered-correct{border-color:rgba(62,255,160,.5)}
+.q-card.answered-wrong{border-color:rgba(255,95,109,.5)}
+.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.q-badge{background:rgba(0,200,255,.12);border:1px solid var(--accent);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;white-space:nowrap;margin-top:3px;flex-shrink:0}
+.q-badge.tf{background:rgba(180,138,255,.12);border-color:var(--purple);color:var(--purple)}
+.q-badge.cir{background:rgba(255,201,64,.1);border-color:var(--gold);color:var(--gold)}
+.q-text{font-size:14px;font-weight:600;color:#fff;line-height:1.65}
+.q-code{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:13px;background:rgba(0,0,0,.3);padding:2px 7px;border-radius:4px}
+
+/* OPTIONS */
+.options{display:flex;flex-direction:column;gap:8px}
+.option{background:rgba(16,35,64,.8);border:1px solid rgba(0,200,255,.15);border-radius:10px;padding:10px 16px;cursor:pointer;font-size:13.5px;display:flex;align-items:center;gap:12px;transition:all .2s;user-select:none}
+.option:hover:not(.disabled){border-color:var(--accent);background:rgba(0,200,255,.08)}
+.option.correct{border-color:var(--green);background:rgba(62,255,160,.1);color:var(--green)}
+.option.wrong{border-color:var(--red);background:rgba(255,95,109,.1);color:var(--red)}
+.option.reveal-correct{border-color:var(--green);background:rgba(62,255,160,.07)}
+.option.disabled{cursor:default}
+.opt-letter{width:28px;height:28px;background:rgba(0,200,255,.12);border:1px solid rgba(0,200,255,.3);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent);flex-shrink:0;transition:all .2s}
+.option.correct .opt-letter{background:rgba(62,255,160,.2);border-color:var(--green);color:var(--green)}
+.option.wrong .opt-letter{background:rgba(255,95,109,.2);border-color:var(--red);color:var(--red)}
+.option.reveal-correct .opt-letter{background:rgba(62,255,160,.1);border-color:var(--green);color:var(--green)}
+
+/* CIRCLE FORMAT */
+.circle-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.circle-opt{width:56px;height:56px;border-radius:50%;border:2px solid rgba(0,200,255,.25);background:rgba(16,35,64,.8);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;color:var(--text);transition:all .2s;user-select:none;flex-shrink:0}
+.circle-opt:hover:not(.disabled){border-color:var(--accent);background:rgba(0,200,255,.12);color:var(--accent)}
+.circle-opt.correct{border-color:var(--green);background:rgba(62,255,160,.15);color:var(--green);box-shadow:0 0 12px rgba(62,255,160,.3)}
+.circle-opt.wrong{border-color:var(--red);background:rgba(255,95,109,.12);color:var(--red)}
+.circle-opt.reveal-correct{border-color:var(--green);background:rgba(62,255,160,.08);color:var(--green)}
+.circle-opt.disabled{cursor:default}
+.circle-label{font-size:11px;color:var(--muted);margin-top:12px;width:100%}
+
+/* TF OPTIONS */
+.tf-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* FEEDBACK */
+.feedback{display:none;margin-top:12px;border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.6}
+.feedback.correct{background:rgba(62,255,160,.08);border:1px solid rgba(62,255,160,.3);color:var(--green);display:block}
+.feedback.wrong{background:rgba(255,95,109,.08);border:1px solid rgba(255,95,109,.3);color:var(--red);display:block}
+
+/* DIVIDER */
+hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.18;margin:42px 0}
+
+/* RESULTS */
+.results-panel{display:none;background:linear-gradient(135deg,rgba(0,200,255,.06),rgba(7,17,31,.9));border:1px solid var(--accent);border-radius:16px;padding:36px;margin-top:40px;text-align:center}
+.results-panel.show{display:block}
+.results-panel h2{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:4px}
+.score-big{font-size:5rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin:18px 0 8px}
+.score-label{color:var(--muted);font-size:14px;margin-bottom:24px}
+.score-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.score-stat{background:rgba(16,35,64,.8);border:1px solid var(--border);border-radius:12px;padding:16px}
+.score-stat .val{font-size:2rem;font-weight:900}
+.score-stat .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.score-stat.sc-correct .val{color:var(--green)}
+.score-stat.sc-wrong .val{color:var(--red)}
+.score-stat.sc-total .val{color:var(--gold)}
+.grade-msg{font-size:1.1rem;font-weight:700;margin:16px 0}
+.grade-A{color:var(--green)}.grade-B{color:var(--accent)}.grade-C{color:var(--gold)}.grade-D{color:var(--accent2)}.grade-F{color:var(--red)}
+.retry-btn{margin-top:20px;background:linear-gradient(135deg,var(--accent),var(--purple));color:var(--navy);border:none;border-radius:10px;padding:12px 36px;font-size:14px;font-weight:800;cursor:pointer;transition:opacity .2s}
+.retry-btn:hover{opacity:.85}
+.submit-wrap{text-align:center;margin-top:32px}
+.submit-btn{background:linear-gradient(135deg,var(--accent),rgba(0,200,255,.7));color:var(--navy);border:none;border-radius:10px;padding:13px 42px;font-size:14px;font-weight:800;cursor:pointer;transition:opacity .2s}
+.submit-btn:hover{opacity:.85}
+.chapter-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.ch-stat{background:rgba(16,35,64,.9);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.ch-stat .ch-name{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.ch-stat .ch-val{font-size:1.3rem;font-weight:800}
+
+@media(max-width:640px){.hero h1{font-size:1.9rem}.container{padding:24px 14px 70px}.score-breakdown,.chapter-stats{grid-template-columns:1fr}.tf-options{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Chapters 1 · 2 · 4 — Computer Organization & Architecture</div>
+  <h1>Comprehensive <span>Practice Quiz</span></h1>
+  <div class="ar-title">اختبار شامل — أسئلة MCQ & True/False & دائرة</div>
+  <p>60 questions across all three chapters. Chapter 4 includes circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
+</div>
+
+<div class="lang-bar">
+  📘 <strong>MCQ</strong> — Multiple Choice &nbsp;|&nbsp; ✅ <strong style="color:var(--purple)">T/F</strong> — True or False &nbsp;|&nbsp; ⭕ <strong style="color:var(--gold)">Circle</strong> — Circle the correct answer
+</div>
+
+<div class="container">
+
+<div class="progress-wrap">
+  <span class="progress-text">Answered: <strong id="answered-count">0</strong> / 60</span>
+  <div class="progress-bar-outer"><div class="progress-bar-inner" id="progress-bar"></div></div>
+  <span class="progress-score">Score: <span id="live-score">0</span> / 60</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 1 — 20 QUESTIONS                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num">1</div>
+  <div class="sec-titles">
+    <h2>Chapter 1 — Computer Abstractions & Technology</h2>
+    <div class="ar">تجريدات الحاسوب والتكنولوجيا</div>
+    <div class="sub">MCQ + True/False — Questions 1–20</div>
+  </div>
+</div>
+
+<div id="qc1"></div>
+
+<hr class="div">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 2 — 20 QUESTIONS                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num o">2</div>
+  <div class="sec-titles">
+    <h2>Chapter 2 — Instructions: Language of the Computer</h2>
+    <div class="ar">التعليمات: لغة الحاسوب</div>
+    <div class="sub">MCQ + True/False — Questions 21–40</div>
+  </div>
+</div>
+
+<div id="qc2"></div>
+
+<hr class="div">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 4 — 20 QUESTIONS (MCQ + TF + Circle)  -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num g">4</div>
+  <div class="sec-titles">
+    <h2>Chapter 4 — Cache Memory</h2>
+    <div class="ar">ذاكرة الكاش</div>
+    <div class="sub">MCQ + True/False + Circle the Answer — Questions 41–60</div>
+  </div>
+</div>
+
+<div id="qc4"></div>
+
+<div class="submit-wrap">
+  <button class="submit-btn" id="submit-btn" onclick="showResults()">Submit & See Final Results</button>
+</div>
+
+<div class="results-panel" id="results-panel">
+  <h2>Quiz Complete!</h2>
+  <div class="score-big" id="score-pct">0%</div>
+  <div class="score-label" id="score-label">0 out of 60 correct</div>
+  <div class="score-breakdown">
+    <div class="score-stat sc-correct"><div class="val" id="res-correct">0</div><div class="lbl">Correct</div></div>
+    <div class="score-stat sc-wrong"><div class="val" id="res-wrong">0</div><div class="lbl">Wrong</div></div>
+    <div class="score-stat sc-total"><div class="val">60</div><div class="lbl">Total</div></div>
+  </div>
+  <div class="chapter-stats">
+    <div class="ch-stat"><div class="ch-name">Chapter 1</div><div class="ch-val" id="ch1-score" style="color:var(--accent)">0/20</div></div>
+    <div class="ch-stat"><div class="ch-name">Chapter 2</div><div class="ch-val" id="ch2-score" style="color:var(--accent2)">0/20</div></div>
+    <div class="ch-stat"><div class="ch-name">Chapter 4</div><div class="ch-val" id="ch4-score" style="color:var(--green)">0/20</div></div>
+  </div>
+  <div class="grade-msg" id="grade-msg"></div>
+  <button class="retry-btn" onclick="location.reload()">Retry Quiz</button>
+</div>
+
+</div>
+
+<script>
+const TOTAL = 60;
+let score = 0, answered = 0;
+const chScores = {1:0,2:0,4:0};
+
+// ── QUESTION DATA ────────────────────────────────────────────────────────────
+const questions = [
+
+// ── CHAPTER 1 (Q1–Q20) ──────────────────────────────────────────────────────
+{id:'q1',ch:1,type:'mcq',
+ text:"What does Moore's Law primarily describe?",
+ opts:["A. Clock speed doubles every 18 months","B. The number of transistors on chips increases rapidly over time","C. Power consumption halves every year","D. Cache size doubles every 2 years"],
+ correct:'B',
+ exp:"Moore's Law: transistor count on chips rises rapidly, enabling better performance and lower cost."},
+
+{id:'q2',ch:1,type:'mcq',
+ text:"Which of the following is a correct formula for CPU Time?",
+ opts:["A. CPU Time = IC + CPI + Clock Rate","B. CPU Time = IC × CPI ÷ Clock Rate","C. CPU Time = IC ÷ (CPI × Clock Rate)","D. CPU Time = Clock Rate ÷ (IC × CPI)"],
+ correct:'B',
+ exp:"CPU Time = (Instruction Count × CPI) / Clock Rate. This is the fundamental CPU performance equation."},
+
+{id:'q3',ch:1,type:'mcq',
+ text:"Computer A runs a task in 8 s, Computer B in 20 s. How many times faster is B than A?",
+ opts:["A. B is 2.5× faster","B. A is 2.5× faster","C. B is 0.4× faster","D. They are equal"],
+ correct:'B',
+ exp:"Speedup = T_B / T_A = 20/8 = 2.5. A is 2.5× faster than B (A has lower execution time = better performance)."},
+
+{id:'q4',ch:1,type:'mcq',
+ text:"A processor has: Clock Rate = 4 GHz, CPI = 2, IC = 8×10⁹ instructions. What is the CPU time?",
+ opts:["A. 2 seconds","B. 4 seconds","C. 8 seconds","D. 16 seconds"],
+ correct:'B',
+ exp:"CPU Time = (IC × CPI) / Clock Rate = (8×10⁹ × 2) / 4×10⁹ = 16/4 = 4 seconds."},
+
+{id:'q5',ch:1,type:'mcq',
+ text:"CMOS Power = Capacitive Load × Voltage² × Frequency. If voltage doubles, power becomes:",
+ opts:["A. 2× the original","B. 4× the original","C. 8× the original","D. Same — voltage has no effect"],
+ correct:'B',
+ exp:"Power ∝ V². If V doubles, power = (2V)² factor = 4× the original. Voltage has the strongest effect because it is squared."},
+
+{id:'q6',ch:1,type:'mcq',
+ text:"Which of the Eight Great Ideas involves using multiple processor cores?",
+ opts:["A. Dependability via redundancy","B. Hierarchy of memories","C. Performance via parallelism","D. Use abstraction to simplify design"],
+ correct:'C',
+ exp:"'Performance via parallelism' is the idea of doing multiple things at the same time, which includes multicore processors."},
+
+{id:'q7',ch:1,type:'mcq',
+ text:"Three instruction classes with: Class A CPI=1 count=2, Class B CPI=2 count=1, Class C CPI=3 count=2. What is the average CPI?",
+ opts:["A. 1.8","B. 2.0","C. 2.5","D. 3.0"],
+ correct:'B',
+ exp:"Total cycles = 2×1 + 1×2 + 2×3 = 2+2+6 = 10. Total IC = 5. Average CPI = 10/5 = 2.0."},
+
+{id:'q8',ch:1,type:'mcq',
+ text:"Which layer directly manages I/O, memory, scheduling, and resource sharing between programs?",
+ opts:["A. Compiler","B. High-level Language","C. ISA","D. Operating System"],
+ correct:'D',
+ exp:"The Operating System (OS) manages I/O, memory, storage, scheduling, and all shared resources."},
+
+{id:'q9',ch:1,type:'mcq',
+ text:"Computer A: 2 GHz, 10 s CPU time. Computer B: needs 1.2× cycles of A, target time = 6 s. What clock rate does B need?",
+ opts:["A. 3 GHz","B. 3.5 GHz","C. 4 GHz","D. 5 GHz"],
+ correct:'C',
+ exp:"Cycles_A = 10×2G = 20G. Cycles_B = 1.2×20G = 24G. Rate_B = 24G/6 = 4 GHz."},
+
+{id:'q10',ch:1,type:'mcq',
+ text:"Which type of computer is MOST concerned with Power, Cost, and Performance simultaneously?",
+ opts:["A. Supercomputers","B. Personal Computers","C. Servers","D. Embedded Computers"],
+ correct:'D',
+ exp:"Embedded computers are hidden inside devices (phones, cars, appliances). They must balance all three: power (battery), cost (cheap), and performance."},
+
+{id:'q11',ch:1,type:'mcq',
+ text:"Response time and throughput are both performance measures. Adding a faster processor will:",
+ opts:["A. Decrease response time only","B. Increase throughput only","C. Both decrease response time AND increase throughput","D. Neither — only compiler changes performance"],
+ correct:'C',
+ exp:"A faster processor finishes tasks faster (lower response time) and can handle more tasks per unit time (higher throughput)."},
+
+{id:'q12',ch:1,type:'mcq',
+ text:"A clock has a period of 250 ps. What is the clock rate?",
+ opts:["A. 250 MHz","B. 1 GHz","C. 2 GHz","D. 4 GHz"],
+ correct:'D',
+ exp:"Clock Rate = 1 / Clock Period = 1 / 250 ps = 1 / 0.25 ns = 4 GHz."},
+
+// TRUE/FALSE Q13-Q20
+{id:'q13',ch:1,type:'tf',
+ text:"Elapsed time includes ALL time from start to finish, including I/O waits and operating system overhead.",
+ correct:'TRUE',
+ exp:"TRUE. Elapsed time (wall-clock time) includes everything: CPU processing, I/O, OS overhead, and idle/wait time. CPU Time only counts the processor's active time."},
+
+{id:'q14',ch:1,type:'tf',
+ text:"A higher CPI always means faster execution, regardless of other factors.",
+ correct:'FALSE',
+ exp:"FALSE. Higher CPI means MORE cycles per instruction, which SLOWS execution. CPU Time = IC × CPI × Cycle Time — lower CPI means faster execution (all else equal)."},
+
+{id:'q15',ch:1,type:'tf',
+ text:"The Power Wall refers to the physical heat and power limits that prevent indefinite increases in clock frequency.",
+ correct:'TRUE',
+ exp:"TRUE. Increasing clock frequency raises power consumption and heat generation beyond what cooling systems can handle — this is called the Power Wall."},
+
+{id:'q16',ch:1,type:'tf',
+ text:"Moore's Law is a physical law of nature derived from quantum mechanics.",
+ correct:'FALSE',
+ exp:"FALSE. Moore's Law is an empirical observation (made by Gordon Moore in 1965), not a law of physics. It describes a historical trend in semiconductor manufacturing."},
+
+{id:'q17',ch:1,type:'tf',
+ text:"ISA (Instruction Set Architecture) is the hardware/software interface that defines what instructions a processor can execute.",
+ correct:'TRUE',
+ exp:"TRUE. The ISA defines the boundary between hardware and software — it specifies the set of instructions the CPU can understand and execute."},
+
+{id:'q18',ch:1,type:'tf',
+ text:"A program that runs in fewer total clock cycles always has fewer instructions than a slower program.",
+ correct:'FALSE',
+ exp:"FALSE. A program can have MORE instructions but fewer total cycles if it uses simpler (lower-CPI) instructions. Sequence 2 in the study example has 6 instructions but only 9 cycles vs Sequence 1's 5 instructions and 10 cycles."},
+
+{id:'q19',ch:1,type:'tf',
+ text:"PMDs (Personal Mobile Devices) such as smartphones are examples of PostPC era computing.",
+ correct:'TRUE',
+ exp:"TRUE. The PostPC era is characterized by PMDs (smartphones, tablets) that are battery-operated and Internet-connected, and Cloud Computing that serves them."},
+
+{id:'q20',ch:1,type:'tf',
+ text:"Instruction-Level Parallelism (ILP) is fully visible and must be manually managed by the programmer.",
+ correct:'FALSE',
+ exp:"FALSE. ILP is mostly handled automatically by the CPU hardware (out-of-order execution, pipelining). It is largely hidden from the programmer, unlike multicore parallelism which often requires explicit parallel programming."},
+
+
+// ── CHAPTER 2 (Q21–Q40) ─────────────────────────────────────────────────────
+{id:'q21',ch:2,type:'mcq',
+ text:"A computer has a 10-bit Address Bus and a 16-bit Data Bus. How many memory locations does it have?",
+ opts:["A. 160","B. 1,024","C. 16,384","D. 65,536"],
+ correct:'B',
+ exp:"Number of memory locations = 2^(Address Bus bits) = 2^10 = 1,024 locations."},
+
+{id:'q22',ch:2,type:'mcq',
+ text:"A computer has a 12-bit Address Bus and an 8-bit Data Bus. What is the total addressable memory in bytes?",
+ opts:["A. 96 bytes","B. 512 bytes","C. 4,096 bytes (4 KB)","D. 32,768 bytes (32 KB)"],
+ correct:'C',
+ exp:"Locations = 2^12 = 4,096. Each location = 8 bits = 1 byte. Total = 4,096 × 1 byte = 4,096 bytes = 4 KB."},
+
+{id:'q23',ch:2,type:'mcq',
+ text:"In MIPS, what is the correct instruction to copy register $s1 into $t0?",
+ opts:["A. move $t0, $s1","B. add $t0, $s1, $zero","C. lw $t0, $s1","D. addi $t0, $s1"],
+ correct:'B',
+ exp:"MIPS has no 'move' instruction. We use: add $t0, $s1, $zero (= $s1 + 0 = $s1). The $zero register always contains 0."},
+
+{id:'q24',ch:2,type:'mcq',
+ text:"Translate to MIPS: A[3] = h + A[8]; (h→$s2, base of A→$s3). Which instruction loads A[8]?",
+ opts:["A. lw $t0, 3($s3)","B. lw $t0, 8($s3)","C. lw $t0, 24($s3)","D. lw $t0, 32($s3)"],
+ correct:'D',
+ exp:"Array offset = index × 4 = 8 × 4 = 32 bytes. So: lw $t0, 32($s3) loads A[8]."},
+
+{id:'q25',ch:2,type:'mcq',
+ text:"Find the 2's complement of +7 in 8 bits. Which is correct?",
+ opts:["A. 0000 0111","B. 1111 0111","C. 1111 1000","D. 1111 1001"],
+ correct:'D',
+ exp:"+7 = 0000 0111. Flip: 1111 1000. Add 1: 1111 1001. This is −7 in 2's complement. Verify: −128+64+32+16+8+1 = −7 ✓"},
+
+{id:'q26',ch:2,type:'mcq',
+ text:"What is the decimal value of 1001 0110₂ interpreted as an 8-bit 2's complement number?",
+ opts:["A. +150","B. −106","C. −86","D. +106"],
+ correct:'B',
+ exp:"MSB=1 → negative. Value = −128+0+0+16+0+4+2+0 = −106. Or negate: flip→0110 1001, +1→0110 1010 = 64+32+8+2 = 106 → original = −106."},
+
+{id:'q27',ch:2,type:'mcq',
+ text:"In MIPS R-format (add $t0, $s1, $s2), which field specifies the exact operation (add vs sub)?",
+ opts:["A. op field","B. rs field","C. funct field","D. shamt field"],
+ correct:'C',
+ exp:"For R-format, op = 000000 for ALL R-type instructions. The funct (function) field (6 bits) specifies the exact operation: add=32, sub=34, and=36, etc."},
+
+{id:'q28',ch:2,type:'mcq',
+ text:"In RISC vs CISC: which statement correctly describes CISC?",
+ opts:["A. All instructions are 32 bits and take 1 clock cycle","B. Memory accessed only via load/store","C. Variable-length instructions; one instruction can perform multiple operations","D. ~200 instructions total in the ISA"],
+ correct:'C',
+ exp:"CISC (like x86): variable-length instructions (1–15 bytes), 1000+ instructions, one instruction can do multiple operations. RISC has fixed-length, ~200 instructions, each doing one operation."},
+
+{id:'q29',ch:2,type:'mcq',
+ text:"The MIPS instruction srl $t0, $t1, 4 is equivalent to:",
+ opts:["A. $t0 = $t1 × 4","B. $t0 = $t1 ÷ 16 (unsigned)","C. $t0 = $t1 + 4","D. $t0 = $t1 − 16"],
+ correct:'B',
+ exp:"srl = shift right logical by i positions = divide by 2^i. Shifting right by 4 = ÷2^4 = ÷16 (for unsigned numbers)."},
+
+{id:'q30',ch:2,type:'mcq',
+ text:"Which MIPS instruction is used for branching when two registers are NOT equal?",
+ opts:["A. beq","B. bne","C. j","D. jal"],
+ correct:'B',
+ exp:"bne = Branch if Not Equal. beq = Branch if Equal. j = unconditional Jump. jal = Jump and Link (for function calls)."},
+
+{id:'q31',ch:2,type:'mcq',
+ text:"Sign-extend 1010 0011₂ (8-bit) to 16 bits. What is the result?",
+ opts:["A. 0000 0000 1010 0011","B. 1111 1111 1010 0011","C. 0000 1111 1010 0011","D. 1010 0011 0000 0000"],
+ correct:'B',
+ exp:"MSB=1 → negative number. Sign extension: copy MSB (1) into all new high bits. Result: 1111 1111 1010 0011."},
+
+{id:'q32',ch:2,type:'mcq',
+ text:"How many memory locations can be addressed by a computer with a 20-bit address bus?",
+ opts:["A. 20","B. 1,024","C. 1,048,576","D. 4,294,967,296"],
+ correct:'C',
+ exp:"2^20 = 1,048,576 locations (1 MB of addressable locations)."},
+
+// TRUE/FALSE Q33-Q40
+{id:'q33',ch:2,type:'tf',
+ text:"In MIPS, the $zero register always contains 0 and cannot be overwritten.",
+ correct:'TRUE',
+ exp:"TRUE. $zero (register 0) is hardwired to 0. Any write to it is ignored. It is essential for operations like copying registers (add $t0, $s1, $zero)."},
+
+{id:'q34',ch:2,type:'tf',
+ text:"In 1's complement representation, there is only one way to represent zero.",
+ correct:'FALSE',
+ exp:"FALSE. 1's complement has TWO representations of zero: +0 = 0000 0000 and −0 = 1111 1111. This is its main disadvantage. 2's complement has only one zero."},
+
+{id:'q35',ch:2,type:'tf',
+ text:"MIPS uses I-format for the addi, lw, sw, beq, and bne instructions.",
+ correct:'TRUE',
+ exp:"TRUE. I-format (Immediate format) is used for instructions that need a 16-bit constant or offset: addi, lw, sw, beq, bne, lb, sb, etc."},
+
+{id:'q36',ch:2,type:'tf',
+ text:"RISC design principle: 'Smaller is faster' means MIPS has only 32 registers to keep register access fast.",
+ correct:'TRUE',
+ exp:"TRUE. Design Principle 2: 'Smaller is faster.' MIPS deliberately limits to 32 registers. More registers would slow down register file access and increase hardware complexity."},
+
+{id:'q37',ch:2,type:'tf',
+ text:"In MIPS, the instruction 'addi $s0, $s1, -5' is invalid because there is no 'subi' equivalent.",
+ correct:'FALSE',
+ exp:"FALSE. addi with a negative immediate IS the way to subtract a constant. addi $s0, $s1, -5 computes $s0 = $s1 + (-5) = $s1 - 5. There is no subi instruction in MIPS."},
+
+{id:'q38',ch:2,type:'tf',
+ text:"MIPS memory is byte-addressed, meaning each address refers to one byte.",
+ correct:'TRUE',
+ exp:"TRUE. MIPS memory is byte-addressed. Each address = 1 byte. A word (32-bit) occupies 4 consecutive byte addresses, so array element offsets are index × 4."},
+
+{id:'q39',ch:2,type:'tf',
+ text:"In RISC architecture, the compiler bears more responsibility for generating efficient code than in CISC.",
+ correct:'TRUE',
+ exp:"TRUE. RISC hardware is simple; the compiler must work harder to map high-level code to simple RISC instructions efficiently. In CISC, complex hardware handles more of the work."},
+
+{id:'q40',ch:2,type:'tf',
+ text:"The 16-bit immediate field in I-format instructions is zero-extended (not sign-extended) when used in arithmetic.",
+ correct:'FALSE',
+ exp:"FALSE. The 16-bit immediate is SIGN-EXTENDED to 32 bits. This allows it to represent negative offsets/values. addi, lw, sw all use sign extension on their immediate fields."},
+
+
+// ── CHAPTER 4 (Q41–Q60) — MCQ + TF + CIRCLE ────────────────────────────────
+{id:'q41',ch:4,type:'mcq',
+ text:"Which cache mapping method suffers MOST from conflict misses?",
+ opts:["A. Fully Associative","B. Set Associative (k=4)","C. Direct Mapping","D. Set Associative (k=2)"],
+ correct:'C',
+ exp:"Direct mapping: each block maps to exactly ONE cache line. If two frequently used blocks map to the same line, they constantly evict each other — this is called thrashing/conflict misses."},
+
+{id:'q42',ch:4,type:'mcq',
+ text:"In direct mapping with m=64 cache lines (r=6 bits) and s=10 block address bits, what is the tag size?",
+ opts:["A. 4 bits","B. 6 bits","C. 10 bits","D. 16 bits"],
+ correct:'A',
+ exp:"Tag size = s − r = 10 − 6 = 4 bits. The address = Tag(4) + Line(6) + Word(w) bits."},
+
+{id:'q43',ch:4,type:'mcq',
+ text:"A cache has 4 sets (d=2 bits), 2 lines per set (k=2), and each line holds 16 bytes (w=4 bits). The address has s=8 block bits. What is the tag size?",
+ opts:["A. 2 bits","B. 4 bits","C. 6 bits","D. 8 bits"],
+ correct:'C',
+ exp:"Tag size = s − d = 8 − 2 = 6 bits. In set-associative: address = Tag(s−d) + Set(d) + Word(w)."},
+
+{id:'q44',ch:4,type:'mcq',
+ text:"Which replacement algorithm evicts the block that has gone the LONGEST without being used?",
+ opts:["A. FIFO","B. LFU","C. LRU","D. Random"],
+ correct:'C',
+ exp:"LRU (Least Recently Used) evicts the block not accessed for the longest time. It exploits temporal locality and is the most effective replacement algorithm in practice."},
+
+{id:'q45',ch:4,type:'mcq',
+ text:"Write-back policy uses a 'dirty bit'. What does a dirty bit = 1 mean?",
+ opts:["A. The cache line is empty","B. The cache line matches main memory exactly","C. The cache line has been modified and main memory is out of date","D. The cache line is about to be evicted"],
+ correct:'C',
+ exp:"Dirty bit = 1 means the cache line was written to (modified) but main memory has NOT been updated yet. When this line is evicted, its data must be written back to RAM."},
+
+{id:'q46',ch:4,type:'mcq',
+ text:"Temporal locality means:",
+ opts:["A. If address X is accessed, addresses near X will be accessed soon","B. If address X is accessed recently, X is likely to be accessed again soon","C. Memory closer to the CPU is accessed more than distant memory","D. Time between cache accesses decreases as programs run"],
+ correct:'B',
+ exp:"Temporal locality: recently used data is likely to be used again soon (e.g., a loop variable accessed every iteration). Spatial locality is about nearby addresses."},
+
+{id:'q47',ch:4,type:'mcq',
+ text:"Which write policy generates the MOST bus traffic between cache and main memory?",
+ opts:["A. Write-Back","B. Write-Through","C. Copy-Back","D. Lazy Write"],
+ correct:'B',
+ exp:"Write-Through updates RAM on EVERY write to cache — this generates heavy bus traffic. Write-Back only updates RAM when a dirty line is evicted, producing far fewer RAM writes."},
+
+{id:'q48',ch:4,type:'mcq',
+ text:"What is the typical cache line size in modern processors?",
+ opts:["A. 4 bytes","B. 16 bytes","C. 64 bytes","D. 256 bytes"],
+ correct:'C',
+ exp:"Modern CPUs (Intel, AMD, ARM) universally use 64-byte cache lines. This balances exploiting spatial locality vs. waste from loading unused data."},
+
+// TRUE/FALSE Q49-Q54
+{id:'q49',ch:4,type:'tf',
+ text:"Direct mapping requires a replacement algorithm because multiple blocks compete for the same cache line.",
+ correct:'FALSE',
+ exp:"FALSE. Direct mapping does NOT need a replacement algorithm. Each block maps to exactly ONE specific cache line — there is no choice of which line to evict. Only associative and set-associative mappings need replacement algorithms."},
+
+{id:'q50',ch:4,type:'tf',
+ text:"FIFO replacement algorithm evicts the block that has the fewest total accesses.",
+ correct:'FALSE',
+ exp:"FALSE. FIFO evicts the OLDEST block in cache (the one that has been there the longest), regardless of how many times it was accessed. LFU evicts the block with fewest total accesses."},
+
+{id:'q51',ch:4,type:'tf',
+ text:"A Victim Cache is placed between L1 and L2 cache to catch recently evicted blocks from L1.",
+ correct:'TRUE',
+ exp:"TRUE. A Victim Cache is a small (4–16 line) fully-associative buffer between L1 and L2. When a block is evicted from L1 due to a conflict, it goes to the Victim Cache instead of L2 — reducing conflict miss penalty."},
+
+{id:'q52',ch:4,type:'tf',
+ text:"Set-associative mapping with k equal to the total number of cache lines is equivalent to fully associative mapping.",
+ correct:'TRUE',
+ exp:"TRUE. When k = m (lines per set = total cache lines), there is only 1 set containing all lines — any block can go anywhere. This is exactly fully associative mapping."},
+
+{id:'q53',ch:4,type:'tf',
+ text:"Write-back policy is safer than write-through for I/O modules because RAM is always up-to-date.",
+ correct:'FALSE',
+ exp:"FALSE. Write-THROUGH is safer for I/O. Write-back can leave RAM stale (dirty lines not yet written back), so I/O modules may read outdated data from RAM. Write-through always keeps RAM synchronized."},
+
+{id:'q54',ch:4,type:'tf',
+ text:"Fully associative mapping has no conflict misses because any block can go to any cache line.",
+ correct:'TRUE',
+ exp:"TRUE. Fully associative mapping places blocks anywhere, so no two blocks are ever forced to the same line. The cost is high hardware complexity (parallel comparison of all tags simultaneously)."},
+
+// CIRCLE Q55-Q60
+{id:'q55',ch:4,type:'circle',
+ text:"Which mapping type has the SMALLEST tag size for the same address space?",
+ opts:["Direct","Associative","Set Assoc (k=2)","Set Assoc (k=4)"],
+ correct:'Direct',
+ exp:"Direct mapping has the smallest tag: Tag = s − r bits (subtracts the line-number bits). Fully associative needs all s bits as tag. Set-associative is in between."},
+
+{id:'q56',ch:4,type:'circle',
+ text:"Which replacement algorithm is the MOST effective (highest hit rate) in practice?",
+ opts:["FIFO","LRU","LFU","Random"],
+ correct:'LRU',
+ exp:"LRU (Least Recently Used) consistently achieves the best hit rates because it exploits temporal locality — recently used data is likely to be needed again soon."},
+
+{id:'q57',ch:4,type:'circle',
+ text:"Which write policy updates main memory ONLY when a modified cache line is evicted?",
+ opts:["Write-Through","Write-Back","Write-Around","Write-Once"],
+ correct:'Write-Back',
+ exp:"Write-Back defers RAM updates until eviction. A 'dirty bit' tracks which lines were modified. This reduces bus traffic significantly compared to Write-Through."},
+
+{id:'q58',ch:4,type:'circle',
+ text:"Which cache level is shared across ALL processor cores in a multicore chip?",
+ opts:["L1","L2","L3","Victim Cache"],
+ correct:'L3',
+ exp:"L3 cache is typically shared among all cores on a chip. L1 and usually L2 are private to each core. L3 acts as the last cache before main memory."},
+
+{id:'q59',ch:4,type:'circle',
+ text:"A cache has k=1 (one line per set). This is equivalent to which mapping type?",
+ opts:["Fully Associative","Direct Mapping","2-Way Set Assoc","Victim Cache"],
+ correct:'Direct Mapping',
+ exp:"When k=1, set-associative degenerates to direct mapping — each set has exactly one line, so there is no flexibility within the set. k=m gives fully associative."},
+
+{id:'q60',ch:4,type:'circle',
+ text:"Which characteristic BEST describes why cache works? Programs exhibit:",
+ opts:["Randomness","Locality of Reference","High Instruction Count","Large Data Sets"],
+ correct:'Locality of Reference',
+ exp:"Cache works because programs exhibit locality of reference: temporal locality (reuse of recently accessed data) and spatial locality (access to nearby addresses). Without locality, caching would be ineffective."},
+
+];
+
+// ── RENDER ENGINE ────────────────────────────────────────────────────────────
+function buildQuestions() {
+  const containers = {1:'qc1',2:'qc2',4:'qc4'};
+  const chQs = {1:[],2:[],4:[]};
+  questions.forEach(q => chQs[q.ch].push(q));
+
+  Object.entries(containers).forEach(([ch,cid]) => {
+    const wrap = document.getElementById(cid);
+    chQs[ch].forEach(q => {
+      const div = document.createElement('div');
+      div.className = 'q-card';
+      div.id = q.id;
+
+      if (q.type === 'mcq') {
+        div.innerHTML = `
+          <div class="q-header">
+            <span class="q-badge">MCQ · Q${q.id.slice(1)}</span>
+            <div class="q-text">${q.text}</div>
+          </div>
+          <div class="options">
+            ${q.opts.map((o,i)=>`<div class="option" onclick="answer(this,'${q.id}','${['A','B','C','D'][i]}')"><span class="opt-letter">${['A','B','C','D'][i]}</span>${o.slice(3)}</div>`).join('')}
+          </div>
+          <div class="feedback" id="fb-${q.id}"></div>`;
+      } else if (q.type === 'tf') {
+        div.innerHTML = `
+          <div class="q-header">
+            <span class="q-badge tf">T/F · Q${q.id.slice(1)}</span>
+            <div class="q-text">${q.text}</div>
+          </div>
+          <div class="tf-options options">
+            <div class="option" onclick="answer(this,'${q.id}','TRUE')"><span class="opt-letter">T</span>True</div>
+            <div class="option" onclick="answer(this,'${q.id}','FALSE')"><span class="opt-letter">F</span>False</div>
+          </div>
+          <div class="feedback" id="fb-${q.id}"></div>`;
+      } else if (q.type === 'circle') {
+        const opts = q.opts.map(o => `<div class="circle-opt" onclick="circleAnswer(this,'${q.id}','${o}')">${o}</div>`).join('');
+        div.innerHTML = `
+          <div class="q-header">
+            <span class="q-badge cir">⭕ Circle · Q${q.id.slice(1)}</span>
+            <div class="q-text">${q.text}</div>
+          </div>
+          <div class="circle-options">${opts}<div class="circle-label">Circle the correct answer</div></div>
+          <div class="feedback" id="fb-${q.id}"></div>`;
+      }
+
+      wrap.appendChild(div);
+    });
+  });
+}
+
+// ── ANSWER HANDLER (MCQ / TF) ────────────────────────────────────────────────
+function answer(el, qid, choice) {
+  const card = document.getElementById(qid);
+  if (card.classList.contains('answered-correct') || card.classList.contains('answered-wrong')) return;
+
+  const q = questions.find(x => x.id === qid);
+  const opts = card.querySelectorAll('.option');
+  opts.forEach(o => { o.classList.add('disabled'); o.onclick = null; });
+
+  const isCorrect = (choice === q.correct);
+  const fb = document.getElementById('fb-' + qid);
+
+  if (isCorrect) {
+    el.classList.add('correct');
+    el.querySelector('.opt-letter').textContent = '✓';
+    card.classList.add('answered-correct');
+    score++; chScores[q.ch]++;
+    fb.className = 'feedback correct';
+    fb.innerHTML = '<strong>✓ Correct!</strong> ' + q.exp;
+  } else {
+    el.classList.add('wrong');
+    el.querySelector('.opt-letter').textContent = '✗';
+    card.classList.add('answered-wrong');
+    // reveal correct
+    opts.forEach(o => {
+      const lt = o.querySelector('.opt-letter');
+      if (!lt) return;
+      const labels = q.type === 'tf'
+        ? (o.textContent.trim().startsWith('True') ? 'TRUE' : 'FALSE')
+        : ['A','B','C','D'][[...opts].indexOf(o)];
+      if (labels === q.correct && !o.classList.contains('wrong')) {
+        o.classList.add('reveal-correct');
+        lt.textContent = '✓';
+      }
+    });
+    fb.className = 'feedback wrong';
+    fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + q.exp;
+  }
+
+  answered++;
+  updateProgress();
+}
+
+// ── CIRCLE ANSWER HANDLER ────────────────────────────────────────────────────
+function circleAnswer(el, qid, choice) {
+  const card = document.getElementById(qid);
+  if (card.classList.contains('answered-correct') || card.classList.contains('answered-wrong')) return;
+
+  const q = questions.find(x => x.id === qid);
+  const opts = card.querySelectorAll('.circle-opt');
+  opts.forEach(o => { o.classList.add('disabled'); o.onclick = null; });
+
+  const isCorrect = (choice === q.correct);
+  const fb = document.getElementById('fb-' + qid);
+
+  if (isCorrect) {
+    el.classList.add('correct');
+    card.classList.add('answered-correct');
+    score++; chScores[q.ch]++;
+    fb.className = 'feedback correct';
+    fb.innerHTML = '<strong>✓ Correct!</strong> ' + q.exp;
+  } else {
+    el.classList.add('wrong');
+    card.classList.add('answered-wrong');
+    opts.forEach(o => {
+      if (o.textContent.trim() === q.correct) o.classList.add('reveal-correct');
+    });
+    fb.className = 'feedback wrong';
+    fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + q.exp;
+  }
+
+  answered++;
+  updateProgress();
+}
+
+function updateProgress() {
+  document.getElementById('answered-count').textContent = answered;
+  document.getElementById('live-score').textContent = score;
+  document.getElementById('progress-bar').style.width = (answered / TOTAL * 100).toFixed(1) + '%';
+}
+
+function showResults() {
+  const panel = document.getElementById('results-panel');
+  panel.classList.add('show');
+  const pct = Math.round(score / TOTAL * 100);
+  document.getElementById('score-pct').textContent = pct + '%';
+  document.getElementById('score-label').textContent = score + ' out of ' + TOTAL + ' correct';
+  document.getElementById('res-correct').textContent = score;
+  document.getElementById('res-wrong').textContent = TOTAL - score;
+  document.getElementById('ch1-score').textContent = chScores[1] + '/20';
+  document.getElementById('ch2-score').textContent = chScores[2] + '/20';
+  document.getElementById('ch4-score').textContent = chScores[4] + '/20';
+
+  const gEl = document.getElementById('grade-msg');
+  if (pct >= 90) { gEl.textContent = '🏆 Outstanding! You have mastered all three chapters!'; gEl.className = 'grade-msg grade-A'; }
+  else if (pct >= 75) { gEl.textContent = '👍 Good job! A solid understanding of the material.'; gEl.className = 'grade-msg grade-B'; }
+  else if (pct >= 60) { gEl.textContent = '📚 Fair result. Review the chapters you scored lower on.'; gEl.className = 'grade-msg grade-C'; }
+  else if (pct >= 50) { gEl.textContent = '⚠️ Needs improvement. Re-read the study guides carefully.'; gEl.className = 'grade-msg grade-D'; }
+  else { gEl.textContent = '❌ Keep studying! Go through all chapters from the beginning.'; gEl.className = 'grade-msg grade-F'; }
+
+  panel.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+buildQuestions();
+</script>
+</body>
+</html>
