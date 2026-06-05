@@ -333,25 +333,370 @@ sw  $t0, 48($s3)    # A[12] = $t0</pre><div class="formula"><div class="flabel">
 A[12] → 12 × 4 = 48</div></div>
 
 <hr class="div">
-<div class="section-header"><div class="sec-num">7</div><div class="sec-titles"><h2>Signed and Unsigned Numbers</h2><div class="ar">الأعداد الموقعة وغير الموقعة</div></div></div>
-<div class="card"><div class="card-title">Unsigned Binary Integers <span class="ar">الأعداد الثنائية غير الموقعة</span></div><p>Unsigned numbers represent only non-negative values.</p><div class="formula"><div class="flabel">Range</div>n-bit unsigned range = 0 to 2^n - 1</div><pre>1011₂ = 1×2³ + 0×2² + 1×2¹ + 1×2⁰
-      = 8 + 0 + 2 + 1 = 11₁₀</pre><div class="ar-box"><div class="ar-label">Arabic</div>إذا العدد unsigned فلا يوجد إشارة سالبة. كل البتات تُستخدم لتمثيل القيمة فقط.</div></div>
-<div class="card"><div class="card-title">Two's Complement Signed Integers <span class="ar">الأعداد الموقعة بطريقة متمم الاثنين</span></div><p>In 2's complement, the leftmost bit is the sign bit: 0 = non-negative, 1 = negative.</p><div class="formula"><div class="flabel">Range</div>n-bit signed range = -2^(n-1) to +2^(n-1)-1</div><div class="table-wrap"><table><thead><tr><th>Bits</th><th>Signed Range</th><th>Unsigned Range</th></tr></thead><tbody><tr><td>8</td><td>-128 to +127</td><td>0 to 255</td></tr><tr><td>16</td><td>-32768 to +32767</td><td>0 to 65535</td></tr><tr><td>32</td><td>-2,147,483,648 to +2,147,483,647</td><td>0 to 4,294,967,295</td></tr></tbody></table></div><div class="ar-box"><div class="ar-label">Arabic</div>في 2's complement أول بت من اليسار هو بت الإشارة. إذا كان 0 فالعدد موجب أو صفر، وإذا كان 1 فالعدد سالب.</div></div>
-<div class="grid2"><div class="card"><div class="card-title">One's Complement <span class="ar">متمم الواحد</span></div><p>Flip every bit: 0 becomes 1 and 1 becomes 0.</p><pre>+5 = 00000101
-1's complement = 11111010</pre></div><div class="card"><div class="card-title">Two's Complement <span class="ar">متمم الاثنين</span></div><p>Flip every bit, then add 1.</p><pre>+5 = 00000101
-Flip = 11111010
-+ 1  = 11111011
-So -5 = 11111011</pre></div></div>
-<div class="card"><div class="card-title">Worked Examples <span class="ar">أمثلة محلولة</span></div><div class="grid2"><div class="highlight"><strong>Find -13 in 8-bit 2's complement</strong><pre>+13 = 00001101
-Flip = 11110010
-+ 1  = 11110011
-Answer = 11110011</pre></div><div class="highlight"><strong>Convert 11110110 to decimal</strong><pre>MSB = 1 → negative
-Flip = 00001001
-+ 1  = 00001010 = 10
-Answer = -10</pre></div></div><div class="ar-box"><div class="ar-label">Arabic Exam Trick</div>إذا أول بت = 1 فالعدد سالب. لمعرفة قيمته: اقلب البتات ثم أضف 1 ثم ضع إشارة سالبة.</div></div>
-<div class="card"><div class="card-title">Sign Extension <span class="ar">توسيع الإشارة</span></div><p>When increasing the number of bits, preserve the value by copying the sign bit to the left.</p><pre>+2: 00000010 → 00000000 00000010
--2: 11111110 → 11111111 11111110</pre><div class="ar-box"><div class="ar-label">Arabic</div>في الأعداد الموجبة نضيف أصفاراً من اليسار. في الأعداد السالبة نكرر 1 من اليسار حتى تبقى القيمة نفسها.</div></div>
+<div class="section-header">
+<div class="sec-num">7</div>
+<div class="sec-titles">
+<h2>Signed and Unsigned Numbers</h2>
+<div class="ar">الأعداد الموقعة وغير الموقعة</div>
+</div>
+</div>
 
+<div class="card">
+<div class="card-title">Unsigned Binary Integers <span class="ar">الأعداد الثنائية غير الموقعة</span></div>
+
+<p>Unsigned numbers represent only non-negative values.</p>
+
+<div class="formula">
+<div class="flabel">Range</div>
+n-bit unsigned range = 0 to 2^n - 1
+</div>
+
+<pre>
+1011₂ = 1×2³ + 0×2² + 1×2¹ + 1×2⁰
+      = 8 + 0 + 2 + 1
+      = 11₁₀
+</pre>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+إذا العدد Unsigned فلا يوجد إشارة سالبة.
+جميع البتات تستخدم لتمثيل القيمة فقط.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Signed vs Unsigned Comparison <span class="ar">مقارنة Signed و Unsigned</span></div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Unsigned</th>
+<th>Signed (2's Complement)</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Negative Numbers</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+
+<tr>
+<td>Sign Bit</td>
+<td>Not Used</td>
+<td>MSB</td>
+</tr>
+
+<tr>
+<td>8-bit Range</td>
+<td>0 → 255</td>
+<td>-128 → 127</td>
+</tr>
+
+<tr>
+<td>16-bit Range</td>
+<td>0 → 65535</td>
+<td>-32768 → 32767</td>
+</tr>
+
+<tr>
+<td>32-bit Range</td>
+<td>0 → 4294967295</td>
+<td>-2147483648 → 2147483647</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+Unsigned يستخدم جميع البتات للقيمة.
+أما Signed فيستخدم أول بت كبت إشارة.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Two's Complement Signed Integers <span class="ar">الأعداد الموقعة بطريقة متمم الاثنين</span></div>
+
+<p>
+In 2's complement, the leftmost bit is the sign bit:
+0 = non-negative
+1 = negative
+</p>
+
+<div class="formula">
+<div class="flabel">Signed Range</div>
+n-bit signed range = -2^(n-1) to +2^(n-1)-1
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Bits</th>
+<th>Signed Range</th>
+<th>Unsigned Range</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>8</td>
+<td>-128 to +127</td>
+<td>0 to 255</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>-32768 to +32767</td>
+<td>0 to 65535</td>
+</tr>
+
+<tr>
+<td>32</td>
+<td>-2,147,483,648 to +2,147,483,647</td>
+<td>0 to 4,294,967,295</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+في 2's Complement أول بت هو بت الإشارة.
+0 = موجب
+1 = سالب
+</div>
+</div>
+
+<div class="grid2">
+
+<div class="card">
+<div class="card-title">One's Complement <span class="ar">متمم الواحد</span></div>
+
+<p>Flip every bit.</p>
+
+<pre>
++5 = 00000101
+
+1's Complement
+
+11111010
+</pre>
+
+</div>
+
+<div class="card">
+<div class="card-title">Two's Complement <span class="ar">متمم الاثنين</span></div>
+
+<p>Flip every bit then add 1.</p>
+
+<pre>
++5 = 00000101
+
+Flip
+11111010
+
++1
+11111011
+
+Answer:
+-5 = 11111011
+</pre>
+
+</div>
+
+</div>
+
+<div class="card">
+<div class="card-title">Worked Examples <span class="ar">أمثلة محلولة</span></div>
+
+<div class="grid2">
+
+<div class="highlight">
+
+<strong>Find -13 in 8-bit 2's Complement</strong>
+
+<pre>
++13 = 00001101
+
+Flip
+11110010
+
++1
+11110011
+
+Answer:
+11110011
+</pre>
+
+</div>
+
+<div class="highlight">
+
+<strong>Convert 11110110 to Decimal</strong>
+
+<pre>
+MSB = 1
+
+Negative
+
+Flip
+00001001
+
++1
+00001010
+
+= 10
+
+Answer:
+-10
+</pre>
+
+</div>
+
+</div>
+
+<div class="ar-box">
+<div class="ar-label">Arabic Exam Trick</div>
+إذا أول بت = 1 فالعدد سالب.
+اقلب البتات ثم أضف 1 ثم ضع إشارة سالبة.
+</div>
+
+</div>
+
+<div class="card">
+<div class="card-title">Additional Examples <span class="ar">أمثلة إضافية</span></div>
+
+<div class="grid2">
+
+<div class="highlight">
+
+<strong>Find -25</strong>
+
+<pre>
++25 = 00011001
+
+Flip
+11100110
+
++1
+11100111
+
+Answer:
+11100111
+</pre>
+
+</div>
+
+<div class="highlight">
+
+<strong>Convert 11101011 to Decimal</strong>
+
+<pre>
+MSB = 1
+
+Flip
+00010100
+
++1
+00010101
+
+= 21
+
+Answer:
+-21
+</pre>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+<div class="card-title">Exam Questions <span class="ar">أسئلة امتحانية</span></div>
+
+<div class="note">
+Q1: What is the range of an 8-bit unsigned number?
+</div>
+
+<div class="highlight">
+Answer:
+0 → 255
+</div>
+
+<div class="note">
+Q2: What is the range of an 8-bit signed number?
+</div>
+
+<div class="highlight">
+Answer:
+-128 → 127
+</div>
+
+<div class="note">
+Q3: Convert -9 to 8-bit 2's complement.
+</div>
+
+<div class="highlight">
++9 = 00001001
+
+Flip = 11110110
+
++1 = 11110111
+</div>
+
+<div class="note">
+Q4: Convert 11111001 to decimal.
+</div>
+
+<div class="highlight">
+Answer:
+-7
+</div>
+
+</div>
+
+<div class="card">
+<div class="card-title">Sign Extension <span class="ar">توسيع الإشارة</span></div>
+
+<p>
+When increasing the number of bits,
+preserve the value by copying the sign bit.
+</p>
+
+<pre>
++2
+
+00000010
+
+↓
+
+00000000 00000010
+
+
+-2
+
+11111110
+
+↓
+
+11111111 11111110
+</pre>
+
+<div class="ar-box">
+<div class="ar-label">Arabic</div>
+في الأعداد الموجبة نضيف أصفاراً.
+في الأعداد السالبة نكرر 1 من اليسار.
+</div>
+
+</div>
 <hr class="div">
 <div class="section-header"><div class="sec-num">8</div><div class="sec-titles"><h2>Representing Instructions</h2><div class="ar">تمثيل التعليمات داخل الحاسوب</div></div></div>
 <div class="card"><div class="card-title">Machine Code <span class="ar">لغة الآلة</span></div><p>Instructions are encoded as binary numbers. In MIPS, each instruction is a 32-bit instruction word.</p><div class="ar-box"><div class="ar-label">Arabic</div>تعليمة Assembly مثل add أو lw يتم تحويلها إلى 32 بت داخل المعالج. هذا التمثيل الثنائي يسمى Machine Code.</div></div>
