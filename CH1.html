@@ -107,4 +107,92 @@ Average CPI = 9 / 6 = 1.5</div><div class="highlight"><strong>Important:</strong
 
 <div class="final"><h2>Quick Reference — Everything You Need to Know <span class="ar">مراجعة سريعة — كل ما تحتاجه</span></h2><div class="table-wrap"><table><thead><tr><th>Concept</th><th>Core Idea</th><th>Arabic — الجوهر</th></tr></thead><tbody><tr><td>Moore’s Law</td><td>Technology improves chip capability over time</td><td>تطور مستمر في قدرة الشرائح</td></tr><tr><td>PC</td><td>General-purpose computer</td><td>حاسوب شخصي عام</td></tr><tr><td>Server</td><td>Network-based, reliable, high capacity</td><td>خادم قوي وموثوق</td></tr><tr><td>Embedded</td><td>Computer hidden inside a device</td><td>حاسوب مدمج داخل جهاز</td></tr><tr><td>PMD</td><td>Battery-operated Internet device</td><td>هاتف أو تابلت متصل بالإنترنت</td></tr><tr><td>Compiler</td><td>HLL → machine code</td><td>يترجم الكود للغة الآلة</td></tr><tr><td>OS</td><td>Manages resources and services</td><td>يدير الذاكرة والملفات والمهام</td></tr><tr><td>ISA</td><td>Hardware/software interface</td><td>واجهة بين البرنامج والهاردوير</td></tr><tr><td>Elapsed Time</td><td>Total response time</td><td>الزمن الكلي</td></tr><tr><td>CPU Time</td><td>Processing time for a job</td><td>زمن المعالج فقط</td></tr><tr><td>CPI</td><td>Cycles per instruction</td><td>دورات لكل تعليمة</td></tr><tr><td>CPU Time Formula</td><td>IC × CPI × Cycle Time</td><td>القانون الأساسي للأداء</td></tr><tr><td>Power Wall</td><td>Heat/power limits clock rate</td><td>الحرارة والطاقة تحد التردد</td></tr><tr><td>Multiprocessor</td><td>Multiple cores/processors</td><td>عدة أنوية لتحسين الأداء</td></tr></tbody></table></div></div>
 <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:36px">Computer Organization & Architecture — Chapter 1: Computer Abstractions and Technology · Study Guide</p>
+
+<hr class="div">
+<div class="section-header"><div class="sec-num">17</div><div class="sec-titles"><h2>Power Equation & Performance Trade-offs</h2><div class="ar">قانون الطاقة (Power) وأمثلة الامتحان</div></div></div>
+
+<div class="card">
+<div class="card-title">CMOS Power Formula <span class="ar">قانون الطاقة</span></div>
+<div class="formula">
+Power ∝ Capacitive Load × Voltage² × Frequency
+</div>
+<div class="highlight">
+Increasing voltage has a much larger effect because power depends on Voltage².
+</div>
+<div class="ar-box"><div class="ar-label">Arabic</div>
+الطاقة المستهلكة تعتمد على ثلاثة عوامل:
+السعة الكهربائية (Capacitive Load)، الجهد (Voltage)، والتردد (Frequency).
+الجهد هو الأكثر تأثيراً لأنه مرفوع للأس 2.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Important Rules <span class="ar">قواعد مهمة</span></div>
+<ul>
+<li>If Frequency doubles → Power doubles.</li>
+<li>If Voltage doubles → Power becomes 4 times larger.</li>
+<li>If Voltage increases by 10% → Power increases by (1.1)².</li>
+</ul>
+<div class="ar-box"><div class="ar-label">Arabic</div>
+مضاعفة التردد تضاعف الطاقة.
+أما مضاعفة الجهد فتجعل الطاقة تزداد أربع مرات.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Solved Example 1 <span class="ar">مثال محلول 1</span></div>
+<pre>
+Old Frequency = 2 GHz
+New Frequency = 4 GHz
+
+Power Ratio = 4 / 2 = 2
+</pre>
+<p><strong>Answer:</strong> Power doubles.</p>
+</div>
+
+<div class="card">
+<div class="card-title">Solved Example 2 <span class="ar">مثال محلول 2</span></div>
+<pre>
+Old Voltage = 1V
+New Voltage = 2V
+
+Power Ratio = (2²)/(1²)
+            = 4
+</pre>
+<p><strong>Answer:</strong> Power becomes 4× larger.</p>
+</div>
+
+<div class="card">
+<div class="card-title">Solved Example 3 <span class="ar">مثال محلول 3</span></div>
+<pre>
+Voltage increases from 1V to 1.5V
+
+Power Ratio = (1.5²)/(1²)
+            = 2.25
+</pre>
+<p><strong>Answer:</strong> Power increases by 2.25×.</p>
+</div>
+
+<div class="card">
+<div class="card-title">Exam Questions <span class="ar">أسئلة امتحان</span></div>
+<div class="note">
+Q1: If frequency increases by 50%, what happens to power?<br>
+<strong>Answer:</strong> Power increases by 50%.
+</div>
+
+<div class="note">
+Q2: If voltage increases from 1V to 3V?<br>
+<strong>Answer:</strong> Power = 3² = 9 times larger.
+</div>
+
+<div class="note">
+Q3: Which affects power more, voltage or frequency?<br>
+<strong>Answer:</strong> Voltage, because it is squared.
+</div>
+
+<div class="note">
+Q4: Why can't we keep increasing clock frequency forever?<br>
+<strong>Answer:</strong> Because of the Power Wall (heat and energy limits).
+</div>
+</div>
 </div></body></html>
