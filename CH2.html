@@ -3,19 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 2 — Instructions: Language of the Computer | Study Guide</title>
+<title>Chapter 2 — Instructions: Language of the Computer | Final Merged Study Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#07111f;--deep:#0b1a2e;--mid-blue:#102340;--card-bg:rgba(16,35,64,.6);--border:rgba(0,200,255,.18);--accent:#00c8ff;--accent2:#ff6b35;--gold:#ffc940;--green:#3effa0;--red:#ff5f6d;--purple:#b48aff;--text:#dce8f5;--muted:#7d93ad;--highlight:rgba(0,200,255,.07);--ar-bg:rgba(255,201,64,.05);--ar-border:rgba(255,201,64,.25)}
-  *{margin:0;padding:0;box-sizing:border-box} body{font-family:Inter,sans-serif;background:var(--navy);color:var(--text);line-height:1.75;font-size:14.5px} b,strong{color:#fff}.hero{background:linear-gradient(160deg,#07111f 0%,#0b1a2e 45%,#130c30 100%);padding:64px 40px 52px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--accent)}.hero:before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(0,200,255,.13),transparent 70%);pointer-events:none}.badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:3px;padding:5px 20px;border-radius:20px;margin-bottom:20px;text-transform:uppercase}.hero h1{font-size:3rem;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:6px}.hero h1 span{color:var(--accent)}.hero .ar-title{font-family:Cairo,sans-serif;font-size:1.1rem;color:var(--gold);margin-bottom:18px;direction:rtl}.hero p{color:var(--muted);font-size:13px;max-width:620px;margin:0 auto}.lang-bar{background:var(--deep);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}.lang-bar strong{color:var(--accent)}.container{max-width:980px;margin:0 auto;padding:36px 24px 90px}.section-header{display:flex;align-items:flex-start;gap:16px;margin:52px 0 20px}.sec-num{width:46px;height:46px;background:var(--accent);color:var(--navy);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;flex-shrink:0;margin-top:2px}.sec-titles h2{font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-.3px}.sec-titles .ar{font-family:Cairo,sans-serif;font-size:.92rem;color:var(--gold);direction:rtl;text-align:right;margin-top:1px}.card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:16px;backdrop-filter:blur(4px)}.card-title{font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:4px;display:flex;align-items:center;gap:8px}.card-title:before{content:'▸';color:var(--accent2);font-size:11px}.card-title .ar{font-family:Cairo,sans-serif;font-size:.8rem;color:var(--gold);font-weight:600;direction:rtl}.card p,.card li{margin-bottom:5px}.card ul,.card ol{padding-left:22px}.ar-box{background:var(--ar-bg);border:1px solid var(--ar-border);border-right:4px solid var(--gold);border-radius:0 10px 10px 0;padding:13px 16px;margin-top:12px;direction:rtl;text-align:right;font-family:Cairo,sans-serif;font-size:13.5px;color:#ccd6e8;line-height:1.9}.ar-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;direction:ltr;text-align:left}.highlight{background:var(--highlight);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:13px 16px;margin:10px 0;font-size:13.5px}.note{background:rgba(255,107,53,.07);border:1px solid rgba(255,107,53,.28);border-radius:10px;padding:13px 16px;margin:10px 0;font-size:13.5px}.note-label{font-size:10px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}.formula,pre{background:rgba(0,0,0,.45);border:1px solid rgba(255,201,64,.25);border-radius:8px;padding:12px 18px;margin:10px 0;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gold);direction:ltr;overflow-x:auto;white-space:pre}.formula .flabel{font-family:Inter,sans-serif;font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}.table-wrap{overflow-x:auto;margin:14px 0}table{width:100%;border-collapse:collapse;font-size:13px}thead th{background:var(--mid-blue);color:var(--accent);padding:11px 14px;text-align:left;font-weight:700;font-size:12px;letter-spacing:.4px;white-space:nowrap}tbody tr{border-bottom:1px solid rgba(0,200,255,.07)}tbody tr:hover{background:var(--highlight)}tbody td{padding:10px 14px;vertical-align:top}tbody td:first-child{font-weight:600;color:var(--gold);white-space:nowrap}.g{color:var(--green)}.r{color:var(--red)}.y{color:var(--gold)}.p{color:var(--purple)}.tag{display:inline-block;border:1px solid var(--accent);color:var(--accent);background:rgba(0,200,255,.1);border-radius:5px;padding:1px 9px;font-size:11px;font-weight:700;margin:2px}.tag.o{border-color:var(--accent2);color:var(--accent2);background:rgba(255,107,53,.1)}.tag.g{border-color:var(--green);color:var(--green);background:rgba(62,255,160,.08)}.tag.y{border-color:var(--gold);color:var(--gold);background:rgba(255,201,64,.08)}.tag.r{border-color:var(--red);color:var(--red);background:rgba(255,95,109,.08)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero h1{font-size:2.15rem}.container{padding:28px 14px 70px}.card{padding:18px 16px}}.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin:14px 0;overflow-x:auto}.fbox{background:var(--mid-blue);border:1px solid var(--border);border-radius:9px;padding:9px 14px;font-size:12.5px;font-weight:600;text-align:center;white-space:nowrap}.fbox.a{border-color:var(--accent);color:var(--accent);background:rgba(0,200,255,.1)}.fbox.o{border-color:var(--accent2);color:var(--accent2);background:rgba(255,107,53,.1)}.fbox.p{border-color:var(--purple);color:var(--purple);background:rgba(180,138,255,.1)}.arrow{color:var(--muted);font-size:18px;padding:0 8px}hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.2;margin:44px 0}.final{background:linear-gradient(135deg,rgba(0,200,255,.06),rgba(7,17,31,.8));border:1px solid var(--accent);border-radius:16px;padding:30px;margin-top:52px}.final h2{font-size:1.2rem;font-weight:800;color:var(--accent);margin-bottom:18px}.final h2 .ar{font-family:Cairo,sans-serif;font-size:.85rem;color:var(--gold);font-weight:600;direction:rtl;display:block;margin-top:2px}.q{border-left-color:var(--purple)}.answer{color:var(--green);font-weight:700}.small{font-size:12px;color:var(--muted)}
+  :root {
+    --navy:      #07111f;
+    --deep:      #0b1a2e;
+    --mid-blue:  #102340;
+    --card-bg:   rgba(16, 35, 64, 0.6);
+    --border:    rgba(0, 200, 255, 0.18);
+    --accent:    #00c8ff;
+    --accent2:   #ff6b35;
+    --gold:      #ffc940;
+    --green:     #3effa0;
+    --red:       #ff5f6d;
+    --purple:    #b48aff;
+    --text:      #dce8f5;
+    --muted:     #607a9a;
+    --highlight: rgba(0, 200, 255, 0.07);
+    --ar-bg:     rgba(255, 201, 64, 0.05);
+    --ar-border: rgba(255, 201, 64, 0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text); line-height: 1.75; font-size: 14.5px; }
+
+  /* HERO */
+  .hero { background: linear-gradient(160deg,#07111f 0%,#0b1a2e 45%,#130c30 100%); padding:64px 40px 52px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--accent); }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(0,200,255,.13) 0%,transparent 70%); pointer-events:none; }
+  .badge { display:inline-block; border:1px solid var(--accent); color:var(--accent); font-size:11px; font-weight:700; letter-spacing:3px; padding:5px 20px; border-radius:20px; margin-bottom:20px; text-transform:uppercase; }
+  .hero h1 { font-size:2.8rem; font-weight:900; color:#fff; letter-spacing:-1px; margin-bottom:6px; }
+  .hero h1 span { color:var(--accent); }
+  .hero .ar-title { font-family:'Cairo',sans-serif; font-size:1.1rem; color:var(--gold); margin-bottom:18px; direction:rtl; }
+  .hero p { color:var(--muted); font-size:13px; max-width:560px; margin:0 auto; }
+
+  .lang-bar { background:var(--deep); border-bottom:1px solid var(--border); padding:10px 24px; display:flex; align-items:center; gap:10px; font-size:12px; color:var(--muted); }
+  .lang-bar strong { color:var(--accent); }
+
+  .container { max-width:980px; margin:0 auto; padding:36px 24px 90px; }
+
+  /* SECTION HEADER */
+  .section-header { display:flex; align-items:flex-start; gap:16px; margin:52px 0 20px; }
+  .sec-num { width:46px; height:46px; background:var(--accent); color:var(--navy); border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:18px; flex-shrink:0; margin-top:2px; }
+  .sec-num.orange { background:var(--accent2); }
+  .sec-num.gold { background:var(--gold); }
+  .sec-num.green { background:var(--green); }
+  .sec-num.purple { background:var(--purple); }
+  .sec-titles h2 { font-size:1.5rem; font-weight:800; color:#fff; letter-spacing:-0.3px; }
+  .sec-titles .ar { font-family:'Cairo',sans-serif; font-size:.92rem; color:var(--gold); direction:rtl; text-align:right; margin-top:1px; }
+
+  /* CARD */
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:22px 26px; margin-bottom:16px; backdrop-filter:blur(4px); }
+  .card-title { font-size:1rem; font-weight:700; color:var(--accent); margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .card-title::before { content:'▸'; color:var(--accent2); font-size:11px; }
+  .card-title .ar { font-family:'Cairo',sans-serif; font-size:.8rem; color:var(--gold); font-weight:600; direction:rtl; }
+  .card p,.card li { margin-bottom:5px; }
+  .card ul { padding-left:20px; }
+  .card ul li { list-style:disc; }
+
+  /* AR BOX */
+  .ar-box { background:var(--ar-bg); border:1px solid var(--ar-border); border-right:4px solid var(--gold); border-radius:0 10px 10px 0; padding:13px 16px; margin-top:12px; direction:rtl; text-align:right; font-family:'Cairo',sans-serif; font-size:13.5px; color:#ccd6e8; line-height:1.9; }
+  .ar-box .ar-label { font-size:10px; font-weight:700; color:var(--gold); letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; direction:ltr; text-align:left; }
+
+  /* HIGHLIGHT */
+  .highlight { background:var(--highlight); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:13px 16px; margin:10px 0; font-size:13.5px; }
+  .highlight strong { color:var(--accent); }
+
+  /* NOTE */
+  .note { background:rgba(255,107,53,.07); border:1px solid rgba(255,107,53,.28); border-radius:10px; padding:13px 16px; margin:10px 0; font-size:13.5px; }
+  .note .note-label { font-size:10px; font-weight:700; color:var(--accent2); letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; }
+
+  /* GREEN NOTE */
+  .gnote { background:rgba(62,255,160,.06); border:1px solid rgba(62,255,160,.25); border-radius:10px; padding:13px 16px; margin:10px 0; font-size:13.5px; }
+  .gnote .gnote-label { font-size:10px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; }
+
+  /* FORMULA / CODE */
+  .formula { background:rgba(0,0,0,.45); border:1px solid rgba(255,201,64,.25); border-radius:8px; padding:12px 18px; margin:10px 0; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--gold); direction:ltr; white-space:pre; }
+  .formula .flabel { font-family:'Inter',sans-serif; font-size:10px; color:var(--muted); margin-bottom:5px; letter-spacing:.5px; text-transform:uppercase; white-space:normal; }
+
+  /* CODE (MIPS assembly) */
+  .code { background:#0d1f0d; border:1px solid rgba(62,255,160,.2); border-radius:8px; padding:14px 18px; margin:10px 0; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#a0ffb0; direction:ltr; white-space:pre; }
+  .code .clabel { font-family:'Inter',sans-serif; font-size:10px; color:#4a7a5a; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; white-space:normal; }
+  .code .comment { color:#4a7a5a; }
+
+  /* TABLE */
+  .table-wrap { overflow-x:auto; margin:14px 0; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  thead th { background:var(--mid-blue); color:var(--accent); padding:11px 14px; text-align:left; font-weight:700; font-size:12px; letter-spacing:.4px; white-space:nowrap; }
+  tbody tr { border-bottom:1px solid rgba(0,200,255,.07); }
+  tbody tr:hover { background:var(--highlight); }
+  tbody td { padding:10px 14px; }
+  tbody td:first-child { font-weight:600; color:var(--gold); white-space:nowrap; }
+  .g { color:var(--green); } .r { color:var(--red); } .y { color:var(--gold); } .p { color:var(--purple); }
+
+  /* TAGS */
+  .tag { display:inline-block; border:1px solid var(--accent); color:var(--accent); background:rgba(0,200,255,.1); border-radius:5px; padding:1px 9px; font-size:11px; font-weight:700; margin:2px; }
+  .tag.o { border-color:var(--accent2); color:var(--accent2); background:rgba(255,107,53,.1); }
+  .tag.g { border-color:var(--green); color:var(--green); background:rgba(62,255,160,.08); }
+  .tag.y { border-color:var(--gold); color:var(--gold); background:rgba(255,201,64,.08); }
+  .tag.r { border-color:var(--red); color:var(--red); background:rgba(255,95,109,.08); }
+  .tag.p { border-color:var(--purple); color:var(--purple); background:rgba(180,138,255,.1); }
+
+  /* GRID */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:640px){ .grid2{grid-template-columns:1fr;} }
+
+  /* FLOW */
+  .flow { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:0; margin:14px 0; overflow-x:auto; }
+  .fbox { background:var(--mid-blue); border:1px solid var(--border); border-radius:9px; padding:9px 14px; font-size:12.5px; font-weight:600; text-align:center; white-space:nowrap; }
+  .fbox.a { border-color:var(--accent); color:var(--accent); background:rgba(0,200,255,.1); }
+  .fbox.o { border-color:var(--accent2); color:var(--accent2); background:rgba(255,107,53,.1); }
+  .fbox.g { border-color:var(--green); color:var(--green); background:rgba(62,255,160,.08); }
+  .arrow { color:var(--muted); font-size:18px; padding:0 8px; }
+
+  /* COMPARISON BOX RISC vs CISC */
+  .vs-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:14px; overflow:hidden; margin:14px 0; }
+  .vs-header { padding:12px 18px; font-weight:800; font-size:13px; text-align:center; letter-spacing:.5px; }
+  .vs-header.risc { background:rgba(62,255,160,.12); color:var(--green); border-bottom:1px solid rgba(62,255,160,.2); }
+  .vs-header.cisc { background:rgba(255,95,109,.1); color:var(--red); border-bottom:1px solid rgba(255,95,109,.2); border-left:1px solid var(--border); }
+  .vs-cell { padding:10px 18px; font-size:13px; }
+  .vs-cell.risc { background:rgba(62,255,160,.04); border-bottom:1px solid rgba(62,255,160,.1); }
+  .vs-cell.cisc { background:rgba(255,95,109,.03); border-left:1px solid var(--border); border-bottom:1px solid rgba(255,95,109,.1); }
+
+  /* QUESTION CARD */
+  .q-card { background:rgba(180,138,255,.08); border:1px solid rgba(180,138,255,.25); border-radius:12px; padding:18px 22px; margin-bottom:14px; }
+  .q-num { font-size:10px; font-weight:700; color:var(--purple); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+  .q-text { font-weight:600; color:#fff; margin-bottom:10px; font-size:14px; }
+  .q-answer { background:rgba(0,0,0,.35); border-left:3px solid var(--purple); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:10px; }
+  .q-answer .ans-label { font-size:10px; color:var(--purple); font-weight:700; letter-spacing:1px; margin-bottom:6px; text-transform:uppercase; }
+
+  /* DIVIDER */
+  hr.div { border:none; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.2; margin:44px 0; }
+
+  /* FINAL */
+  .final { background:linear-gradient(135deg,rgba(0,200,255,.06),rgba(7,17,31,.8)); border:1px solid var(--accent); border-radius:16px; padding:30px; margin-top:52px; }
+  .final h2 { font-size:1.2rem; font-weight:800; color:var(--accent); margin-bottom:18px; }
+  .final h2 .ar { font-family:'Cairo',sans-serif; font-size:.85rem; color:var(--gold); font-weight:600; direction:rtl; display:block; margin-top:2px; }
+
+  /* BIT DIAGRAM */
+  .bitrow { display:flex; gap:2px; margin:8px 0; font-family:'JetBrains Mono',monospace; font-size:11px; flex-wrap:nowrap; overflow-x:auto; }
+  .bit { background:var(--mid-blue); border:1px solid var(--border); border-radius:4px; padding:4px 6px; text-align:center; min-width:28px; color:var(--text); }
+  .bit.h { background:rgba(0,200,255,.15); color:var(--accent); font-weight:700; }
+  .bit.r2 { background:rgba(255,201,64,.12); color:var(--gold); font-weight:700; }
+  .bit.g2 { background:rgba(62,255,160,.1); color:var(--green); font-weight:700; }
+
+  @media(max-width:640px){
+    .hero h1{font-size:2.15rem}
+    .container{padding:28px 14px 70px}
+    .card{padding:18px 16px}
+    .lang-bar{flex-wrap:wrap}
+  }
 </style>
 </head>
 <body>
-<div class="hero"><div class="badge">Chapter 2 · Computer Organization & Architecture</div><h1>Instructions: <span>Language of the Computer</span></h1><div class="ar-title">لغة الحاسوب والتعليمات — دليل الدراسة الشامل</div><p>Complete bilingual study guide · English primary with Arabic explanation · examples, conversions, formulas, and exam questions</p></div>
-<div class="lang-bar">📘 <strong>English</strong> — Main content &nbsp;|&nbsp; 🌙 <strong style="color:var(--gold)">العربي</strong> — Translation & explanation boxes</div>
-<div class="container">
-<hr class="div">
 
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Chapter 2 · Computer Organization & Architecture</div>
+  <h1>Instructions: <span>Language of the Computer</span></h1>
+  <div class="ar-title">التعليمات: لغة الحاسوب — دليل الدراسة الشامل</div>
+  <p>Final merged bilingual study guide · Addressability · RISC vs CISC · MIPS Assembly · Number Systems · Worked Examples & Practice Questions</p>
+</div>
+
+<div class="lang-bar">
+  📘 <strong>English</strong> — Main content &nbsp;|&nbsp; 🌙 <strong style="color:var(--gold)">العربي</strong> — Translation & explanation &nbsp;|&nbsp; 💻 <strong style="color:var(--green)">Code</strong> — MIPS Assembly examples
+</div>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §0  ADDRESSABILITY & MEMORY LOCATIONS            -->
+<!-- ══════════════════════════════════════════════════ -->
 <div class="section-header">
 <div class="sec-num">0</div>
 <div class="sec-titles">
@@ -284,487 +441,952 @@ Which bus determines the size of each location?
 </div>
 </div>
 
-
-<div class="section-header"><div class="sec-num">1</div><div class="sec-titles"><h2>Instruction Set Architecture (ISA)</h2><div class="ar">معمارية مجموعة التعليمات</div></div></div>
-<div class="card"><div class="card-title">What is an Instruction Set? <span class="ar">ما هي مجموعة التعليمات؟</span></div><p>An <strong>instruction set</strong> is the collection of commands that a CPU can understand and execute. These commands are represented internally as <strong>machine language</strong> — 0s and 1s.</p><ul><li>Different computers may have different instruction sets.</li><li>Most ISAs share common ideas: arithmetic, data transfer, logic, branches, and jumps.</li><li>ISA is the contract between software and hardware.</li></ul><div class="ar-box"><div class="ar-label">Arabic Explanation</div>مجموعة التعليمات هي اللغة التي يفهمها المعالج. البرنامج الذي تكتبه بلغة C أو Java لا يفهمه المعالج مباشرة، لذلك يُترجم إلى تعليمات بلغة الآلة: 0 و 1. الـ ISA تحدد شكل هذه التعليمات، السجلات، طريقة الوصول للذاكرة، وأنواع العمليات.</div></div>
-<div class="card"><div class="card-title">Big Picture <span class="ar">الصورة العامة</span></div><div class="flow"><div class="fbox p">High-Level Code<br><small class="small">C / Java</small></div><div class="arrow">→</div><div class="fbox a">Assembly<br><small class="small">MIPS</small></div><div class="arrow">→</div><div class="fbox o">Machine Code<br><small class="small">0s & 1s</small></div><div class="arrow">→</div><div class="fbox">CPU Execution</div></div><div class="ar-box"><div class="ar-label">Arabic</div>الكود يمر بمراحل: كود عالي المستوى ثم Assembly ثم Machine Code ثم ينفذه المعالج.</div></div>
-
 <hr class="div">
-<div class="section-header"><div class="sec-num">2</div><div class="sec-titles"><h2>RISC vs CISC</h2><div class="ar">المقارنة بين RISC و CISC</div></div></div>
-<div class="grid2"><div class="card"><div class="card-title">CISC <span class="ar">تعليمات معقدة</span></div><p><strong>Complex Instruction Set Computer</strong></p><ul><li>Large number of instructions.</li><li>Variable instruction length.</li><li>A single instruction may perform multiple operations.</li><li>Hardware and decoding are more complex.</li></ul><pre>mov ax, 10
-mov bx, 5
-mul bx</pre><div class="ar-box"><div class="ar-label">Arabic</div>CISC تعني أن المعالج يمتلك تعليمات كثيرة ومعقدة. أحياناً تعليمة واحدة تعمل أكثر من خطوة، لذلك البرنامج يكون أقصر لكن التنفيذ وفك الترميز أعقد.</div></div><div class="card"><div class="card-title">RISC <span class="ar">تعليمات مخفضة وبسيطة</span></div><p><strong>Reduced Instruction Set Computer</strong></p><ul><li>Small but complete instruction set.</li><li>Fixed instruction length.</li><li>One instruction usually performs one simple operation.</li><li>Faster execution and easier pipelining.</li></ul><pre>mov ax, 0
-mov bx, 10
-mov cx, 5
-Loop: add ax, bx
-      loop Loop</pre><div class="ar-box"><div class="ar-label">Arabic</div>RISC تعتمد على تعليمات بسيطة وسريعة. كل تعليمة تعمل عملية واحدة غالباً، لذلك عدد التعليمات قد يزيد لكن كل تعليمة أسرع وأسهل على المعالج.</div></div></div>
-<div class="card"><div class="card-title">Formal Comparison <span class="ar">جدول المقارنة الرسمي</span></div><div class="table-wrap"><table><thead><tr><th>Property</th><th>RISC</th><th>CISC</th></tr></thead><tbody><tr><td>Instruction Count</td><td class="g">Few</td><td class="r">Many</td></tr><tr><td>Instruction Length</td><td class="g">Fixed size</td><td class="r">Variable size</td></tr><tr><td>Execution</td><td class="g">Fast/simple</td><td class="y">May be slower/complex</td></tr><tr><td>Memory Access</td><td>Explicit load/store only</td><td>Many instructions can access memory</td></tr><tr><td>Compiler Role</td><td>Compiler produces efficient instruction sequences</td><td>Hardware handles more complex instructions</td></tr><tr><td>Examples</td><td>MIPS, ARM, SPARC</td><td>Intel x86</td></tr></tbody></table></div><div class="highlight"><strong>Performance idea:</strong> RISC reduces time by reducing clock cycles per instruction. CISC tries to reduce the number of instructions per program.</div><div class="ar-box"><div class="ar-label">Arabic Summary</div>RISC أسرع لأن التعليمات بسيطة وثابتة الحجم. CISC يحاول تقليل عدد التعليمات، لكن التعليمة نفسها قد تكون أبطأ وأعقد.</div></div>
-<div class="card"><div class="card-title">Clock Cycle Example <span class="ar">مثال دورات الساعة</span></div><p>CISC multiplication may use fewer instructions but one complex instruction can take many cycles.</p><div class="formula"><div class="flabel">CISC</div>(2 mov × 1 cycle) + (1 mul × 30 cycles) = 32 cycles</div><div class="formula"><div class="flabel">RISC</div>(3 mov × 1 cycle) + (5 add × 1 cycle) + (5 loop × 1 cycle) = 13 cycles</div><div class="ar-box"><div class="ar-label">Arabic</div>رغم أن CISC يستخدم تعليمات أقل، تعليمة مثل mul قد تكون بطيئة جداً. RISC يستخدم تعليمات أكثر لكنها بسيطة وسريعة، لذلك قد يكون المجموع أقل.</div></div>
 
-<hr class="div">
-<div class="section-header"><div class="sec-num">3</div><div class="sec-titles"><h2>MIPS Architecture & Design Principles</h2><div class="ar">معمارية MIPS ومبادئ التصميم</div></div></div>
-<div class="card"><div class="card-title">MIPS Overview <span class="ar">نظرة عامة</span></div><p><strong>MIPS</strong> = Microprocessor without Interlocked Pipeline Stages. It is a RISC ISA used as the main example in this chapter.</p><ul><li>32-bit instruction words.</li><li>32 registers, each 32 bits.</li><li>Load/store architecture.</li><li>Simple and regular instruction formats.</li></ul><div class="ar-box"><div class="ar-label">Arabic</div>MIPS معمارية RISC تعليماتها بسيطة وثابتة الحجم، وتستخدم كثيراً في شرح مبادئ تنظيم الحاسوب لأنها واضحة ومنتظمة.</div></div>
-<div class="card"><div class="card-title">MIPS Design Principles <span class="ar">مبادئ التصميم</span></div><div class="table-wrap"><table><thead><tr><th>Principle</th><th>Meaning</th><th>Example</th><th>بالعربي</th></tr></thead><tbody><tr><td>Simplicity favors regularity</td><td>Regular formats simplify hardware</td><td>add/sub use 3 operands</td><td>البساطة والانتظام تجعل التنفيذ أسهل</td></tr><tr><td>Smaller is faster</td><td>Small register file is fast</td><td>32 registers</td><td>الأصغر أسرع</td></tr><tr><td>Make the common case fast</td><td>Optimize frequent operations</td><td>addi for constants</td><td>سرّع الأكثر استخداماً</td></tr><tr><td>Good design demands compromises</td><td>Balance simplicity and capability</td><td>R/I/J formats</td><td>التصميم الجيد يحتاج تنازلات</td></tr></tbody></table></div></div>
 
-<hr class="div">
-<div class="section-header"><div class="sec-num">4</div><div class="sec-titles"><h2>Registers and Operands</h2><div class="ar">السجلات والمعاملات</div></div></div>
-<div class="card"><div class="card-title">Register Operands <span class="ar">المعاملات داخل السجلات</span></div><p>MIPS arithmetic instructions operate on registers. A 32-bit data item is called a <strong>word</strong>.</p><div class="highlight"><strong>MIPS register file:</strong> 32 registers × 32 bits.</div><div class="table-wrap"><table><thead><tr><th>Register</th><th>Purpose</th><th>Numbers</th></tr></thead><tbody><tr><td>$t0–$t7</td><td>Temporary values</td><td>8–15</td></tr><tr><td>$t8–$t9</td><td>Temporary values</td><td>24–25</td></tr><tr><td>$s0–$s7</td><td>Saved variables</td><td>16–23</td></tr><tr><td>$a0–$a3</td><td>Arguments</td><td>4–7</td></tr><tr><td>$v0–$v1</td><td>Return values</td><td>2–3</td></tr><tr><td>$gp</td><td>Global pointer</td><td>28</td></tr><tr><td>$sp</td><td>Stack pointer</td><td>29</td></tr><tr><td>$fp</td><td>Frame pointer</td><td>30</td></tr><tr><td>$ra</td><td>Return address</td><td>31</td></tr></tbody></table></div><div class="ar-box"><div class="ar-label">Arabic</div>السجلات أسرع بكثير من الذاكرة. لذلك يحاول المترجم وضع المتغيرات المهمة داخل Registers قدر الإمكان.</div></div>
-<div class="card"><div class="card-title">Memory vs Registers <span class="ar">الذاكرة مقابل السجلات</span></div><ul><li>Registers are fast but few.</li><li>Main memory is large but slower.</li><li>To operate on memory values, MIPS must first load them into registers.</li><li>After computation, results can be stored back to memory.</li></ul><div class="flow"><div class="fbox a">Memory</div><div class="arrow">lw</div><div class="fbox o">Register</div><div class="arrow">add/sub</div><div class="fbox o">Register</div><div class="arrow">sw</div><div class="fbox a">Memory</div></div></div>
 
-<hr class="div">
-<div class="section-header"><div class="sec-num">5</div><div class="sec-titles"><h2>Arithmetic and Immediate Operations</h2><div class="ar">العمليات الحسابية والفورية</div></div></div>
-<div class="card"><div class="card-title">Arithmetic Format <span class="ar">شكل العمليات الحسابية</span></div><p>MIPS arithmetic instructions usually use <strong>three operands</strong>: destination, source 1, source 2.</p><pre>add $t0, $s1, $s2   # $t0 = $s1 + $s2
-sub $t0, $s1, $s2   # $t0 = $s1 - $s2</pre><div class="ar-box"><div class="ar-label">Arabic</div>العملية الحسابية في MIPS غالباً تأخذ 3 معاملات: مكان النتيجة ثم أول مصدر ثم ثاني مصدر.</div></div>
-<div class="card"><div class="card-title">Example: C to MIPS <span class="ar">مثال تحويل من C إلى MIPS</span></div><p><strong>C code:</strong></p><pre>f = (g + h) - (i + j);</pre><p><strong>Assume:</strong> f=$s0, g=$s1, h=$s2, i=$s3, j=$s4</p><pre>add $t0, $s1, $s2   # $t0 = g + h
-add $t1, $s3, $s4   # $t1 = i + j
-sub $s0, $t0, $t1   # f = $t0 - $t1</pre><div class="ar-box"><div class="ar-label">Arabic Steps</div>نحسب أول قوس في سجل مؤقت، ثم نحسب القوس الثاني في سجل مؤقت آخر، ثم نطرح النتيجتين ونضعها في f.</div></div>
-<div class="card"><div class="card-title">Immediate Operand <span class="ar">المعامل الفوري</span></div><p>An immediate is a constant stored directly inside the instruction.</p><pre>addi $s3, $s3, 4    # $s3 = $s3 + 4
-addi $s2, $s1, -1   # $s2 = $s1 - 1</pre><div class="highlight"><strong>No subtract immediate:</strong> use addi with a negative constant.</div><div class="ar-box"><div class="ar-label">Arabic</div>إذا أردت طرح عدد ثابت، استخدم addi مع رقم سالب. مثال: addi $s2,$s1,-1 تعني s2 = s1 - 1.</div></div>
-<div class="card"><div class="card-title">The Constant Zero <span class="ar">السجل صفر</span></div><p><strong>$zero</strong> always contains 0 and cannot be overwritten.</p><pre>add $t2, $s1, $zero   # copy $s1 into $t2</pre><div class="ar-box"><div class="ar-label">Arabic</div>السجل $zero قيمته دائماً صفر. نستخدمه للنسخ أو المقارنات أو عمليات أخرى تحتاج صفر.</div></div>
-
-<hr class="div">
-<div class="section-header"><div class="sec-num">6</div><div class="sec-titles"><h2>Memory Operands: lw and sw</h2><div class="ar">تعليمات الذاكرة: تحميل وتخزين</div></div></div>
-<div class="card"><div class="card-title">Byte Addressing and Word Alignment <span class="ar">العنونة بالبايت ومحاذاة الكلمة</span></div><ul><li>Memory is byte-addressed: each address refers to 8 bits.</li><li>A word = 4 bytes = 32 bits.</li><li>Word addresses should be multiples of 4.</li><li>MIPS is Big Endian: most significant byte is stored at the smallest address.</li></ul><div class="formula"><div class="flabel">Array Offset Rule</div>Offset = index × 4 bytes</div><div class="ar-box"><div class="ar-label">Arabic</div>كل عنصر int في MIPS حجمه 4 بايت، لذلك عند الوصول إلى A[8] نضرب 8 × 4 = 32.</div></div>
-<div class="card"><div class="card-title">Example 1: Load Array Element <span class="ar">مثال تحميل عنصر مصفوفة</span></div><p><strong>C code:</strong></p><pre>g = h + A[8];</pre><p><strong>Assume:</strong> g=$s1, h=$s2, base address of A=$s3</p><pre>lw  $t0, 32($s3)    # $t0 = A[8]
-add $s1, $s2, $t0   # g = h + A[8]</pre><div class="ar-box"><div class="ar-label">Arabic</div>نحمّل A[8] من الذاكرة إلى $t0، ثم نجمعه مع h ونضع النتيجة في g.</div></div>
-<div class="card"><div class="card-title">Example 2: Store Array Element <span class="ar">مثال تخزين في المصفوفة</span></div><p><strong>C code:</strong></p><pre>A[12] = h + A[8];</pre><pre>lw  $t0, 32($s3)    # $t0 = A[8]
-add $t0, $s2, $t0   # $t0 = h + A[8]
-sw  $t0, 48($s3)    # A[12] = $t0</pre><div class="formula"><div class="flabel">Why offsets?</div>A[8]  → 8 × 4  = 32
-A[12] → 12 × 4 = 48</div></div>
-
-<hr class="div">
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §1  INSTRUCTION SET ARCHITECTURE (ISA)           -->
+<!-- ══════════════════════════════════════════════════ -->
 <div class="section-header">
-<div class="sec-num">7</div>
-<div class="sec-titles">
-<h2>Signed and Unsigned Numbers</h2>
-<div class="ar">الأعداد الموقعة وغير الموقعة</div>
-</div>
-</div>
-
-<div class="card">
-<div class="card-title">Unsigned Binary Integers <span class="ar">الأعداد الثنائية غير الموقعة</span></div>
-
-<p>Unsigned numbers represent only non-negative values.</p>
-
-<div class="formula">
-<div class="flabel">Range</div>
-n-bit unsigned range = 0 to 2^n - 1
-</div>
-
-<pre>
-1011₂ = 1×2³ + 0×2² + 1×2¹ + 1×2⁰
-      = 8 + 0 + 2 + 1
-      = 11₁₀
-</pre>
-
-<div class="ar-box">
-<div class="ar-label">Arabic</div>
-إذا العدد Unsigned فلا يوجد إشارة سالبة.
-جميع البتات تستخدم لتمثيل القيمة فقط.
-</div>
+  <div class="sec-num">1</div>
+  <div class="sec-titles">
+    <h2>Instruction Set Architecture (ISA)</h2>
+    <div class="ar">معمارية مجموعة التعليمات</div>
+  </div>
 </div>
 
 <div class="card">
-<div class="card-title">Signed vs Unsigned Comparison <span class="ar">مقارنة Signed و Unsigned</span></div>
-
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Unsigned</th>
-<th>Signed (2's Complement)</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>Negative Numbers</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-
-<tr>
-<td>Sign Bit</td>
-<td>Not Used</td>
-<td>MSB</td>
-</tr>
-
-<tr>
-<td>8-bit Range</td>
-<td>0 → 255</td>
-<td>-128 → 127</td>
-</tr>
-
-<tr>
-<td>16-bit Range</td>
-<td>0 → 65535</td>
-<td>-32768 → 32767</td>
-</tr>
-
-<tr>
-<td>32-bit Range</td>
-<td>0 → 4294967295</td>
-<td>-2147483648 → 2147483647</td>
-</tr>
-
-</tbody>
-</table>
+  <div class="card-title">What is an Instruction Set? <span class="ar">ما هي مجموعة التعليمات؟</span></div>
+  <p>An <strong>Instruction Set (ISA)</strong> is the complete vocabulary of commands that a CPU can understand and execute. It is the interface between software and hardware.</p>
+  <ul>
+    <li>The language consists of 1s and 0s — <strong>machine language</strong>.</li>
+    <li>Different computers have different ISAs, but share many common concepts.</li>
+    <li>Early computers had very simple instruction sets (simplified implementation).</li>
+    <li>Modern computers: some simple (RISC), some complex (CISC).</li>
+  </ul>
+  <div class="ar-box">
+    <div class="ar-label">Arabic Explanation</div>
+    الـ ISA (Instruction Set Architecture) هو المفردات الكاملة للأوامر التي يفهمها المعالج وينفذها — الواجهة بين البرمجيات والعتاد.<br>
+    اللغة عبارة عن أصفار وواحدات (Machine Language). كل نوع معالج له ISA مختلف، لكنها تتشارك مفاهيم كثيرة.<br>
+    ظهرت مدرستان رئيسيتان: <strong>CISC</strong> (معقد) و<strong>RISC</strong> (مبسّط).
+  </div>
 </div>
-
-<div class="ar-box">
-<div class="ar-label">Arabic</div>
-Unsigned يستخدم جميع البتات للقيمة.
-أما Signed فيستخدم أول بت كبت إشارة.
-</div>
-</div>
-
-<div class="card">
-<div class="card-title">Two's Complement Signed Integers <span class="ar">الأعداد الموقعة بطريقة متمم الاثنين</span></div>
-
-<p>
-In 2's complement, the leftmost bit is the sign bit:
-0 = non-negative
-1 = negative
-</p>
-
-<div class="formula">
-<div class="flabel">Signed Range</div>
-n-bit signed range = -2^(n-1) to +2^(n-1)-1
-</div>
-
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Bits</th>
-<th>Signed Range</th>
-<th>Unsigned Range</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>8</td>
-<td>-128 to +127</td>
-<td>0 to 255</td>
-</tr>
-
-<tr>
-<td>16</td>
-<td>-32768 to +32767</td>
-<td>0 to 65535</td>
-</tr>
-
-<tr>
-<td>32</td>
-<td>-2,147,483,648 to +2,147,483,647</td>
-<td>0 to 4,294,967,295</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div class="ar-box">
-<div class="ar-label">Arabic</div>
-في 2's Complement أول بت هو بت الإشارة.
-0 = موجب
-1 = سالب
-</div>
-</div>
-
-<div class="grid2">
-
-<div class="card">
-<div class="card-title">One's Complement <span class="ar">متمم الواحد</span></div>
-
-<p>Flip every bit.</p>
-
-<pre>
-+5 = 00000101
-
-1's Complement
-
-11111010
-</pre>
-
-</div>
-
-<div class="card">
-<div class="card-title">Two's Complement <span class="ar">متمم الاثنين</span></div>
-
-<p>Flip every bit then add 1.</p>
-
-<pre>
-+5 = 00000101
-
-Flip
-11111010
-
-+1
-11111011
-
-Answer:
--5 = 11111011
-</pre>
-
-</div>
-
-</div>
-
-<div class="card">
-<div class="card-title">Worked Examples <span class="ar">أمثلة محلولة</span></div>
-
-<div class="grid2">
-
-<div class="highlight">
-
-<strong>Find -13 in 8-bit 2's Complement</strong>
-
-<pre>
-+13 = 00001101
-
-Flip
-11110010
-
-+1
-11110011
-
-Answer:
-11110011
-</pre>
-
-</div>
-
-<div class="highlight">
-
-<strong>Convert 11110110 to Decimal</strong>
-
-<pre>
-MSB = 1
-
-Negative
-
-Flip
-00001001
-
-+1
-00001010
-
-= 10
-
-Answer:
--10
-</pre>
-
-</div>
-
-</div>
-
-<div class="ar-box">
-<div class="ar-label">Arabic Exam Trick</div>
-إذا أول بت = 1 فالعدد سالب.
-اقلب البتات ثم أضف 1 ثم ضع إشارة سالبة.
-</div>
-
-</div>
-
-<div class="card">
-<div class="card-title">Additional Examples <span class="ar">أمثلة إضافية</span></div>
-
-<div class="grid2">
-
-<div class="highlight">
-
-<strong>Find -25</strong>
-
-<pre>
-+25 = 00011001
-
-Flip
-11100110
-
-+1
-11100111
-
-Answer:
-11100111
-</pre>
-
-</div>
-
-<div class="highlight">
-
-<strong>Convert 11101011 to Decimal</strong>
-
-<pre>
-MSB = 1
-
-Flip
-00010100
-
-+1
-00010101
-
-= 21
-
-Answer:
--21
-</pre>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-<div class="card-title">Exam Questions <span class="ar">أسئلة امتحانية</span></div>
-
-<div class="note">
-Q1: What is the range of an 8-bit unsigned number?
-</div>
-
-<div class="highlight">
-Answer:
-0 → 255
-</div>
-
-<div class="note">
-Q2: What is the range of an 8-bit signed number?
-</div>
-
-<div class="highlight">
-Answer:
--128 → 127
-</div>
-
-<div class="note">
-Q3: Convert -9 to 8-bit 2's complement.
-</div>
-
-<div class="highlight">
-+9 = 00001001
-
-Flip = 11110110
-
-+1 = 11110111
-</div>
-
-<div class="note">
-Q4: Convert 11111001 to decimal.
-</div>
-
-<div class="highlight">
-Answer:
--7
-</div>
-
-</div>
-
-<div class="card">
-<div class="card-title">Sign Extension <span class="ar">توسيع الإشارة</span></div>
-
-<p>
-When increasing the number of bits,
-preserve the value by copying the sign bit.
-</p>
-
-<pre>
-+2
-
-00000010
-
-↓
-
-00000000 00000010
-
-
--2
-
-11111110
-
-↓
-
-11111111 11111110
-</pre>
-
-<div class="ar-box">
-<div class="ar-label">Arabic</div>
-في الأعداد الموجبة نضيف أصفاراً.
-في الأعداد السالبة نكرر 1 من اليسار.
-</div>
-
-</div>
-<hr class="div">
-<div class="section-header"><div class="sec-num">8</div><div class="sec-titles"><h2>Representing Instructions</h2><div class="ar">تمثيل التعليمات داخل الحاسوب</div></div></div>
-<div class="card"><div class="card-title">Machine Code <span class="ar">لغة الآلة</span></div><p>Instructions are encoded as binary numbers. In MIPS, each instruction is a 32-bit instruction word.</p><div class="ar-box"><div class="ar-label">Arabic</div>تعليمة Assembly مثل add أو lw يتم تحويلها إلى 32 بت داخل المعالج. هذا التمثيل الثنائي يسمى Machine Code.</div></div>
-<div class="card"><div class="card-title">R-Format <span class="ar">صيغة R</span></div><p>Used for register-register operations such as add, sub, and, or.</p><div class="formula"><div class="flabel">R-format fields</div>| op (6) | rs (5) | rt (5) | rd (5) | shamt (5) | funct (6) |</div><div class="table-wrap"><table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td>op</td><td>Operation code. For R-format usually 0.</td></tr><tr><td>rs</td><td>First source register.</td></tr><tr><td>rt</td><td>Second source register.</td></tr><tr><td>rd</td><td>Destination register.</td></tr><tr><td>shamt</td><td>Shift amount.</td></tr><tr><td>funct</td><td>Function code that specifies exact operation.</td></tr></tbody></table></div></div>
-<div class="card"><div class="card-title">R-format Example: add $t0,$s1,$s2 <span class="ar">مثال صيغة R</span></div><div class="formula"><div class="flabel">Register numbers</div>$s1 = 17, $s2 = 18, $t0 = 8</div><div class="formula"><div class="flabel">Decimal fields</div>op=0, rs=17, rt=18, rd=8, shamt=0, funct=32</div><div class="formula"><div class="flabel">Binary fields</div>000000 10001 10010 01000 00000 100000</div><div class="formula"><div class="flabel">Machine code</div>00000010001100100100000000100000₂ = 0x02324020</div><div class="ar-box"><div class="ar-label">Arabic Steps</div>نحدد نوع التعليمة R-format، ثم نكتب أرقام السجلات، ثم نحول كل حقل إلى عدد البتات الخاص به، وفي النهاية نجمع الحقول لتكوين 32 بت.</div></div>
-<div class="card"><div class="card-title">I-Format <span class="ar">صيغة I</span></div><p>Used for immediate arithmetic and load/store/branch instructions.</p><div class="formula"><div class="flabel">I-format fields</div>| op (6) | rs (5) | rt (5) | constant/address (16) |</div><ul><li><strong>addi:</strong> rt is destination.</li><li><strong>lw:</strong> rt is destination, rs is base.</li><li><strong>sw:</strong> rt is source, rs is base.</li><li><strong>beq/bne:</strong> rs and rt are compared.</li></ul><div class="ar-box"><div class="ar-label">Arabic</div>صيغة I تستخدم عندما يوجد رقم ثابت immediate أو عنوان إزاحة offset مثل lw و sw و addi و beq و bne.</div></div>
-<div class="card"><div class="card-title">Hexadecimal <span class="ar">النظام السادس عشر</span></div><p>Hex is a compact way to represent binary. Every hex digit equals 4 bits.</p><div class="table-wrap"><table><thead><tr><th>Hex</th><th>Binary</th><th>Hex</th><th>Binary</th></tr></thead><tbody><tr><td>0</td><td>0000</td><td>8</td><td>1000</td></tr><tr><td>1</td><td>0001</td><td>9</td><td>1001</td></tr><tr><td>2</td><td>0010</td><td>A</td><td>1010</td></tr><tr><td>3</td><td>0011</td><td>B</td><td>1011</td></tr><tr><td>4</td><td>0100</td><td>C</td><td>1100</td></tr><tr><td>5</td><td>0101</td><td>D</td><td>1101</td></tr><tr><td>6</td><td>0110</td><td>E</td><td>1110</td></tr><tr><td>7</td><td>0111</td><td>F</td><td>1111</td></tr></tbody></table></div><pre>A3₁₆ = 1010 0011₂
-1110 1100₂ = EC₁₆</pre></div>
 
 <hr class="div">
-<div class="section-header"><div class="sec-num">9</div><div class="sec-titles"><h2>Logical and Shift Operations</h2><div class="ar">العمليات المنطقية والإزاحة</div></div></div>
-<div class="card"><div class="card-title">Logical Operations <span class="ar">العمليات المنطقية</span></div><div class="table-wrap"><table><thead><tr><th>Operation</th><th>C/Java</th><th>MIPS</th><th>Use</th></tr></thead><tbody><tr><td>AND</td><td>&amp;</td><td>and, andi</td><td>Mask bits / clear bits</td></tr><tr><td>OR</td><td>|</td><td>or, ori</td><td>Set bits</td></tr><tr><td>NOT</td><td>~</td><td>nor with $zero</td><td>Invert bits</td></tr></tbody></table></div><pre>1010 AND 1100 = 1000
-1010 OR  1100 = 1110
-NOT 1100 = 0011</pre><div class="ar-box"><div class="ar-label">Arabic</div>AND تستخدم لإخفاء أو تصفير بعض البتات. OR تستخدم لجعل بعض البتات 1. أما NOT في MIPS تُنفذ غالباً باستخدام nor مع $zero.</div></div>
-<div class="card"><div class="card-title">NOR as NOT <span class="ar">استخدام NOR كـ NOT</span></div><pre>nor $t0, $t1, $zero
-# $t0 = NOT($t1 OR 0) = NOT($t1)</pre></div>
-<div class="card"><div class="card-title">Shift Operations <span class="ar">عمليات الإزاحة</span></div><div class="grid2"><div class="highlight"><strong>sll — Shift Left Logical</strong><pre>sll by i bits = multiply by 2^i
-0010 << 2 = 1000
-2 × 4 = 8</pre></div><div class="highlight"><strong>srl — Shift Right Logical</strong><pre>srl by i bits = divide by 2^i
-1000 >> 2 = 0010
-8 ÷ 4 = 2</pre></div></div><div class="ar-box"><div class="ar-label">Arabic</div>الإزاحة لليسار تضاعف العدد بقوى 2. الإزاحة لليمين تقسم العدد على قوى 2، وتستخدم هنا للأعداد غير الموقعة.</div></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §2  RISC vs CISC                                 -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num orange">2</div>
+  <div class="sec-titles">
+    <h2>RISC vs CISC Architecture</h2>
+    <div class="ar">المقارنة بين RISC و CISC</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">CISC — Complex Instruction Set Computer <span class="ar">الحاسوب ذو مجموعة التعليمات المعقدة</span></div>
+  <ul>
+    <li>Large number of instructions, of <strong>variable length</strong>.</li>
+    <li>Instructions have complex layouts and can perform <strong>multiple operations</strong> in a single instruction.</li>
+    <li>A small subset of complex instructions slows the entire system.</li>
+    <li>Memory access embedded directly in many instructions.</li>
+    <li><strong>Example:</strong> Intel x86 architecture (&gt;1000 instructions, 1–15 bytes each).</li>
+  </ul>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    CISC: عدد كبير من التعليمات ذات أطوال متغيرة. تعليمة واحدة يمكن أن تنفذ عمليات متعددة دفعةً واحدة.<br>
+    المشكلة: مجموعة صغيرة من التعليمات المعقدة تُبطّئ النظام كله.<br>
+    مثال شهير: <strong>Intel x86</strong> — أكثر من 1000 تعليمة، كل تعليمة من 1 إلى 15 بايت.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">RISC — Reduced Instruction Set Computer <span class="ar">الحاسوب ذو مجموعة التعليمات المختصرة</span></div>
+  <ul>
+    <li>Small but <strong>complete</strong> instruction set, hardwired for speed.</li>
+    <li>Each instruction performs <strong>one operation only</strong>.</li>
+    <li>All instructions are the <strong>same size</strong> (32 bits in MIPS).</li>
+    <li>Memory accessed <strong>only</strong> via explicit <code>load</code> and <code>store</code> instructions.</li>
+    <li>The <strong>compiler</strong> is responsible for producing efficient code.</li>
+    <li><strong>Examples:</strong> MIPS, ARM, SPARC. &nbsp; <span class="tag g">~200 instructions, all 32-bit</span></li>
+  </ul>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    RISC: مجموعة صغيرة لكن كاملة من التعليمات، مُبرمجة بالأسلاك لتكون سريعة.<br>
+    كل تعليمة تنفذ عملية واحدة فقط. كل التعليمات بنفس الحجم (32 بت في MIPS).<br>
+    الذاكرة تُوصل فقط عبر load وstore. المترجم (Compiler) هو المسؤول عن توليد كود فعّال.<br>
+    أمثلة: <strong>MIPS، ARM، SPARC</strong>.
+  </div>
+</div>
+
+<!-- DETAILED RISC vs CISC -->
+<div class="card">
+  <div class="card-title">Deep Dive: The Core Philosophical Difference <span class="ar">الفلسفة الجوهرية للفرق</span></div>
+  <p>The underlying philosophy of RISC: <em>"A system performs better when programs consist of only a few different instructions that are the same length and take the same number of clock cycles."</em></p>
+  <div class="highlight">
+    <strong>Performance Equation:</strong> &nbsp; CPU Time = Instruction Count × CPI × Clock Cycle Time
+    <br><br>
+    <span class="g">RISC</span> reduces <strong>CPI</strong> (Clock cycles Per Instruction) → fewer cycles per instruction.<br>
+    <span class="r">CISC</span> reduces <strong>Instruction Count</strong> → fewer instructions per program.
+  </div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    فلسفة RISC: النظام يعمل بشكل أفضل عندما يتكون من تعليمات قليلة متماثلة الطول وتستهلك نفس الدورات.<br>
+    <strong>معادلة الأداء:</strong> زمن المعالج = عدد التعليمات × دورات لكل تعليمة × زمن الدورة<br>
+    RISC يقلل <strong>CPI</strong> (دورات لكل تعليمة). CISC يقلل <strong>عدد التعليمات</strong> في البرنامج.
+  </div>
+</div>
+
+<!-- RISC vs CISC WORKED EXAMPLE -->
+<div class="card">
+  <div class="card-title">Worked Example: Multiply 10 × 5 <span class="ar">مثال محلول: ضرب 10 × 5</span></div>
+  <p>Consider computing <strong>10 × 5</strong> using CISC vs RISC:</p>
+  <div class="grid2">
+    <div>
+      <p style="color:var(--red); font-weight:700; margin-bottom:6px">CISC Version:</p>
+      <div class="code"><div class="clabel">CISC Assembly (x86-style)</div>mov ax, 10    <span class="comment"># load 10</span>
+mov bx, 5     <span class="comment"># load 5</span>
+mul bx, ax    <span class="comment"># multiply in 1 instruction</span></div>
+      <div class="note"><div class="note-label">Clock Cycles</div>2 × mov = 2 cycles<br>1 × mul = 30 cycles<br><strong>Total = 32 cycles</strong></div>
+    </div>
+    <div>
+      <p style="color:var(--green); font-weight:700; margin-bottom:6px">RISC Version:</p>
+      <div class="code"><div class="clabel">RISC Assembly (MIPS-style)</div>mov ax, 0     <span class="comment"># accumulator = 0</span>
+mov bx, 10    <span class="comment"># multiplicand</span>
+mov cx, 5     <span class="comment"># counter</span>
+Begin:
+  add ax, bx  <span class="comment"># ax += 10</span>
+  loop Begin  <span class="comment"># repeat 5 times</span></div>
+      <div class="gnote"><div class="gnote-label">Clock Cycles</div>3 × mov = 3 cycles<br>5 × add = 5 cycles<br>5 × loop = 5 cycles<br><strong>Total = 13 cycles</strong></div>
+    </div>
+  </div>
+  <div class="highlight"><strong>Conclusion:</strong> RISC uses more instructions but fewer total clock cycles → faster execution (13 vs 32 cycles). RISC clock cycles are also shorter in duration.</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic Explanation</div>
+    نفس العملية (10 × 5) على CISC تستغرق 32 دورة (mov بسيطة + mul معقدة 30 دورة).<br>
+    على RISC تستغرق 13 دورة فقط (3 mov + 5 add + 5 loop) لأن كل تعليمة بسيطة = دورة واحدة.<br>
+    <strong>النتيجة:</strong> RISC يستخدم تعليمات أكثر لكن دورات إجمالية أقل = أسرع في التنفيذ!
+  </div>
+</div>
+
+<!-- FULL COMPARISON TABLE -->
+<div class="card">
+  <div class="card-title">RISC vs CISC — Full Comparison Table <span class="ar">جدول المقارنة الشاملة</span></div>
+  <div class="vs-grid">
+    <div class="vs-header risc">✓ RISC (e.g., MIPS, ARM)</div>
+    <div class="vs-header cisc">✗ CISC (e.g., Intel x86)</div>
+    <div class="vs-cell risc">~200 instructions</div><div class="vs-cell cisc">&gt;1000 instructions</div>
+    <div class="vs-cell risc">Fixed instruction length (32-bit)</div><div class="vs-cell cisc">Variable length (1–15 bytes)</div>
+    <div class="vs-cell risc">Each instruction = 1 operation</div><div class="vs-cell cisc">1 instruction = multiple operations</div>
+    <div class="vs-cell risc">Memory via load/store ONLY</div><div class="vs-cell cisc">Many instructions access memory</div>
+    <div class="vs-cell risc">Uniform fetch-decode-execute time</div><div class="vs-cell cisc">Unpredictable fetch-decode-execute</div>
+    <div class="vs-cell risc">Compiler does the hard work</div><div class="vs-cell cisc">Hardware does the hard work</div>
+    <div class="vs-cell risc">Reduces CPI (cycles per instruction)</div><div class="vs-cell cisc">Reduces instruction count per program</div>
+    <div class="vs-cell risc">Hardwired control → faster</div><div class="vs-cell cisc">Microcode control → slower</div>
+    <div class="vs-cell risc">Better for pipelines</div><div class="vs-cell cisc">Harder to pipeline</div>
+  </div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic Summary</div>
+    RISC: ~200 تعليمة بحجم ثابت 32 بت، كل تعليمة عملية واحدة، الذاكرة عبر load/store فقط، وقت تنفيذ متوقع، المترجم يقوم بالعمل الثقيل.<br>
+    CISC: &gt;1000 تعليمة بأحجام متغيرة، تعليمة واحدة قد تنفذ عمليات متعددة، وقت تنفيذ غير متوقع، العتاد يقوم بالعمل الثقيل.
+  </div>
+</div>
+
+<!-- MIPS DESIGN PRINCIPLES -->
+<div class="card">
+  <div class="card-title">MIPS Design Principles <span class="ar">مبادئ تصميم MIPS</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Principle</th><th>Application</th><th>بالعربي</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag">DP1</span></td><td>Simplicity favors regularity</td><td>All instructions 32 bits; fixed format</td><td>البساطة تفضل الانتظام — تعليمات بحجم ثابت</td></tr>
+        <tr><td><span class="tag">DP2</span></td><td>Smaller is faster</td><td>Only 32 registers (not hundreds)</td><td>الأصغر أسرع — 32 سجل فقط</td></tr>
+        <tr><td><span class="tag">DP3</span></td><td>Make the common case fast</td><td>Immediate operands avoid load instructions</td><td>اجعل الحالة الشائعة سريعة</td></tr>
+        <tr><td><span class="tag">DP4</span></td><td>Good design demands good compromises</td><td>Different formats (R, I, J) for different needs</td><td>التصميم الجيد يتطلب تنازلات ذكية</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <hr class="div">
-<div class="section-header"><div class="sec-num">10</div><div class="sec-titles"><h2>Decision Instructions: Branch and Jump</h2><div class="ar">تعليمات اتخاذ القرار: التفرع والقفز</div></div></div>
-<div class="card"><div class="card-title">Conditional Operations <span class="ar">عمليات الشرط</span></div><div class="table-wrap"><table><thead><tr><th>Instruction</th><th>Meaning</th></tr></thead><tbody><tr><td>beq rs, rt, L1</td><td>Branch to L1 if rs == rt</td></tr><tr><td>bne rs, rt, L1</td><td>Branch to L1 if rs != rt</td></tr><tr><td>j L1</td><td>Unconditional jump to L1</td></tr></tbody></table></div><div class="ar-box"><div class="ar-label">Arabic</div>beq تعني اقفز إذا القيمتان متساويتان. bne تعني اقفز إذا القيمتان غير متساويتين. j تعني اقفز بدون شرط.</div></div>
-<div class="card"><div class="card-title">Compiling If-Else <span class="ar">تحويل if-else إلى MIPS</span></div><p><strong>C code:</strong></p><pre>if (i == j)
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §3  REGISTERS & OPERANDS                         -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num gold">3</div>
+  <div class="sec-titles">
+    <h2>MIPS Registers & Operands</h2>
+    <div class="ar">السجلات والمعاملات في MIPS</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Register File Overview <span class="ar">نظرة عامة على السجلات</span></div>
+  <p>MIPS has <strong>32 registers × 32 bits each</strong>. A 32-bit value = <strong>"word"</strong>.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Register Name</th><th>Number</th><th>Purpose</th><th>بالعربي</th></tr></thead>
+      <tbody>
+        <tr><td>$zero</td><td>0</td><td>Constant 0 — cannot be overwritten</td><td>الصفر الثابت — لا يمكن تغييره</td></tr>
+        <tr><td>$v0, $v1</td><td>2–3</td><td>Return values from functions</td><td>قيم الإرجاع من الدوال</td></tr>
+        <tr><td>$a0–$a3</td><td>4–7</td><td>Function arguments</td><td>معاملات الدوال</td></tr>
+        <tr><td>$t0–$t9</td><td>8–15, 24–25</td><td>Temporaries (can be overwritten by callee)</td><td>قيم مؤقتة — يمكن الكتابة عليها</td></tr>
+        <tr><td>$s0–$s7</td><td>16–23</td><td>Saved variables (must be preserved)</td><td>متغيرات محفوظة — يجب الحفاظ عليها</td></tr>
+        <tr><td>$gp</td><td>28</td><td>Global pointer for static data</td><td>مؤشر للبيانات الثابتة</td></tr>
+        <tr><td>$sp</td><td>29</td><td>Stack pointer</td><td>مؤشر المكدس</td></tr>
+        <tr><td>$ra</td><td>31</td><td>Return address</td><td>عنوان الإرجاع</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="highlight"><strong>Design Principle 2:</strong> Smaller is faster — 32 registers is the deliberate limit. More registers = slower access.</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    MIPS لديه 32 سجلاً بحجم 32 بت لكل منها. الـ Word = 32 بت.<br>
+    $zero: دائماً يقرأ كصفر، لا يمكن الكتابة فيه — مفيد جداً للعمليات الشائعة.<br>
+    $t0-$t9: مؤقتة يمكن الكتابة عليها. $s0-$s7: محفوظة يجب استعادتها بعد الدوال.<br>
+    المبدأ الثاني: الأصغر أسرع — 32 سجلاً هو الحد المقصود (أكثر = أبطأ).
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §4  ARITHMETIC OPERATIONS + ASSEMBLY EXAMPLES   -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num green">4</div>
+  <div class="sec-titles">
+    <h2>Arithmetic Operations & Assembly Translation</h2>
+    <div class="ar">العمليات الحسابية والترجمة إلى لغة الأسمبلي</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Basic Arithmetic <span class="ar">العمليات الحسابية الأساسية</span></div>
+  <p>All MIPS arithmetic: <strong>3 operands</strong> — 2 sources + 1 destination.</p>
+  <div class="formula"><div class="flabel">Format</div>add  rd, rs, rt    # rd = rs + rt
+sub  rd, rs, rt    # rd = rs - rt
+addi rt, rs, imm   # rt = rs + immediate_constant</div>
+  <div class="highlight"><strong>Design Principle 1:</strong> Simplicity favors regularity — always exactly 3 operands, never more, never less.</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    جميع العمليات الحسابية في MIPS: 3 معاملات — وجهة واحدة + مصدران.<br>
+    <strong>add</strong>: جمع سجلين وتخزين النتيجة في سجل ثالث.<br>
+    <strong>addi</strong>: جمع سجل مع ثابت فوري (Immediate) — يجنب الحاجة لتحميل الثابت من الذاكرة.
+  </div>
+</div>
+
+<!-- EXAMPLE 1 -->
+<div class="card">
+  <div class="card-title">Example 1: Simple Expression <span class="ar">مثال 1: تعبير بسيط</span></div>
+  <p><strong>C code:</strong> &nbsp;<code style="color:var(--gold)">f = (g + h) - (i + j);</code></p>
+  <p style="margin-top:8px">Assume: f→$s0, g→$s1, h→$s2, i→$s3, j→$s4</p>
+  <div class="code"><div class="clabel">MIPS Assembly</div>add $t0, $s1, $s2    <span class="comment"># $t0 = g + h (temp)</span>
+add $t1, $s3, $s4    <span class="comment"># $t1 = i + j (temp)</span>
+sub $s0, $t0, $t1    <span class="comment"># f = $t0 - $t1</span></div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic — الشرح خطوة بخطوة</div>
+    خطوة 1: نحسب g+h ونخزن في $t0 (متغير مؤقت).<br>
+    خطوة 2: نحسب i+j ونخزن في $t1 (متغير مؤقت آخر).<br>
+    خطوة 3: نطرح $t1 من $t0 ونخزن النتيجة في $s0 (يمثل f).<br>
+    MIPS لا يسمح بأكثر من 3 معاملات، لذلك نحتاج خطوات وسيطة.
+  </div>
+</div>
+
+<!-- MEMORY OPERATIONS -->
+<div class="card">
+  <div class="card-title">Memory Operands: Load & Store <span class="ar">عمليات الذاكرة: التحميل والتخزين</span></div>
+  <p>MIPS is a RISC architecture — memory accessed <strong>only</strong> via <code>lw</code> (load word) and <code>sw</code> (store word).</p>
+  <div class="highlight">
+    <strong>Key rules:</strong>
+    <ul style="margin-top:6px; padding-left:18px">
+      <li>Memory is <strong>byte-addressed</strong> — each address = 1 byte.</li>
+      <li>Words must be <strong>4-byte aligned</strong> (address divisible by 4).</li>
+      <li>Array element offset = <strong>index × 4</strong> (since word = 4 bytes).</li>
+      <li>MIPS is <strong>Big Endian</strong> — most significant byte at lowest address.</li>
+    </ul>
+  </div>
+  <div class="formula"><div class="flabel">Load/Store Format</div>lw  $rt, offset($rs)   # $rt = Memory[$rs + offset]  ← LOAD
+sw  $rt, offset($rs)   # Memory[$rs + offset] = $rt  ← STORE</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    MIPS يصل للذاكرة فقط عبر lw (تحميل كلمة) وsw (تخزين كلمة) — مبدأ RISC الأساسي.<br>
+    الذاكرة تُعنون بالبايت: كل عنوان = 1 بايت. الكلمة = 4 بايت، لذلك عناوين الكلمات يجب أن تكون مضاعفات 4.<br>
+    عنصر مصفوفة رقم [i] = عنوان القاعدة + (i × 4).
+  </div>
+</div>
+
+<!-- MEMORY EXAMPLE 1 -->
+<div class="card">
+  <div class="card-title">Example 2: Array Access (Load) <span class="ar">مثال 2: الوصول لمصفوفة (تحميل)</span></div>
+  <p><strong>C code:</strong> &nbsp;<code style="color:var(--gold)">g = h + A[8];</code></p>
+  <p style="margin-top:6px">g→$s1, h→$s2, base address of A→$s3</p>
+  <p style="margin-top:6px"><strong>Offset calculation:</strong> index 8 → offset = 8 × 4 = <span class="tag g">32 bytes</span></p>
+  <div class="code"><div class="clabel">MIPS Assembly</div>lw  $t0, 32($s3)    <span class="comment"># $t0 = A[8]  (load from address $s3+32)</span>
+add $s1, $s2, $t0    <span class="comment"># g = h + A[8]</span></div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic — الشرح</div>
+    A[8] يعني العنصر الثامن في المصفوفة. كل عنصر 4 بايت، إذن الإزاحة = 8 × 4 = 32 بايت.<br>
+    أولاً: نحمّل A[8] من الذاكرة إلى السجل $t0 باستخدام lw.<br>
+    ثانياً: نجمع h (في $s2) مع A[8] (في $t0) ونخزن في g (في $s1).
+  </div>
+</div>
+
+<!-- MEMORY EXAMPLE 2 -->
+<div class="card">
+  <div class="card-title">Example 3: Array Access (Load + Store) <span class="ar">مثال 3: مصفوفة (تحميل وتخزين)</span></div>
+  <p><strong>C code:</strong> &nbsp;<code style="color:var(--gold)">A[12] = h + A[8];</code></p>
+  <p style="margin-top:6px">h→$s2, base address of A→$s3</p>
+  <p style="margin-top:6px"><strong>Offsets:</strong> A[8] → 8×4 = <span class="tag">32</span> &nbsp;|&nbsp; A[12] → 12×4 = <span class="tag y">48</span></p>
+  <div class="code"><div class="clabel">MIPS Assembly</div>lw  $t0, 32($s3)    <span class="comment"># $t0 = A[8]</span>
+add $t0, $s2, $t0    <span class="comment"># $t0 = h + A[8]</span>
+sw  $t0, 48($s3)     <span class="comment"># A[12] = h + A[8]  (store result)</span></div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic — الشرح</div>
+    خطوة 1: نحمّل A[8] (إزاحة 32) من الذاكرة إلى $t0.<br>
+    خطوة 2: نجمع h مع A[8]، نخزن في $t0.<br>
+    خطوة 3: نخزن النتيجة في A[12] (إزاحة 48) بالذاكرة باستخدام sw.<br>
+    لاحظ: اتجاه sw معكوس عن lw — نكتب من السجل إلى الذاكرة.
+  </div>
+</div>
+
+<!-- IF STATEMENT -->
+<div class="card">
+  <div class="card-title">Example 4: If-Else Statement <span class="ar">مثال 4: جملة الشرط</span></div>
+  <p><strong>C code:</strong></p>
+  <div class="formula"><div class="flabel">C Code</div>if (i == j)
     f = g + h;
 else
-    f = g - h;</pre><p><strong>Assume:</strong> f=$s0, g=$s1, h=$s2, i=$s3, j=$s4</p><pre>bne $s3, $s4, Else   # if i != j go to Else
-add $s0, $s1, $s2    # f = g + h
-j   Exit             # skip else
-Else:
-sub $s0, $s1, $s2    # f = g - h
-Exit:</pre><div class="ar-box"><div class="ar-label">Arabic Steps</div>نستخدم bne بعكس الشرط حتى نذهب إلى Else عندما لا يتحقق الشرط. بعد تنفيذ حالة if نستخدم j Exit حتى لا ننفذ else.</div></div>
-<div class="card"><div class="card-title">Branch Addressing <span class="ar">عنونة التفرع</span></div><p>Branches use PC-relative addressing. The target is calculated relative to the PC.</p><div class="formula"><div class="flabel">Branch Target</div>Target address = PC + offset × 4
-PC is already incremented by 4</div><div class="ar-box"><div class="ar-label">Arabic</div>تعليمات branch غالباً تقفز لمسافة قريبة للأمام أو للخلف، لذلك تخزن offset وليس العنوان الكامل.</div></div>
-<div class="card"><div class="card-title">Jump Addressing <span class="ar">عنونة القفز</span></div><p>Jump uses pseudo-direct addressing and stores a 26-bit address field.</p><div class="formula"><div class="flabel">Jump Target</div>Target address = PC[31..28] : (address × 4)</div><div class="ar-box"><div class="ar-label">Arabic</div>تعليمة jump يمكن أن تقفز إلى مكان أبعد داخل text segment لذلك تستخدم حقل عنوان أكبر من branch.</div></div>
+    f = g - h;</div>
+  <p style="margin-top:8px">f→$s0, g→$s1, h→$s2, i→$s3, j→$s4</p>
+  <div class="code"><div class="clabel">MIPS Assembly</div>      bne $s3, $s4, Else  <span class="comment"># if (i != j) goto Else</span>
+      add $s0, $s1, $s2   <span class="comment"># f = g + h  (if branch)</span>
+      j   Exit             <span class="comment"># unconditional jump to Exit</span>
+Else: sub $s0, $s1, $s2   <span class="comment"># f = g - h  (else branch)</span>
+Exit: ...                  <span class="comment"># continue</span></div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic — الشرح</div>
+    MIPS يستخدم <strong>bne</strong> (branch if not equal) للانتقال إذا كان الشرط خاطئاً.<br>
+    منطق الترجمة: نعكس الشرط — إذا كان i ≠ j نقفز لـ Else، وإلا ننفذ الـ if.<br>
+    <strong>j</strong>: قفز غير مشروط — ينتهي من الـ if block وينتقل لـ Exit.<br>
+    <strong>beq</strong>: يقفز إذا كانا متساويين. <strong>bne</strong>: يقفز إذا لم يكونا متساويين.
+  </div>
+</div>
+
+<!-- IMMEDIATE -->
+<div class="card">
+  <div class="card-title">Immediate Operands <span class="ar">المعاملات الفورية</span></div>
+  <p>Constants embedded directly in the instruction — no load required. Design Principle 3: <em>Make the common case fast</em>.</p>
+  <div class="formula"><div class="flabel">Examples</div>addi $s3, $s3, 4    # $s3 = $s3 + 4  (add constant 4)
+addi $s2, $s1, -1   # $s2 = $s1 - 1  (no "subi" needed — use negative)
+add  $t2, $s1, $zero # $t2 = $s1      (register copy using $zero)</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    addi: يجمع سجلاً مع ثابت فوري دون الحاجة لتحميله من الذاكرة — هذا يوفر تعليمة load.<br>
+    لا يوجد subi في MIPS — نستخدم addi مع عدد سالب.<br>
+    $zero: السجل 0 دائماً صفر — مفيد لنسخ السجلات (add $t2, $s1, $zero = نسخ $s1 إلى $t2).
+  </div>
+</div>
 
 <hr class="div">
-<div class="section-header"><div class="sec-num">11</div><div class="sec-titles"><h2>Memory Layout and Stored Program Concept</h2><div class="ar">تنظيم الذاكرة وفكرة البرنامج المخزن</div></div></div>
-<div class="card"><div class="card-title">Stored Program Computer <span class="ar">الحاسوب ذو البرنامج المخزن</span></div><p>Instructions and data are both stored in memory as binary values. Programs can operate on programs, enabling compilers, linkers, and loaders.</p><div class="ar-box"><div class="ar-label">Arabic</div>التعليمات والبيانات كلاهما يخزنان في الذاكرة على شكل 0 و1. هذا يسمح بوجود مترجمات وروابط وبرامج تحميل.</div></div>
-<div class="card"><div class="card-title">Memory Layout <span class="ar">تقسيم الذاكرة</span></div><div class="flow"><div class="fbox a">Text<br><small class="small">program code</small></div><div class="arrow">↓</div><div class="fbox o">Static Data<br><small class="small">global/static</small></div><div class="arrow">↓</div><div class="fbox p">Heap<br><small class="small">malloc/new</small></div><div class="arrow">↓</div><div class="fbox">Stack<br><small class="small">local variables</small></div></div><div class="table-wrap"><table><thead><tr><th>Segment</th><th>Purpose</th><th>Example</th></tr></thead><tbody><tr><td>Text</td><td>Program instructions</td><td>Machine code</td></tr><tr><td>Static Data</td><td>Global/static variables</td><td>global int x</td></tr><tr><td>Heap</td><td>Dynamic data</td><td>malloc, new</td></tr><tr><td>Stack</td><td>Automatic storage</td><td>local variables, function calls</td></tr></tbody></table></div></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §5  NUMBER SYSTEMS: BINARY, 1s & 2s COMPLEMENT  -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num purple">5</div>
+  <div class="sec-titles">
+    <h2>Number Systems: Binary, 1's & 2's Complement</h2>
+    <div class="ar">أنظمة الأعداد: الثنائي، مكمّل 1، مكمّل 2</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Unsigned Binary Integers <span class="ar">الأعداد الثنائية الموجبة</span></div>
+  <p>An n-bit unsigned number represents values from <strong>0</strong> to <strong>2ⁿ − 1</strong>.</p>
+  <div class="formula"><div class="flabel">Formula & Example (8-bit)</div>Value = b₇×2⁷ + b₆×2⁶ + ... + b₁×2¹ + b₀×2⁰
+
+Example: 0000 1011₂
+= 0+0+0+0 + 1×8 + 0×4 + 1×2 + 1×1 = 11₁₀
+
+32-bit range: 0 to 4,294,967,295 (2³²−1)</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    العدد الثنائي الموجب: كل بت يمثل قوة من قوى 2 (من اليمين: 2⁰، 2¹، 2²، ...).<br>
+    نحوّل من ثنائي لعشري بضرب كل بت في القوة المناسبة ثم الجمع.<br>
+    مدى 32 بت: من 0 إلى 4,294,967,295.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Signed Integers — 2's Complement Representation <span class="ar">الأعداد الموقّعة — تمثيل مكمّل الاثنين</span></div>
+  <p>The standard way to represent negative numbers in computers. Range: <strong>−2ⁿ⁻¹ to +2ⁿ⁻¹ − 1</strong></p>
+  <div class="highlight">
+    <strong>Sign bit (MSB):</strong> Bit 31 in 32-bit numbers.<br>
+    • 0 = positive (or zero)<br>
+    • 1 = negative
+  </div>
+  <div class="formula"><div class="flabel">2's Complement Value Formula</div>Value = −b_{n-1}×2^{n-1} + b_{n-2}×2^{n-2} + ... + b₁×2¹ + b₀×2⁰
+                    ↑ MSB contributes NEGATIVE power
+
+Example: 1111 1100₂ (8-bit)
+= −1×2⁷ + 1×2⁶ + 1×2⁵ + 1×2⁴ + 1×2³ + 1×2² + 0×2¹ + 0×2⁰
+= −128 + 64 + 32 + 16 + 8 + 4 + 0 + 0 = −4₁₀</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Special Value</th><th>32-bit Representation</th><th>Decimal</th></tr></thead>
+      <tbody>
+        <tr><td>Zero</td><td>0000 0000 ... 0000</td><td>0</td></tr>
+        <tr><td>Most Positive</td><td>0111 1111 ... 1111</td><td>+2,147,483,647</td></tr>
+        <tr><td>−1</td><td>1111 1111 ... 1111</td><td>−1</td></tr>
+        <tr><td>Most Negative</td><td>1000 0000 ... 0000</td><td>−2,147,483,648</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic — شرح مكمّل الاثنين</div>
+    مكمّل الاثنين هو الطريقة القياسية لتمثيل الأعداد السالبة في الحاسوب.<br>
+    بت الإشارة (MSB): إذا كان 1 → العدد سالب. إذا كان 0 → موجب أو صفر.<br>
+    القيمة = (MSB يُحسب كقيمة سالبة) + باقي البتات موجبة.<br>
+    مدى 32 بت: من -2,147,483,648 إلى +2,147,483,647.
+  </div>
+</div>
+
+<!-- 1s COMPLEMENT -->
+<div class="card">
+  <div class="card-title">1's Complement <span class="ar">مكمّل الواحد</span></div>
+  <p>Flip every bit: 0 → 1, 1 → 0. Simple to compute but has <strong>two representations of zero</strong> (+0 and −0) — a drawback.</p>
+  <div class="formula"><div class="flabel">1's Complement Examples (8-bit)</div>+5  = 0000 0101₂
+1's complement of +5:
+    = 1111 1010₂  =  −5 in 1's complement
+
++12 = 0000 1100₂
+1's complement:
+    = 1111 0011₂  =  −12 in 1's complement</div>
+  <div class="note"><div class="note-label">Problem with 1's Complement</div>
+    +0 = 0000 0000 and −0 = 1111 1111 → two zeros → complicates arithmetic circuits.
+  </div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    مكمّل الواحد: نعكس كل بت (0 يصبح 1، 1 يصبح 0).<br>
+    بسيط الحساب لكن عيبه: يوجد تمثيلان للصفر (+0 و -0) مما يعقد دوائر الحساب.<br>
+    لذلك لا يُستخدم هذا النظام فعلياً في المعالجات الحديثة.
+  </div>
+</div>
+
+<!-- 2s COMPLEMENT WORKED EXAMPLES -->
+<div class="card">
+  <div class="card-title">2's Complement — Step-by-Step Worked Examples <span class="ar">مكمّل الاثنين — أمثلة محلولة خطوة بخطوة</span></div>
+  <p><strong>Method:</strong> Negate a number = Flip all bits (1's complement) + Add 1</p>
+
+  <p style="margin-top:12px; font-weight:600; color:var(--accent)">Example A: Find 2's complement of +2 (8-bit)</p>
+  <div class="formula"><div class="flabel">Step-by-step</div>Step 1: Write +2 in binary:  +2 = 0000 0010₂
+Step 2: Flip all bits (1's complement):  = 1111 1101₂
+Step 3: Add 1:
+         1111 1101
+       +         1
+       -----------
+         1111 1110₂  ← This is −2 in 2's complement ✓
+
+Verify: −1×2⁷ + (1×2⁶+1×2⁵+1×2⁴+1×2³+1×2²+1×2¹+0)
+      = −128 + 64+32+16+8+4+2+0 = −128 + 126 = −2 ✓</div>
+
+  <p style="margin-top:12px; font-weight:600; color:var(--accent)">Example B: Find 2's complement of +45 (8-bit)</p>
+  <div class="formula"><div class="flabel">Step-by-step</div>Step 1: +45 = 0010 1101₂
+Step 2: Flip: 1101 0010₂
+Step 3: +1:   1101 0010
+            +         1
+            -----------
+              1101 0011₂  ← This is −45 in 2's complement ✓</div>
+
+  <p style="margin-top:12px; font-weight:600; color:var(--accent)">Example C: Convert 1100 0001₂ to decimal (2's complement, 8-bit)</p>
+  <div class="formula"><div class="flabel">Step-by-step (MSB=1 → negative)</div>Method 1 — Formula:
+= −1×2⁷ + 1×2⁶ + 0 + 0 + 0 + 0 + 0 + 1×2⁰
+= −128 + 64 + 1 = −63₁₀
+
+Method 2 — Negate and read:
+Flip: 0011 1110
+Add 1: 0011 1111 = 63  → original was −63 ✓</div>
+
+  <div class="ar-box">
+    <div class="ar-label">Arabic — شرح الطريقة</div>
+    <strong>طريقة حساب مكمّل الاثنين:</strong><br>
+    خطوة 1: اكتب العدد بالثنائي.<br>
+    خطوة 2: اعكس كل البتات (مكمّل 1).<br>
+    خطوة 3: أضف 1 للنتيجة.<br><br>
+    <strong>للتحويل من مكمّل 2 لعشري:</strong><br>
+    إذا كان MSB = 0 → موجب، احسب القيمة العادية.<br>
+    إذا كان MSB = 1 → سالب، طبّق الصيغة: القيمة = −MSB×2^(n-1) + باقي البتات الموجبة.
+  </div>
+</div>
+
+<!-- SIGN EXTENSION -->
+<div class="card">
+  <div class="card-title">Sign Extension <span class="ar">توسيع الإشارة</span></div>
+  <p>Representing a number using <strong>more bits</strong> while preserving its value. Rule: <strong>replicate the sign bit</strong> to fill the new positions.</p>
+  <div class="formula"><div class="flabel">Examples: 8-bit → 16-bit</div>+2  (8-bit):  0000 0010
+    → (16-bit): 0000 0000 0000 0010  (fill with 0s — positive)
+
+−2  (8-bit):  1111 1110
+    → (16-bit): 1111 1111 1111 1110  (fill with 1s — negative)
+
+Rule: copy MSB leftward to fill new bits</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    توسيع الإشارة: تمثيل نفس العدد بعدد بتات أكبر مع الحفاظ على قيمته.<br>
+    القاعدة: انسخ بت الإشارة (MSB) لملء البتات الجديدة على اليسار.<br>
+    عدد موجب (MSB=0): أضف أصفار على اليسار. عدد سالب (MSB=1): أضف واحدات على اليسار.<br>
+    يُستخدم في MIPS في: addi، lb، lh، beq، bne.
+  </div>
+</div>
 
 <hr class="div">
-<div class="section-header"><div class="sec-num">12</div><div class="sec-titles"><h2>Assembly Translation Examples</h2><div class="ar">أمثلة إضافية على التحويل إلى Assembly</div></div></div>
-<div class="card"><div class="card-title">Example A <span class="ar">مثال أ</span></div><p><strong>C code:</strong></p><pre>a = b + c + d;</pre><p><strong>Assume:</strong> a=$s0, b=$s1, c=$s2, d=$s3</p><pre>add $t0, $s1, $s2   # temp = b + c
-add $s0, $t0, $s3   # a = temp + d</pre><div class="ar-box"><div class="ar-label">Arabic</div>لأن add تأخذ مصدرين فقط، نستخدم سجل مؤقت لحساب b+c ثم نضيف d.</div></div>
-<div class="card"><div class="card-title">Example B <span class="ar">مثال ب</span></div><p><strong>C code:</strong></p><pre>x = y - (z + 10);</pre><p><strong>Assume:</strong> x=$s0, y=$s1, z=$s2</p><pre>addi $t0, $s2, 10   # temp = z + 10
-sub  $s0, $s1, $t0  # x = y - temp</pre></div>
-<div class="card"><div class="card-title">Example C: Array <span class="ar">مثال مصفوفة</span></div><p><strong>C code:</strong></p><pre>B[5] = A[3] + 7;</pre><p><strong>Assume:</strong> base A=$s1, base B=$s2</p><pre>lw   $t0, 12($s1)   # A[3], because 3×4=12
-addi $t0, $t0, 7    # A[3]+7
-sw   $t0, 20($s2)   # B[5], because 5×4=20</pre></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §6  LOGICAL OPERATIONS                           -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num">6</div>
+  <div class="sec-titles">
+    <h2>Logical Operations</h2>
+    <div class="ar">العمليات المنطقية</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Bitwise Operations Overview <span class="ar">نظرة عامة على العمليات البتية</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Operation</th><th>C</th><th>MIPS</th><th>Purpose</th><th>بالعربي</th></tr></thead>
+      <tbody>
+        <tr><td>Shift Left</td><td>&lt;&lt;</td><td>sll</td><td>Multiply by 2ⁱ</td><td>ضرب في قوة 2</td></tr>
+        <tr><td>Shift Right</td><td>&gt;&gt;</td><td>srl</td><td>Divide by 2ⁱ (unsigned)</td><td>قسمة على قوة 2</td></tr>
+        <tr><td>AND</td><td>&amp;</td><td>and, andi</td><td>Mask bits (clear to 0)</td><td>إخفاء بتات — تصفير</td></tr>
+        <tr><td>OR</td><td>|</td><td>or, ori</td><td>Set bits to 1</td><td>تشغيل بتات — ضبط على 1</td></tr>
+        <tr><td>NOT</td><td>~</td><td>nor (with $zero)</td><td>Invert bits</td><td>عكس البتات</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    MIPS لا يملك تعليمة NOT مستقلة — بدلاً من ذلك نستخدم <strong>nor $t0, $t1, $zero</strong><br>
+    لأن: NOT(a) = a NOR 0 (فـ a NOR 0 = NOT(a OR 0) = NOT(a)).
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">AND — Masking Example <span class="ar">AND — مثال الإخفاء</span></div>
+  <div class="code"><div class="clabel">and $t0, $t1, $t2</div>$t1: 0000 0000 0000 0000 0011 1100 0000 0000
+$t2: 0000 0000 0000 0000 0000 1101 1100 0000
+                                    AND ↓
+$t0: 0000 0000 0000 0000 0000 1100 0000 0000</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>AND: 1 AND 1 = 1، أي مزيج آخر = 0. يُستخدم لإخفاء بتات معينة (تصفيرها) عبر وضع 0 في الـ mask للبتات المراد إخفاؤها.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">OR — Setting Bits Example <span class="ar">OR — مثال ضبط البتات</span></div>
+  <div class="code"><div class="clabel">or $t0, $t1, $t2</div>$t1: 0000 0000 0000 0000 0011 1100 0000 0000
+$t2: 0000 0000 0000 0000 0000 1101 1100 0000
+                                     OR ↓
+$t0: 0000 0000 0000 0000 0011 1101 1100 0000</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>OR: 0 OR 0 = 0، أي مزيج آخر = 1. يُستخدم لضبط بتات معينة على 1 عبر وضع 1 في الـ mask للبتات المراد تشغيلها.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Shift Operations <span class="ar">عمليات الإزاحة</span></div>
+  <div class="formula"><div class="flabel">Shift Examples</div>sll $t0, $t1, 2   # $t0 = $t1 << 2  (multiply by 4 = 2²)
+srl $t0, $t1, 3   # $t0 = $t1 >> 3  (divide by 8 = 2³, unsigned)</div>
+  <div class="highlight"><strong>Trick:</strong> Shifting left by i = multiplying by 2ⁱ. &nbsp; Shifting right by i = dividing by 2ⁱ.</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>الإزاحة لليسار بـ i بتة = ضرب في 2^i. الإزاحة لليمين بـ i بتة = قسمة على 2^i (للأعداد الموجبة).</div>
+</div>
 
 <hr class="div">
-<div class="section-header"><div class="sec-num">13</div><div class="sec-titles"><h2>Exam Questions with Answers</h2><div class="ar">أسئلة امتحان مع الإجابات</div></div></div>
-<div class="card"><div class="card-title">Multiple Choice <span class="ar">اختيار من متعدد</span></div><div class="table-wrap"><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody><tr><td>ISA stands for?</td><td class="answer">Instruction Set Architecture</td></tr><tr><td>MIPS is an example of?</td><td class="answer">RISC</td></tr><tr><td>x86 is an example of?</td><td class="answer">CISC</td></tr><tr><td>How many registers in MIPS?</td><td class="answer">32</td></tr><tr><td>Word size in MIPS?</td><td class="answer">32 bits = 4 bytes</td></tr><tr><td>lw means?</td><td class="answer">Load Word</td></tr><tr><td>sw means?</td><td class="answer">Store Word</td></tr><tr><td>beq means?</td><td class="answer">Branch if Equal</td></tr><tr><td>bne means?</td><td class="answer">Branch if Not Equal</td></tr><tr><td>$zero contains?</td><td class="answer">Always 0</td></tr></tbody></table></div></div>
-<div class="card"><div class="card-title">True / False <span class="ar">صح أو خطأ</span></div><div class="table-wrap"><table><thead><tr><th>Statement</th><th>Answer</th></tr></thead><tbody><tr><td>RISC instructions usually have fixed size.</td><td class="answer">True</td></tr><tr><td>CISC hardware is usually simpler than RISC.</td><td class="answer">False</td></tr><tr><td>MIPS arithmetic instructions operate directly on memory.</td><td class="answer">False</td></tr><tr><td>In MIPS, arrays use byte offsets.</td><td class="answer">True</td></tr><tr><td>In 2's complement, MSB=1 means negative.</td><td class="answer">True</td></tr><tr><td>Sign extension for negative numbers adds zeros.</td><td class="answer">False</td></tr></tbody></table></div></div>
-<div class="card"><div class="card-title">Practice Problems <span class="ar">أسئلة تدريبية محلولة</span></div><div class="grid2"><div class="highlight q"><strong>Q1: Convert -9 to 8-bit 2's complement</strong><pre>+9  = 00001001
-Flip= 11110110
-+1  = 11110111
-Answer = 11110111</pre></div><div class="highlight q"><strong>Q2: Convert 11010110 to decimal</strong><pre>MSB=1 → negative
-Flip=00101001
-+1 =00101010=42
-Answer = -42</pre></div><div class="highlight q"><strong>Q3: Convert A7 hex to binary</strong><pre>A = 1010
-7 = 0111
-A7 = 1010 0111</pre></div><div class="highlight q"><strong>Q4: Offset for A[14]</strong><pre>Offset = 14 × 4 = 56
-Use: lw $t0, 56($sX)</pre></div></div></div>
 
-<div class="final"><h2>Quick Reference — Everything You Need to Know<span class="ar">مراجعة سريعة — كل ما تحتاجه</span></h2><div class="table-wrap"><table><thead><tr><th>Concept</th><th>Core Idea</th><th>Arabic — الجوهر</th></tr></thead><tbody><tr><td>ISA</td><td>Interface between hardware and software</td><td>لغة المعالج التي تربط السوفتوير بالهاردوير</td></tr><tr><td>RISC</td><td>Few, simple, fixed-size instructions</td><td>تعليمات بسيطة وسريعة وثابتة الحجم</td></tr><tr><td>CISC</td><td>Many, complex, variable-size instructions</td><td>تعليمات كثيرة ومعقدة ومتغيرة الحجم</td></tr><tr><td>MIPS</td><td>RISC ISA with 32 registers and 32-bit instructions</td><td>معمارية RISC تعليماتها 32 بت</td></tr><tr><td>Register</td><td>Fast CPU storage</td><td>تخزين سريع داخل المعالج</td></tr><tr><td>lw / sw</td><td>Load from memory / Store to memory</td><td>تحميل من الذاكرة / تخزين في الذاكرة</td></tr><tr><td>Offset</td><td>Array index × 4</td><td>رقم العنصر × 4</td></tr><tr><td>Unsigned Range</td><td>0 to 2^n−1</td><td>لا يوجد أعداد سالبة</td></tr><tr><td>2's Complement</td><td>Flip bits + add 1</td><td>اقلب البتات ثم أضف 1</td></tr><tr><td>Sign Extension</td><td>Copy sign bit to the left</td><td>كرر بت الإشارة</td></tr><tr><td>R-format</td><td>op rs rt rd shamt funct</td><td>للعمليات بين السجلات</td></tr><tr><td>I-format</td><td>op rs rt immediate</td><td>لـ immediate و lw/sw و branch</td></tr><tr><td>AND</td><td>Mask / clear bits</td><td>تصفير أو إخفاء بتات</td></tr><tr><td>OR</td><td>Set bits to 1</td><td>جعل بتات معينة 1</td></tr><tr><td>sll / srl</td><td>Multiply/divide by powers of 2</td><td>ضرب/قسمة على قوى 2</td></tr><tr><td>beq / bne / j</td><td>Branch equal / not equal / jump</td><td>تفرع إذا تساوى / لم يتساوى / قفز</td></tr></tbody></table></div></div>
-<p style="text-align:center;color:var(--muted);font-size:12px;margin-top:36px">Computer Organization & Architecture — Chapter 2: Instructions: Language of the Computer · Study Guide</p>
-</div></body></html>
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §7  INSTRUCTION FORMATS                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num orange">7</div>
+  <div class="sec-titles">
+    <h2>MIPS Instruction Formats</h2>
+    <div class="ar">تنسيقات تعليمات MIPS</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">R-Format Instructions <span class="ar">تعليمات تنسيق R</span></div>
+  <p>Used for <strong>register arithmetic</strong> operations (add, sub, and, or, sll, srl, …)</p>
+  <div class="bitrow">
+    <div class="bit h" style="min-width:60px">op<br><small>6 bits</small></div>
+    <div class="bit r2" style="min-width:50px">rs<br><small>5 bits</small></div>
+    <div class="bit r2" style="min-width:50px">rt<br><small>5 bits</small></div>
+    <div class="bit g2" style="min-width:50px">rd<br><small>5 bits</small></div>
+    <div class="bit" style="min-width:55px">shamt<br><small>5 bits</small></div>
+    <div class="bit h" style="min-width:55px">funct<br><small>6 bits</small></div>
+  </div>
+  <ul style="margin-top:10px">
+    <li><strong>op (opcode):</strong> Operation code — for R-format always 000000</li>
+    <li><strong>rs:</strong> First source register</li>
+    <li><strong>rt:</strong> Second source register</li>
+    <li><strong>rd:</strong> Destination register</li>
+    <li><strong>shamt:</strong> Shift amount (0 for non-shift operations)</li>
+    <li><strong>funct:</strong> Function code (specifies exact operation within op group)</li>
+  </ul>
+
+  <p style="margin-top:14px; font-weight:600; color:var(--accent)">Worked Example: Encode <code>add $t0, $s1, $s2</code></p>
+  <div class="formula"><div class="flabel">Step-by-step encoding</div>$s1 = register 17  → 10001
+$s2 = register 18  → 10010
+$t0 = register 8   → 01000
+op = 0 (R-format)  → 000000
+shamt = 0          → 00000
+funct (add) = 32   → 100000
+
+Binary: 000000 | 10001 | 10010 | 01000 | 00000 | 100000
+Hex:    0x02324020</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    تنسيق R: يُستخدم للعمليات بين السجلات. إجمالي 32 بت = 6+5+5+5+5+6.<br>
+    op = 000000 دائماً لتعليمات R. funct: يحدد العملية الدقيقة (add=32، sub=34...).<br>
+    المثال: add $t0, $s1, $s2 → نكتب أرقام السجلات بالثنائي ونضعها في الحقول المناسبة.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">I-Format Instructions <span class="ar">تعليمات تنسيق I</span></div>
+  <p>Used for <strong>immediate, load/store, and branch</strong> instructions.</p>
+  <div class="bitrow">
+    <div class="bit h" style="min-width:60px">op<br><small>6 bits</small></div>
+    <div class="bit r2" style="min-width:50px">rs<br><small>5 bits</small></div>
+    <div class="bit r2" style="min-width:50px">rt<br><small>5 bits</small></div>
+    <div class="bit g2" style="min-width:160px">constant or address<br><small>16 bits</small></div>
+  </div>
+  <ul style="margin-top:10px">
+    <li><strong>op:</strong> Determines the exact instruction (no funct needed)</li>
+    <li><strong>rs:</strong> Source register (or base register for memory)</li>
+    <li><strong>rt:</strong> Destination register (or source for sw)</li>
+    <li><strong>16-bit immediate:</strong> Constant value (sign-extended to 32 bits) or memory offset</li>
+  </ul>
+  <div class="highlight"><strong>Design Principle 4:</strong> Good design demands good compromises — different formats complicate decoding, but allow uniform 32-bit instructions.</div>
+  <div class="ar-box">
+    <div class="ar-label">Arabic</div>
+    تنسيق I: للتعليمات التي تحتاج ثابتاً فورياً (addi، lw، sw، beq، bne).<br>
+    16 بت للثابت تعني: يمكن تمثيل قيم من -32768 إلى +32767.<br>
+    الثابت يُوسَّع بالإشارة (Sign Extension) ليصبح 32 بت عند الاستخدام.
+  </div>
+</div>
+
+<!-- HEXADECIMAL -->
+<div class="card">
+  <div class="card-title">Hexadecimal Representation <span class="ar">التمثيل الست عشري</span></div>
+  <p>Base 16 — compact representation of binary: <strong>4 bits = 1 hex digit</strong>.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Decimal</th><th>Binary</th><th>Hex</th><th>Decimal</th><th>Binary</th><th>Hex</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0000</td><td>0</td><td>8</td><td>1000</td><td>8</td></tr>
+        <tr><td>1</td><td>0001</td><td>1</td><td>9</td><td>1001</td><td>9</td></tr>
+        <tr><td>4</td><td>0100</td><td>4</td><td>10</td><td>1010</td><td>A</td></tr>
+        <tr><td>5</td><td>0101</td><td>5</td><td>11</td><td>1011</td><td>B</td></tr>
+        <tr><td>6</td><td>0110</td><td>6</td><td>12</td><td>1100</td><td>C</td></tr>
+        <tr><td>7</td><td>0111</td><td>7</td><td>15</td><td>1111</td><td>F</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="formula"><div class="flabel">Conversion Example</div>Binary:   1110 1100 1010 1000 0110 0100 0010 0000
+Hex:       E    C    A    8    6    4    2    0
+= 0xECA86420</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>النظام الست عشري: كل رقم يمثل 4 بتات. يُستخدم لكتابة الأعداد الثنائية الطويلة بشكل مختصر.<br>0-9 تُكتب كما هي، 10-15 تُكتب A-F.</div>
+</div>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §8  BRANCH & JUMP ADDRESSING                    -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num gold">8</div>
+  <div class="sec-titles">
+    <h2>Branch & Jump Addressing</h2>
+    <div class="ar">عنونة التفرع والقفز</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Branch Addressing (PC-Relative) <span class="ar">عنونة التفرع (نسبية للـ PC)</span></div>
+  <div class="formula"><div class="flabel">Target Address Formula</div>Target Address = PC + (offset × 4)
+(PC is already incremented by 4 at this point)</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>التفرع (beq، bne): العنوان نسبي للـ PC (Program Counter). الإزاحة محفوظة في 16 بت وتُضاعف في 4. مناسب للقفزات القريبة.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Jump Addressing (Pseudo-Direct) <span class="ar">عنونة القفز (شبه مباشرة)</span></div>
+  <div class="formula"><div class="flabel">J-Format & Target Formula</div>Format: | op (6 bits) | address (26 bits) |
+
+Target Address = PC₃₁₋₂₈ : (address × 4)
+(Top 4 bits from PC, 26-bit address shifted left 2)</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>القفز (j، jal): يمكنه الوصول لأي مكان في قطاع النصوص. 26 بت للعنوان تُضاعف في 4، وأعلى 4 بتات تُؤخذ من الـ PC الحالي.</div>
+</div>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §9  MEMORY LAYOUT                               -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num green">9</div>
+  <div class="sec-titles">
+    <h2>Memory Layout</h2>
+    <div class="ar">تخطيط الذاكرة</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">MIPS Memory Segments <span class="ar">أقسام ذاكرة MIPS</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Segment</th><th>Contents</th><th>بالعربي</th></tr></thead>
+      <tbody>
+        <tr><td>Text</td><td>Program code (instructions)</td><td>كود البرنامج</td></tr>
+        <tr><td>Static Data</td><td>Global variables, constants, string literals ($gp points here)</td><td>المتغيرات العامة والثوابت</td></tr>
+        <tr><td>Dynamic Data (Heap)</td><td>malloc / new — grows upward</td><td>الذاكرة الديناميكية — تنمو للأعلى</td></tr>
+        <tr><td>Stack</td><td>Local variables, return addresses — grows downward ($sp)</td><td>المتغيرات المحلية — تنمو للأسفل</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §10  INSTRUCTION FREQUENCY                      -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num purple">10</div>
+  <div class="sec-titles">
+    <h2>Instruction Frequency in Real Programs</h2>
+    <div class="ar">تكرار التعليمات في البرامج الحقيقية</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">SPEC2006 Benchmark Data <span class="ar">بيانات قياس SPEC2006</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Instruction Class</th><th>Examples</th><th>SPEC Int</th><th>SPEC FP</th></tr></thead>
+      <tbody>
+        <tr><td>Arithmetic</td><td>add, sub, addi</td><td class="y">16%</td><td class="g">48%</td></tr>
+        <tr><td>Data Transfer</td><td>lw, sw, lb, sb</td><td class="g">35%</td><td class="g">36%</td></tr>
+        <tr><td>Logical</td><td>and, or, nor, sll, srl</td><td class="y">12%</td><td class="r">4%</td></tr>
+        <tr><td>Conditional Branch</td><td>beq, bne, slt</td><td class="g">34%</td><td class="r">8%</td></tr>
+        <tr><td>Jump</td><td>j, jr, jal</td><td class="r">2%</td><td class="r">0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="highlight"><strong>Key insight:</strong> Data transfer (35%) and conditional branches (34%) dominate integer programs. This justifies optimizing lw/sw and branch instructions heavily.</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>في برامج الأعداد الصحيحة: تعليمات نقل البيانات (35%) والتفرع الشرطي (34%) هي الأكثر استخداماً.<br>هذا يبرر التحسين الكبير لـ lw/sw وتعليمات التفرع في التصميم.</div>
+</div>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- §11  PRACTICE QUESTIONS                         -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sec-num orange">11</div>
+  <div class="sec-titles">
+    <h2>Practice Questions with Solutions</h2>
+    <div class="ar">أسئلة تدريبية مع الحلول</div>
+  </div>
+</div>
+
+<!-- Q1 -->
+<div class="q-card">
+  <div class="q-num">Question 1 — C to MIPS Translation</div>
+  <div class="q-text">Translate the following C code to MIPS assembly. Assume: a→$s0, b→$s1, c→$s2, d→$s3, e→$s4<br><br><code style="color:var(--gold)">a = b + c - d + 5;</code></div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="code"><div class="clabel">MIPS Assembly</div>add  $t0, $s1, $s2    <span class="comment"># $t0 = b + c</span>
+sub  $t0, $t0, $s3    <span class="comment"># $t0 = b + c - d</span>
+addi $s0, $t0, 5      <span class="comment"># a = b + c - d + 5</span></div>
+    <div class="ar-box"><div class="ar-label">Arabic — الشرح</div>خطوة 1: b+c في $t0. خطوة 2: نطرح d. خطوة 3: نضيف الثابت 5 باستخدام addi.</div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card">
+  <div class="q-num">Question 2 — Array Access Translation</div>
+  <div class="q-text">Translate to MIPS. Assume: h→$s2, base of A→$s3<br><br><code style="color:var(--gold)">A[3] = h + A[5] - A[1];</code></div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <p style="margin-bottom:8px"><strong>Offsets:</strong> A[1]=4, A[3]=12, A[5]=20</p>
+    <div class="code"><div class="clabel">MIPS Assembly</div>lw   $t0, 20($s3)    <span class="comment"># $t0 = A[5]    (offset = 5×4 = 20)</span>
+add  $t0, $s2, $t0  <span class="comment"># $t0 = h + A[5]</span>
+lw   $t1, 4($s3)    <span class="comment"># $t1 = A[1]    (offset = 1×4 = 4)</span>
+sub  $t0, $t0, $t1  <span class="comment"># $t0 = h + A[5] - A[1]</span>
+sw   $t0, 12($s3)   <span class="comment"># A[3] = result  (offset = 3×4 = 12)</span></div>
+    <div class="ar-box"><div class="ar-label">Arabic</div>كل عنصر مصفوفة 4 بايت. A[i] → إزاحة = i×4. نحمّل A[5] وA[1]، نحسب، ثم نخزن في A[3].</div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card">
+  <div class="q-num">Question 3 — 2's Complement Conversion</div>
+  <div class="q-text">a) Find the 2's complement of +19 (8-bit).<br>b) Convert 1001 0110₂ to decimal (8-bit, 2's complement).</div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="formula"><div class="flabel">Part A: 2's complement of +19</div>Step 1: +19 = 0001 0011₂
+Step 2: Flip (1's comp): 1110 1100₂
+Step 3: Add 1:   1110 1100
+               +         1
+               -----------
+                 1110 1101₂  ← −19 in 2's complement ✓
+
+Verify: −128 + 64+32+8+4+1 = −128+109 = −19 ✓</div>
+    <div class="formula"><div class="flabel">Part B: Convert 1001 0110₂</div>MSB = 1 → negative number
+
+Method 1 (Formula):
+= −1×2⁷ + 0×2⁶ + 0×2⁵ + 1×2⁴ + 0×2³ + 1×2² + 1×2¹ + 0×2⁰
+= −128 + 0 + 0 + 16 + 0 + 4 + 2 + 0 = −106₁₀
+
+Method 2 (Negate & read):
+Flip: 0110 1001
+Add 1: 0110 1010 = 64+32+8+2 = 106
+→ Original = −106 ✓</div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q-card">
+  <div class="q-num">Question 4 — 1's Complement</div>
+  <div class="q-text">Find the 1's complement of the following 8-bit numbers:<br>a) +7 &nbsp;&nbsp; b) +100 &nbsp;&nbsp; c) −0 (what does this mean?)</div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="formula"><div class="flabel">1's Complement Solutions</div>a) +7  = 0000 0111₂
+   1's comp = 1111 1000₂  → represents −7
+
+b) +100 = 0110 0100₂
+   1's comp = 1001 1011₂  → represents −100
+
+c) +0 = 0000 0000₂ → 1's comp = 1111 1111₂ = "−0"
+   This is the problem! Two representations of zero.</div>
+    <div class="ar-box"><div class="ar-label">Arabic</div>مكمّل الواحد: نعكس كل البتات فقط. المشكلة: يوجد +0 و -0 (تمثيلان للصفر) مما يعقد الحسابات. لذلك نستخدم مكمّل الاثنين عملياً.</div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-card">
+  <div class="q-num">Question 5 — R-Format Encoding</div>
+  <div class="q-text">Encode the MIPS instruction <code style="color:var(--gold)">sub $s0, $t0, $t1</code> into binary and hexadecimal.<br>Note: sub funct code = 34 (100010₂)</div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="formula"><div class="flabel">R-Format Encoding</div>Instruction: sub $s0, $t0, $t1
+  rd = $s0  → register 16 → 10000
+  rs = $t0  → register 8  → 01000
+  rt = $t1  → register 9  → 01001
+  op = 0 (R-format)       → 000000
+  shamt = 0               → 00000
+  funct (sub) = 34        → 100010
+
+Binary: 000000 | 01000 | 01001 | 10000 | 00000 | 100010
+      = 0000 0001 0000 1001 1000 0000 1000 10₂
+Hex:  = 0x01098022</div>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-card">
+  <div class="q-num">Question 6 — RISC vs CISC Analysis</div>
+  <div class="q-text">A CISC machine executes a task in 50 instructions averaging 8 clock cycles each. A RISC machine needs 200 instructions averaging 1.2 cycles each. The RISC clock is 1.5× faster. Which is faster?</div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="formula"><div class="flabel">Performance Analysis</div>CPU Time = Instruction Count × CPI × Clock Period
+
+Let CISC clock period = T:
+CISC time = 50 × 8 × T = 400T
+
+RISC clock period = T/1.5 (faster clock):
+RISC time = 200 × 1.2 × (T/1.5) = 240T/1.5 = 160T
+
+RISC time (160T) < CISC time (400T)
+→ RISC is 400/160 = 2.5× FASTER ✓</div>
+    <div class="ar-box"><div class="ar-label">Arabic</div>CISC: 50 × 8 × T = 400T. RISC: 200 × 1.2 × (T/1.5) = 160T.<br>RISC أسرع 2.5 مرة رغم استخدامه تعليمات أكثر — لأن كل دورة أقصر وعدد الدورات لكل تعليمة أقل بكثير.</div>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card">
+  <div class="q-num">Question 7 — If-Else Translation</div>
+  <div class="q-text">Translate to MIPS. Assume: x→$s0, y→$s1, z→$s2, result→$s3<br><br>
+  <code style="color:var(--gold)">if (x != y) { result = x + z; } else { result = x - z; }</code></div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="code"><div class="clabel">MIPS Assembly</div>      beq  $s0, $s1, Else   <span class="comment"># if (x == y) goto Else</span>
+      add  $s3, $s0, $s2    <span class="comment"># result = x + z</span>
+      j    Exit              <span class="comment"># jump past else</span>
+Else: sub  $s3, $s0, $s2   <span class="comment"># result = x - z</span>
+Exit: ...                   <span class="comment"># continue</span></div>
+    <div class="ar-box"><div class="ar-label">Arabic</div>الشرط x≠y: نعكسه في MIPS فنستخدم beq (يقفز إذا تساويا = إذا كان الشرط خاطئاً) للذهاب لـ Else.</div>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q-card">
+  <div class="q-num">Question 8 — Sign Extension</div>
+  <div class="q-text">Sign-extend the following 8-bit values to 16 bits:<br>a) 0101 1010₂ &nbsp;&nbsp; b) 1010 0011₂</div>
+  <div class="q-answer">
+    <div class="ans-label">Solution</div>
+    <div class="formula"><div class="flabel">Sign Extension</div>a) 0101 1010₂ — MSB = 0 (positive)
+   → 0000 0000 0101 1010₂  (extend with 0s)
+   Value = +90 (unchanged)
+
+b) 1010 0011₂ — MSB = 1 (negative)
+   → 1111 1111 1010 0011₂  (extend with 1s)
+   Verify: = −128+32+2+1 = −93 in 8-bit
+   Extended: −32768+... = −93 (same value) ✓</div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- FINAL QUICK REFERENCE -->
+<div class="final">
+  <h2>Quick Reference — Everything You Need to Know
+    <span class="ar">مراجعة سريعة — كل ما تحتاجه</span>
+  </h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Concept</th><th>Core Idea</th><th>Arabic — الجوهر</th></tr></thead>
+      <tbody>
+        <tr><td>Addressability</td><td>Memory locations = 2ⁿ; total memory = locations × data bus width</td><td>عدد المواقع = 2 أس n؛ الحجم = المواقع × عرض Data Bus</td></tr>
+        <tr><td>ISA</td><td>Complete vocabulary of CPU commands (machine language)</td><td>المفردات الكاملة لأوامر المعالج</td></tr>
+        <tr><td>CISC</td><td>Many variable-length complex instructions; 1 instr = many ops</td><td>تعليمات معقدة متغيرة الطول; تعليمة واحدة = عمليات متعددة</td></tr>
+        <tr><td>RISC</td><td>Few fixed-length simple instructions; 1 instr = 1 op; load/store only</td><td>تعليمات بسيطة ثابتة الطول; load/store فقط للذاكرة</td></tr>
+        <tr><td>MIPS Registers</td><td>32 × 32-bit; $zero always 0; $t=temp; $s=saved</td><td>32 سجل × 32 بت؛ $zero دائماً صفر</td></tr>
+        <tr><td>R-Format</td><td>op(6)+rs(5)+rt(5)+rd(5)+shamt(5)+funct(6) — for register ops</td><td>للعمليات بين السجلات</td></tr>
+        <tr><td>I-Format</td><td>op(6)+rs(5)+rt(5)+immediate(16) — for addi, lw, sw, beq</td><td>للثوابت الفورية وتعليمات الذاكرة والتفرع</td></tr>
+        <tr><td>Array offset</td><td>A[i] offset = i × 4 bytes</td><td>إزاحة عنصر المصفوفة = رقم العنصر × 4</td></tr>
+        <tr><td>Unsigned Binary</td><td>Range: 0 to 2ⁿ−1</td><td>مدى: من 0 إلى 2ⁿ−1</td></tr>
+        <tr><td>1's Complement</td><td>Flip all bits; problem: two zeros</td><td>عكس كل البتات؛ عيب: صفران</td></tr>
+        <tr><td>2's Complement</td><td>Flip + Add 1; Range: −2ⁿ⁻¹ to 2ⁿ⁻¹−1; MSB is sign bit</td><td>عكس + أضف 1؛ الأكثر شيوعاً؛ MSB بت الإشارة</td></tr>
+        <tr><td>Sign Extension</td><td>Replicate MSB leftward to expand bit width</td><td>انسخ MSB لليسار لتوسيع عدد البتات</td></tr>
+        <tr><td>sll by i</td><td>× 2ⁱ (multiply)</td><td>ضرب في 2 أس i</td></tr>
+        <tr><td>srl by i</td><td>÷ 2ⁱ (divide, unsigned)</td><td>قسمة على 2 أس i</td></tr>
+        <tr><td>beq/bne</td><td>PC-relative branch: target = PC + offset×4</td><td>تفرع نسبي للـ PC</td></tr>
+        <tr><td>j / jal</td><td>Pseudo-direct: target = PC[31:28] : addr×4</td><td>قفز شبه مباشر</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p style="text-align:center; color:var(--muted); font-size:12px; margin-top:36px">
+  Computer Organization & Architecture — Chapter 2: Instructions: Language of the Computer<br>
+  Patterson & Hennessy · © Pearson Education
+</p>
+
+</div>
+</body>
+</html>
