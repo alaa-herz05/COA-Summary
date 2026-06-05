@@ -14,6 +14,41 @@
 <div class="hero"><div class="badge">Chapter 2 · Computer Organization & Architecture</div><h1>Instructions: <span>Language of the Computer</span></h1><div class="ar-title">لغة الحاسوب والتعليمات — دليل الدراسة الشامل</div><p>Complete bilingual study guide · English primary with Arabic explanation · examples, conversions, formulas, and exam questions</p></div>
 <div class="lang-bar">📘 <strong>English</strong> — Main content &nbsp;|&nbsp; 🌙 <strong style="color:var(--gold)">العربي</strong> — Translation & explanation boxes</div>
 <div class="container">
+<hr class="div">
+<div class="section-header"><div class="sec-num">0</div><div class="sec-titles"><h2>Addressability & Memory Fundamentals</h2><div class="ar">العنونة وأساسيات الذاكرة</div></div></div>
+
+<div class="card"><div class="card-title">Bits, Bytes and Words <span class="ar">البت والبايت والكلمة</span></div>
+<p><strong>Bit</strong> = 0 or 1</p>
+<p><strong>Byte</strong> = 8 Bits</p>
+<p><strong>Word (MIPS)</strong> = 32 Bits = 4 Bytes</p>
+<div class="ar-box"><div class="ar-label">Arabic</div>البايت يحتوي 8 بت، أما الكلمة Word في MIPS فتساوي 32 بت أي 4 بايت.</div>
+</div>
+
+<div class="card"><div class="card-title">Addressability <span class="ar">العنونة Addressability</span></div>
+<p>MIPS uses <strong>Byte Addressing</strong>. Each address refers to one byte.</p>
+<div class="formula">Word = 4 Bytes → Addresses 100,101,102,103 belong to the same word.</div>
+<div class="ar-box"><div class="ar-label">Arabic</div>كل عنوان في الذاكرة يشير إلى بايت واحد، لذلك الكلمة الواحدة (4 بايت) تشغل 4 عناوين متتالية.</div>
+</div>
+
+<div class="card"><div class="card-title">Word Alignment <span class="ar">محاذاة الكلمات</span></div>
+<p>Word addresses should be multiples of 4.</p>
+<div class="formula">Valid: 0, 4, 8, 12 ...<br>Invalid: 1, 2, 3, 5 ...</div>
+<div class="ar-box"><div class="ar-label">Arabic</div>العنوان الصحيح للكلمة يجب أن يقبل القسمة على 4 بدون باقٍ.</div>
+</div>
+
+<div class="card"><div class="card-title">Address Calculation <span class="ar">حساب العنوان</span></div>
+<div class="formula">Address = Base + (Index × 4)</div>
+<pre>Base = 1000
+A[5] = 1000 + (5 × 4) = 1020</pre>
+<div class="ar-box"><div class="ar-label">Arabic</div>لحساب عنوان عنصر في مصفوفة نضرب رقم العنصر في 4 ثم نضيفه إلى عنوان البداية.</div>
+</div>
+
+<div class="card"><div class="card-title">Big Endian <span class="ar">الترتيب Big Endian</span></div>
+<p>MIPS stores the Most Significant Byte first.</p>
+<pre>12345678 → 12 34 56 78</pre>
+<div class="ar-box"><div class="ar-label">Arabic</div>يتم تخزين البايت الأكثر أهمية أولاً في أصغر عنوان.</div>
+</div>
+
 
 <div class="section-header"><div class="sec-num">1</div><div class="sec-titles"><h2>Instruction Set Architecture (ISA)</h2><div class="ar">معمارية مجموعة التعليمات</div></div></div>
 <div class="card"><div class="card-title">What is an Instruction Set? <span class="ar">ما هي مجموعة التعليمات؟</span></div><p>An <strong>instruction set</strong> is the collection of commands that a CPU can understand and execute. These commands are represented internally as <strong>machine language</strong> — 0s and 1s.</p><ul><li>Different computers may have different instruction sets.</li><li>Most ISAs share common ideas: arithmetic, data transfer, logic, branches, and jumps.</li><li>ISA is the contract between software and hardware.</li></ul><div class="ar-box"><div class="ar-label">Arabic Explanation</div>مجموعة التعليمات هي اللغة التي يفهمها المعالج. البرنامج الذي تكتبه بلغة C أو Java لا يفهمه المعالج مباشرة، لذلك يُترجم إلى تعليمات بلغة الآلة: 0 و 1. الـ ISA تحدد شكل هذه التعليمات، السجلات، طريقة الوصول للذاكرة، وأنواع العمليات.</div></div>
