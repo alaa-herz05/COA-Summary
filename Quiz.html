@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +120,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="badge">Chapters 1 · 2 · 4 — Computer Organization & Architecture</div>
   <h1>Comprehensive <span>Practice Quiz</span></h1>
   <div class="ar-title">اختبار شامل — أسئلة MCQ & True/False & دائرة</div>
-  <p>60 questions across all three chapters. Chapter 4 includes circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
+  <p>160 questions total: the original 60 questions plus 100 extra Chapter 1 questions from the PDF. Chapter 4 includes circle-the-answer format. Answer each question to see instant feedback, then submit for your final score.</p>
 </div>
 
 <div class="lang-bar">
@@ -129,9 +130,9 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
 <div class="container">
 
 <div class="progress-wrap">
-  <span class="progress-text">Answered: <strong id="answered-count">0</strong> / 60</span>
+  <span class="progress-text">Answered: <strong id="answered-count">0</strong> / 170</span>
   <div class="progress-bar-outer"><div class="progress-bar-inner" id="progress-bar"></div></div>
-  <span class="progress-score">Score: <span id="live-score">0</span> / 60</span>
+  <span class="progress-score">Score: <span id="live-score">0</span> / 170</span>
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -142,7 +143,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
   <div class="sec-titles">
     <h2>Chapter 1 — Computer Abstractions & Technology</h2>
     <div class="ar">تجريدات الحاسوب والتكنولوجيا</div>
-    <div class="sub">MCQ + True/False — Questions 1–20</div>
+    <div class="sub">MCQ + True/False — Original Q1–Q20 + PDF Q61–Q160</div>
   </div>
 </div>
 
@@ -187,14 +188,14 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
 <div class="results-panel" id="results-panel">
   <h2>Quiz Complete!</h2>
   <div class="score-big" id="score-pct">0%</div>
-  <div class="score-label" id="score-label">0 out of 60 correct</div>
+  <div class="score-label" id="score-label">0 out of 170 correct</div>
   <div class="score-breakdown">
     <div class="score-stat sc-correct"><div class="val" id="res-correct">0</div><div class="lbl">Correct</div></div>
     <div class="score-stat sc-wrong"><div class="val" id="res-wrong">0</div><div class="lbl">Wrong</div></div>
-    <div class="score-stat sc-total"><div class="val">60</div><div class="lbl">Total</div></div>
+    <div class="score-stat sc-total"><div class="val">170</div><div class="lbl">Total</div></div>
   </div>
   <div class="chapter-stats">
-    <div class="ch-stat"><div class="ch-name">Chapter 1</div><div class="ch-val" id="ch1-score" style="color:var(--accent)">0/20</div></div>
+    <div class="ch-stat"><div class="ch-name">Chapter 1</div><div class="ch-val" id="ch1-score" style="color:var(--accent)">0/120</div></div>
     <div class="ch-stat"><div class="ch-name">Chapter 2</div><div class="ch-val" id="ch2-score" style="color:var(--accent2)">0/20</div></div>
     <div class="ch-stat"><div class="ch-name">Chapter 4</div><div class="ch-val" id="ch4-score" style="color:var(--green)">0/20</div></div>
   </div>
@@ -205,7 +206,7 @@ hr.div{border:none;height:1px;background:linear-gradient(90deg,transparent,var(-
 </div>
 
 <script>
-const TOTAL = 60;
+const TOTAL = 170;
 let score = 0, answered = 0;
 const chScores = {1:0,2:0,4:0};
 
@@ -558,7 +559,1409 @@ const questions = [
  opts:["Randomness","Locality of Reference","High Instruction Count","Large Data Sets"],
  correct:'Locality of Reference',
  exp:"Cache works because programs exhibit locality of reference: temporal locality (reuse of recently accessed data) and spatial locality (access to nearby addresses). Without locality, caching would be ineffective."},
+,
 
+// ── EXTRA CHAPTER 1 QUESTIONS FROM PDF (Q61–Q160) ─────────────────────────
+{
+    "id": "q61",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What principle underpins progress in computer technology that makes novel applications feasible?",
+    "opts": [
+      "A. Turing's Law",
+      "B. Moore's Law",
+      "C. Amdahl's Law",
+      "D. Dennard Scaling"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q62",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is NOT listed as a novel application enabled by computer progress?",
+    "opts": [
+      "A. Cell phones",
+      "B. Human genome project",
+      "C. Space exploration robotics",
+      "D. World Wide Web"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q63",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which class of computers is described as 'general purpose, variety of software, subject to cost/performance tradeoff'?",
+    "opts": [
+      "A. Server computers",
+      "B. Supercomputers",
+      "C. Personal computers",
+      "D. Embedded computers"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q64",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Server computers are characterized by which of the following?",
+    "opts": [
+      "A. Low cost and portability",
+      "B. High capacity, performance, and reliability",
+      "C. Stringent power constraints",
+      "D. Single-user focus"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q65",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which class of computers is used for high-end scientific and engineering calculations?",
+    "opts": [
+      "A. Personal computers",
+      "B. Embedded computers",
+      "C. Server computers",
+      "D. Supercomputers"
+    ],
+    "correct": "D",
+    "exp": "Correct answer: D."
+  },
+  {
+    "id": "q66",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Embedded computers are best described as:",
+    "opts": [
+      "A. Portable laptops for field use",
+      "B. Components hidden inside larger systems",
+      "C. Cloud-based computing nodes",
+      "D. High-performance gaming machines"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q67",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which class of computer represents the smallest fraction of the overall computer market?",
+    "opts": [
+      "A. Personal computers",
+      "B. Server computers",
+      "C. Supercomputers",
+      "D. Embedded computers"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q68",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What does PMD stand for in the context of the PostPC Era?",
+    "opts": [
+      "A. Portable Memory Device",
+      "B. Personal Mobile Device",
+      "C. Processor Management Data",
+      "D. Parallel Multicore Design"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q69",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is an example of a Personal Mobile Device (PMD)?",
+    "opts": [
+      "A. Desktop workstation",
+      "B. Mainframe computer",
+      "C. Smart phone",
+      "D. Network switch"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q70",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Warehouse Scale Computers (WSC) are associated with which concept?",
+    "opts": [
+      "A. Personal computing",
+      "B. Cloud computing",
+      "C. Embedded systems",
+      "D. Supercomputing"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q71",
+    "ch": 1,
+    "type": "mcq",
+    "text": "SaaS stands for:",
+    "opts": [
+      "A. Storage as a System",
+      "B. Scalable and Adaptive Software",
+      "C. Software as a Service",
+      "D. System and Application Support"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q72",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which companies are mentioned as examples of cloud computing providers?",
+    "opts": [
+      "A. Microsoft and Apple",
+      "B. Amazon and Google",
+      "C. IBM and Oracle",
+      "D. Intel and AMD"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q73",
+    "ch": 1,
+    "type": "mcq",
+    "text": "PMDs are typically powered by:",
+    "opts": [
+      "A. Wall power outlets",
+      "B. Solar panels",
+      "C. Batteries",
+      "D. Fuel cells"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q74",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What determines the number of operations executed in a program?",
+    "opts": [
+      "A. The processor speed",
+      "B. The algorithm used",
+      "C. The memory size",
+      "D. The operating system"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q75",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which factor determines how fast instructions are executed?",
+    "opts": [
+      "A. Programming language",
+      "B. Algorithm complexity",
+      "C. Processor and memory system",
+      "D. Compiler optimization"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q76",
+    "ch": 1,
+    "type": "mcq",
+    "text": "How fast I/O operations are executed is determined by:",
+    "opts": [
+      "A. The CPU clock rate",
+      "B. The algorithm",
+      "C. The I/O system including the OS",
+      "D. The number of cores"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q77",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following determines the number of machine instructions executed per operation?",
+    "opts": [
+      "A. Memory capacity",
+      "B. Programming language, compiler, and architecture",
+      "C. Power supply voltage",
+      "D. Cache size"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q78",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is NOT one of the Eight Great Ideas in Computer Architecture?",
+    "opts": [
+      "A. Performance via pipelining",
+      "B. Hierarchy of memories",
+      "C. Maximize instruction complexity",
+      "D. Dependability via redundancy"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q79",
+    "ch": 1,
+    "type": "mcq",
+    "text": "'Make the common case fast' is one of the Eight Great Ideas. This means:",
+    "opts": [
+      "A. Optimize rarely used operations",
+      "B. Focus optimization on frequently occurring operations",
+      "C. Maximize throughput for all operations equally",
+      "D. Use the fastest hardware for every component"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q80",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The idea of 'Use abstraction to simplify design' in computer architecture means:",
+    "opts": [
+      "A. Making hardware as complex as possible",
+      "B. Hiding lower-level detail to manage complexity",
+      "C. Avoiding the use of high-level languages",
+      "D. Using only assembly language"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q81",
+    "ch": 1,
+    "type": "mcq",
+    "text": "'Dependability via redundancy' means:",
+    "opts": [
+      "A. Removing extra components to save cost",
+      "B. Using extra components to ensure reliability",
+      "C. Reducing instruction count",
+      "D. Increasing clock frequency"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q82",
+    "ch": 1,
+    "type": "mcq",
+    "text": "How many 'Great Ideas' in Computer Architecture are described in the chapter?",
+    "opts": [
+      "A. 5",
+      "B. 6",
+      "C. 7",
+      "D. 8"
+    ],
+    "correct": "D",
+    "exp": "Correct answer: D."
+  },
+  {
+    "id": "q83",
+    "ch": 1,
+    "type": "mcq",
+    "text": "'Performance via parallelism' refers to:",
+    "opts": [
+      "A. Executing instructions one at a time faster",
+      "B. Improving speed by performing multiple operations simultaneously",
+      "C. Reducing the number of instructions",
+      "D. Increasing memory size"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q84",
+    "ch": 1,
+    "type": "mcq",
+    "text": "'Performance via prediction' in architecture involves:",
+    "opts": [
+      "A. Guessing future instructions/data to reduce stalls",
+      "B. Predicting hardware failures",
+      "C. Estimating power usage",
+      "D. Forecasting program runtime"
+    ],
+    "correct": "A",
+    "exp": "Correct answer: A."
+  },
+  {
+    "id": "q85",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which software translates high-level language (HLL) code to machine code?",
+    "opts": [
+      "A. Operating System",
+      "B. Assembler",
+      "C. Compiler",
+      "D. Linker"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q86",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is a function of the Operating System?",
+    "opts": [
+      "A. Translating HLL to machine code",
+      "B. Handling input/output and managing memory",
+      "C. Designing CPU datapaths",
+      "D. Manufacturing silicon wafers"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q87",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Application software is written in:",
+    "opts": [
+      "A. Machine code",
+      "B. Assembly language only",
+      "C. High-level language",
+      "D. Microcode"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q88",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What does the hardware layer consist of?",
+    "opts": [
+      "A. Compiler, OS, and applications",
+      "B. Processor, memory, and I/O controllers",
+      "C. High-level languages and assemblers",
+      "D. Virtual machines and hypervisors"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q89",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which level of program code is closest to the problem domain and provides productivity and portability?",
+    "opts": [
+      "A. Assembly language",
+      "B. Machine code",
+      "C. High-level language",
+      "D. Microcode"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q90",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Assembly language is best described as:",
+    "opts": [
+      "A. Binary digits encoding instructions",
+      "B. Textual representation of machine instructions",
+      "C. A high-level portable language",
+      "D. A database query language"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q91",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The hardware representation of instructions consists of:",
+    "opts": [
+      "A. English-like keywords",
+      "B. Assembly mnemonics",
+      "C. Binary digits (bits)",
+      "D. XML tags"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q92",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is a user-interface input/output device?",
+    "opts": [
+      "A. Hard disk",
+      "B. Flash memory",
+      "C. Network adapter",
+      "D. Keyboard"
+    ],
+    "correct": "D",
+    "exp": "Correct answer: D."
+  },
+  {
+    "id": "q93",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is a storage device?",
+    "opts": [
+      "A. Display",
+      "B. Mouse",
+      "C. CD/DVD",
+      "D. Network adapter"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q94",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Network adapters are used for:",
+    "opts": [
+      "A. Storing data permanently",
+      "B. Displaying images on screen",
+      "C. Communicating with other computers",
+      "D. Processing arithmetic operations"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q95",
+    "ch": 1,
+    "type": "mcq",
+    "text": "According to the chapter, the same basic components exist in which types of computers?",
+    "opts": [
+      "A. Only desktops",
+      "B. Only servers",
+      "C. Desktop, server, and embedded",
+      "D. Only supercomputers"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q96",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which type of touchscreen allows multiple touches simultaneously?",
+    "opts": [
+      "A. Resistive",
+      "B. Infrared",
+      "C. Capacitive",
+      "D. Acoustic"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q97",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Most tablets and smart phones use which type of touchscreen?",
+    "opts": [
+      "A. Resistive",
+      "B. Capacitive",
+      "C. Pressure-sensitive",
+      "D. Stylus-based"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q98",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What does an LCD screen display?",
+    "opts": [
+      "A. Directly computed CPU data",
+      "B. Mirrors content of frame buffer memory",
+      "C. Assembly language instructions",
+      "D. Cache memory contents"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q99",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The picture elements of an LCD screen are called:",
+    "opts": [
+      "A. Bits",
+      "B. Bytes",
+      "C. Pixels",
+      "D. Frames"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q100",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What is the function of the datapath inside a CPU?",
+    "opts": [
+      "A. Sequences memory and datapath operations",
+      "B. Performs operations on data",
+      "C. Stores permanent data",
+      "D. Manages network traffic"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q101",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What does the control unit inside a CPU do?",
+    "opts": [
+      "A. Performs arithmetic operations",
+      "B. Stores data permanently",
+      "C. Sequences datapath, memory, and other components",
+      "D. Converts analog signals to digital"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q102",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Cache memory inside a processor is characterized as:",
+    "opts": [
+      "A. Large, slow, and cheap",
+      "B. Small, fast SRAM for immediate data access",
+      "C. Non-volatile long-term storage",
+      "D. Optical storage medium"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q103",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What is the Instruction Set Architecture (ISA)?",
+    "opts": [
+      "A. The physical layout of transistors",
+      "B. The hardware/software interface",
+      "C. The operating system kernel",
+      "D. The cache replacement policy"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q104",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The Application Binary Interface (ABI) is defined as:",
+    "opts": [
+      "A. The ISA alone",
+      "B. The ISA plus system software interface",
+      "C. The hardware implementation details",
+      "D. The high-level language specification"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q105",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Abstraction in computer design is used to:",
+    "opts": [
+      "A. Expose all hardware details to the programmer",
+      "B. Increase instruction complexity",
+      "C. Hide lower-level details and manage complexity",
+      "D. Reduce the number of transistors"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q106",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Volatile main memory is characterized by:",
+    "opts": [
+      "A. Retaining data when power is off",
+      "B. Losing data when power is off",
+      "C. Storing data on magnetic disks",
+      "D. Using optical media"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q107",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is a non-volatile secondary memory?",
+    "opts": [
+      "A. DRAM",
+      "B. SRAM cache",
+      "C. Flash memory",
+      "D. CPU registers"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q108",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Magnetic disk is classified as:",
+    "opts": [
+      "A. Volatile main memory",
+      "B. Non-volatile secondary memory",
+      "C. Cache memory",
+      "D. Register file"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q109",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is an example of optical disk storage?",
+    "opts": [
+      "A. Flash memory",
+      "B. DRAM",
+      "C. CDROM/DVD",
+      "D. Hard disk"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q110",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What does LAN stand for?",
+    "opts": [
+      "A. Large Area Network",
+      "B. Local Area Network",
+      "C. Logical Architecture Node",
+      "D. Layered Access Network"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q111",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Ethernet is an example of which type of network?",
+    "opts": [
+      "A. Wide area network (WAN)",
+      "B. Wireless network",
+      "C. Local area network (LAN)",
+      "D. Personal area network"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q112",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The Internet is an example of which type of network?",
+    "opts": [
+      "A. LAN",
+      "B. WAN",
+      "C. Wireless network",
+      "D. Bluetooth"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q113",
+    "ch": 1,
+    "type": "mcq",
+    "text": "WiFi and Bluetooth are examples of:",
+    "opts": [
+      "A. Wired LAN",
+      "B. Wide area networks",
+      "C. Wireless networks",
+      "D. Optical fiber networks"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q114",
+    "ch": 1,
+    "type": "mcq",
+    "text": "In 1951, the dominant electronics technology was:",
+    "opts": [
+      "A. Transistors",
+      "B. Integrated circuits",
+      "C. Vacuum tubes",
+      "D. VLSI chips"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q115",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What relative performance/cost did transistors have compared to vacuum tubes (1965)?",
+    "opts": [
+      "A. 1",
+      "B. 35",
+      "C. 900",
+      "D. 2,400,000"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q116",
+    "ch": 1,
+    "type": "mcq",
+    "text": "VLSI stands for:",
+    "opts": [
+      "A. Very Large Scale Integration",
+      "B. Variable Length Stored Instruction",
+      "C. Virtual Layer Software Interface",
+      "D. Verified Logic System Implementation"
+    ],
+    "correct": "A",
+    "exp": "Correct answer: A."
+  },
+  {
+    "id": "q117",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The relative performance/cost of Ultra Large Scale ICs in 2013 was approximately:",
+    "opts": [
+      "A. 2,400,000",
+      "B. 900",
+      "C. 250,000,000,000",
+      "D. 1,000,000"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q118",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Silicon is classified as a:",
+    "opts": [
+      "A. Conductor",
+      "B. Insulator",
+      "C. Semiconductor",
+      "D. Superconductor"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q119",
+    "ch": 1,
+    "type": "mcq",
+    "text": "By adding certain materials to silicon, engineers can create which of the following?",
+    "opts": [
+      "A. Conductors, insulators, and switches",
+      "B. Only conductors",
+      "C. Only insulators",
+      "D. Optical fibers"
+    ],
+    "correct": "A",
+    "exp": "Correct answer: A."
+  },
+  {
+    "id": "q120",
+    "ch": 1,
+    "type": "mcq",
+    "text": "'Yield' in IC manufacturing refers to:",
+    "opts": [
+      "A. The speed of the chip",
+      "B. The proportion of working dies per wafer",
+      "C. The total wafer area",
+      "D. The number of transistors per chip"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q121",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The Intel Core i7 wafer described uses which technology node?",
+    "opts": [
+      "A. 65nm",
+      "B. 45nm",
+      "C. 32nm",
+      "D. 22nm"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q122",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The Intel Core i7 wafer has a diameter of:",
+    "opts": [
+      "A. 150mm",
+      "B. 200mm",
+      "C. 300mm",
+      "D. 450mm"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q123",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The die area in IC manufacturing is determined by:",
+    "opts": [
+      "A. Wafer cost alone",
+      "B. Architecture and circuit design",
+      "C. Manufacturing defect rate only",
+      "D. Clock frequency"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q124",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The defect rate in IC manufacturing is determined by:",
+    "opts": [
+      "A. The architecture design",
+      "B. The compiler used",
+      "C. The manufacturing process",
+      "D. The instruction set"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q125",
+    "ch": 1,
+    "type": "mcq",
+    "text": "IC cost has a _____ relation to area and defect rate.",
+    "opts": [
+      "A. Linear",
+      "B. Inverse linear",
+      "C. Nonlinear",
+      "D. Constant"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q126",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Performance is defined as:",
+    "opts": [
+      "A. Execution Time",
+      "B. 1 / Execution Time",
+      "C. Clock Rate × CPI",
+      "D. Instruction Count / Clock Rate"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q127",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Response time is best defined as:",
+    "opts": [
+      "A. Total work done per unit time",
+      "B. How long it takes to complete a task",
+      "C. Number of instructions per second",
+      "D. Cache hit rate"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q128",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Throughput is defined as:",
+    "opts": [
+      "A. Time to complete one task",
+      "B. Clock cycles per instruction",
+      "C. Total work done per unit time",
+      "D. Memory bandwidth"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q129",
+    "ch": 1,
+    "type": "mcq",
+    "text": "If Computer A runs a program in 10s and Computer B in 15s, how much faster is A than B?",
+    "opts": [
+      "A. 1.0×",
+      "B. 1.5×",
+      "C. 2.0×",
+      "D. 0.67×"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q130",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Elapsed time includes which of the following?",
+    "opts": [
+      "A. Only CPU processing time",
+      "B. Total response time including I/O, OS overhead, and idle time",
+      "C. Only user CPU time",
+      "D. Only system CPU time"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q131",
+    "ch": 1,
+    "type": "mcq",
+    "text": "CPU time differs from elapsed time because it:",
+    "opts": [
+      "A. Includes I/O time",
+      "B. Discounts I/O time and other jobs' shares",
+      "C. Includes idle time",
+      "D. Measures memory latency"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q132",
+    "ch": 1,
+    "type": "mcq",
+    "text": "CPU time comprises:",
+    "opts": [
+      "A. Only user CPU time",
+      "B. User CPU time and system CPU time",
+      "C. Elapsed time minus I/O time",
+      "D. Clock cycles divided by frequency"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q133",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The clock period is defined as:",
+    "opts": [
+      "A. Number of cycles per second",
+      "B. Duration of one clock cycle",
+      "C. Total execution time",
+      "D. Cycles per instruction"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q134",
+    "ch": 1,
+    "type": "mcq",
+    "text": "A clock frequency of 4.0 GHz equals how many cycles per second?",
+    "opts": [
+      "A. 4 × 10^6 Hz",
+      "B. 4 × 10^8 Hz",
+      "C. 4 × 10^9 Hz",
+      "D. 4 × 10^12 Hz"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q135",
+    "ch": 1,
+    "type": "mcq",
+    "text": "A clock period of 250 picoseconds (ps) is equal to:",
+    "opts": [
+      "A. 0.25 milliseconds",
+      "B. 0.25 nanoseconds",
+      "C. 2.5 nanoseconds",
+      "D. 25 nanoseconds"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q136",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Digital hardware operation is governed by:",
+    "opts": [
+      "A. Variable-rate clock",
+      "B. Constant-rate clock",
+      "C. Software timer",
+      "D. Memory refresh cycle"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q137",
+    "ch": 1,
+    "type": "mcq",
+    "text": "CPU Time can be improved by which of the following?",
+    "opts": [
+      "A. Increasing instruction count",
+      "B. Reducing number of clock cycles or increasing clock rate",
+      "C. Adding more I/O devices",
+      "D. Using a larger cache only"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q138",
+    "ch": 1,
+    "type": "mcq",
+    "text": "In the CPU Time Example: Computer A has a 2GHz clock and 10s CPU time. The target for Computer B is 6s CPU time with 1.2× clock cycles. What clock rate must Computer B have?",
+    "opts": [
+      "A. 2.0 GHz",
+      "B. 3.2 GHz",
+      "C. 4.0 GHz",
+      "D. 1.6 GHz"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q139",
+    "ch": 1,
+    "type": "mcq",
+    "text": "CPI stands for:",
+    "opts": [
+      "A. Clock Period Index",
+      "B. Cycles Per Instruction",
+      "C. Computer Performance Indicator",
+      "D. Cache Performance Index"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q140",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The instruction count for a program is determined by:",
+    "opts": [
+      "A. CPU hardware alone",
+      "B. The program, ISA, and compiler",
+      "C. Clock frequency",
+      "D. Memory size"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q141",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Average CPI is determined by:",
+    "opts": [
+      "A. The programming language",
+      "B. The compiler only",
+      "C. CPU hardware design",
+      "D. The algorithm"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q142",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The ISA (Instruction Set Architecture) defines:",
+    "opts": [
+      "A. The physical chip layout",
+      "B. The set of instructions the CPU can understand and execute",
+      "C. The cache replacement algorithm",
+      "D. The OS scheduling policy"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q143",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Computer A has cycle time 250ps and CPI 2.0. Computer B has cycle time 500ps and CPI 1.2. Both have the same ISA. Which is faster?",
+    "opts": [
+      "A. Computer B",
+      "B. They are equal",
+      "C. Computer A",
+      "D. Cannot be determined"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q144",
+    "ch": 1,
+    "type": "mcq",
+    "text": "In the CPI example with instruction classes A (CPI=1), B (CPI=2), C (CPI=3): Sequence 1 has IC=2,1,2 for A,B,C. What is the average CPI for Sequence 1?",
+    "opts": [
+      "A. 1.5",
+      "B. 2.0",
+      "C. 2.5",
+      "D. 3.0"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q145",
+    "ch": 1,
+    "type": "mcq",
+    "text": "In the same CPI example, Sequence 2 has IC=4,1,1 for classes A,B,C. What is the total clock cycles for Sequence 2?",
+    "opts": [
+      "A. 7",
+      "B. 8",
+      "C. 9",
+      "D. 10"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q146",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which sequence in the CPI example has a lower average CPI?",
+    "opts": [
+      "A. Sequence 1 (Avg CPI = 2.0)",
+      "B. Sequence 2 (Avg CPI = 1.5)",
+      "C. Both are equal",
+      "D. Cannot be determined"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q147",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which factor affects Instruction Count (IC), CPI, and clock cycle time (Tc)?",
+    "opts": [
+      "A. Algorithm",
+      "B. Programming language",
+      "C. Compiler",
+      "D. Instruction set architecture (ISA)"
+    ],
+    "correct": "D",
+    "exp": "Correct answer: D."
+  },
+  {
+    "id": "q148",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The algorithm used in a program primarily affects which performance metrics?",
+    "opts": [
+      "A. Clock rate only",
+      "B. IC and possibly CPI",
+      "C. Only the power consumption",
+      "D. Only Tc"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q149",
+    "ch": 1,
+    "type": "mcq",
+    "text": "In CMOS IC technology, supply voltage has decreased from approximately:",
+    "opts": [
+      "A. 12V to 3.3V",
+      "B. 5V to 1V",
+      "C. 3.3V to 0.5V",
+      "D. 9V to 2V"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q150",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The 'power wall' refers to which fundamental limitation?",
+    "opts": [
+      "A. Maximum number of transistors per chip",
+      "B. Inability to further reduce voltage or remove more heat",
+      "C. Maximum clock frequency achievable",
+      "D. Limit on instruction count"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q151",
+    "ch": 1,
+    "type": "mcq",
+    "text": "In the power reduction example, a new CPU has 85% of the capacitive load and 15% reduction in both voltage and frequency. Capacitive load and voltage both scale the power by approximately what combined factor?",
+    "opts": [
+      "A. 50%",
+      "B. 60%",
+      "C. 70%",
+      "D. 80%"
+    ],
+    "correct": "A",
+    "exp": "Correct answer: A."
+  },
+  {
+    "id": "q152",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What is a multicore microprocessor?",
+    "opts": [
+      "A. A processor with multiple cache levels",
+      "B. A chip containing more than one processor",
+      "C. A processor with a very high clock rate",
+      "D. A processor using VLIW architecture"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q153",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Instruction-level parallelism (ILP) differs from multicore programming because ILP is:",
+    "opts": [
+      "A. Done explicitly by the programmer",
+      "B. Hidden from the programmer and executed by hardware",
+      "C. Slower than multicore programming",
+      "D. Only available on embedded systems"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q154",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Which of the following is a challenge in parallel programming?",
+    "opts": [
+      "A. Reducing instruction count",
+      "B. Load balancing and synchronization",
+      "C. Increasing cache size",
+      "D. Decreasing clock frequency"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q155",
+    "ch": 1,
+    "type": "mcq",
+    "text": "Uniprocessor performance was historically constrained by:",
+    "opts": [
+      "A. Memory size, compiler quality, and OS overhead",
+      "B. Power, instruction-level parallelism, and memory latency",
+      "C. Number of I/O devices",
+      "D. Display resolution"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q156",
+    "ch": 1,
+    "type": "mcq",
+    "text": "According to the concluding remarks, what is the best measure of computer performance?",
+    "opts": [
+      "A. Clock frequency",
+      "B. Instruction count",
+      "C. Execution time",
+      "D. Cache hit rate"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q157",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The chapter states that cost/performance improvement is driven by:",
+    "opts": [
+      "A. Government regulation",
+      "B. Underlying technology development",
+      "C. Increased software complexity",
+      "D. Reduced competition"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q158",
+    "ch": 1,
+    "type": "mcq",
+    "text": "What is identified as a limiting factor in modern computer performance?",
+    "opts": [
+      "A. Memory capacity",
+      "B. Number of I/O ports",
+      "C. Power consumption",
+      "D. Instruction set size"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  },
+  {
+    "id": "q159",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The chapter recommends using _____ to improve performance in the face of the power wall.",
+    "opts": [
+      "A. Higher clock frequencies",
+      "B. Parallelism",
+      "C. Larger caches",
+      "D. Simpler instruction sets"
+    ],
+    "correct": "B",
+    "exp": "Correct answer: B."
+  },
+  {
+    "id": "q160",
+    "ch": 1,
+    "type": "mcq",
+    "text": "The hierarchical layers of abstraction in computer systems apply to:",
+    "opts": [
+      "A. Only hardware",
+      "B. Only software",
+      "C. Both hardware and software",
+      "D. Only the operating system"
+    ],
+    "correct": "C",
+    "exp": "Correct answer: C."
+  }
 ];
 
 // ── RENDER ENGINE ────────────────────────────────────────────────────────────
@@ -640,7 +2043,18 @@ function answer(el, qid, choice) {
       if (!lt) return;
       const labels = q.type === 'tf'
         ? (o.textContent.trim().startsWith('True') ? 'TRUE' : 'FALSE')
-        : ['A','B','C','D'][[...opts].indexOf(o)];
+        : ['A','B','C','D'][[...opts].indexOf(o),
+{id:'q161',ch:1,type:'tf',text:"If time taken to run Program A is 20ms and Program B is 40ms, Program B is 2 times faster than Program A.",correct:'FALSE',exp:"FALSE. A is faster because it takes 20ms while B takes 40ms."},
+{id:'q162',ch:1,type:'tf',text:"Big Endian means the least-significant byte is stored at the lowest memory address.",correct:'FALSE',exp:"FALSE. Big Endian stores the most-significant byte at the lowest address."},
+{id:'q163',ch:1,type:'tf',text:"Throughput means the total work done per unit time.",correct:'TRUE',exp:"TRUE. Throughput measures how many tasks are completed per unit time."},
+{id:'q164',ch:1,type:'tf',text:"The process of manufacturing ICs begins in bond die to package.",correct:'FALSE',exp:"FALSE. Bonding the die to the package is a later stage, not the beginning."},
+{id:'q165',ch:1,type:'tf',text:"Elapsed time is the total response time, including processing, I/O, OS overhead, and idle time.",correct:'TRUE',exp:"TRUE. Elapsed time includes all delays from start to finish."},
+{id:'q166',ch:1,type:'tf',text:"Embedded computers are computer systems hidden as components inside larger systems.",correct:'TRUE',exp:"TRUE. Embedded systems are integrated into devices such as cars and appliances."},
+{id:'q167',ch:1,type:'tf',text:"Registers $s0, $s1, ..., $s7 in MIPS are used for temporary values.",correct:'FALSE',exp:"FALSE. Temporary values use $t0-$t9. The $s registers are saved registers."},
+{id:'q168',ch:1,type:'tf',text:"Reduced Instruction Set Computer (RISC) has a large number of variable-length instructions.",correct:'FALSE',exp:"FALSE. RISC uses a small set of simple, fixed-length instructions."},
+{id:'q169',ch:1,type:'tf',text:"A single instruction can be complex and perform multiple operations in a CISC architecture.",correct:'TRUE',exp:"TRUE. CISC instructions can perform multiple low-level operations."},
+{id:'q170',ch:1,type:'tf',text:"MIPS has a 32 × 16-bit register file.",correct:'FALSE',exp:"FALSE. Standard MIPS has 32 registers, each 32 bits wide (32 × 32-bit)."}
+];
       if (labels === q.correct && !o.classList.contains('wrong')) {
         o.classList.add('reveal-correct');
         lt.textContent = '✓';
@@ -700,7 +2114,7 @@ function showResults() {
   document.getElementById('score-label').textContent = score + ' out of ' + TOTAL + ' correct';
   document.getElementById('res-correct').textContent = score;
   document.getElementById('res-wrong').textContent = TOTAL - score;
-  document.getElementById('ch1-score').textContent = chScores[1] + '/20';
+  document.getElementById('ch1-score').textContent = chScores[1] + '/120';
   document.getElementById('ch2-score').textContent = chScores[2] + '/20';
   document.getElementById('ch4-score').textContent = chScores[4] + '/20';
 
