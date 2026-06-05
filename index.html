@@ -35,7 +35,7 @@
   .intro p{margin-bottom:7px}.intro strong{color:var(--accent)}
   .ar-box{background:var(--ar-bg);border:1px solid var(--ar-border);border-right:4px solid var(--gold);border-radius:0 10px 10px 0;padding:13px 16px;margin-top:12px;direction:rtl;text-align:right;font-family:'Cairo',sans-serif;font-size:13.5px;color:#ccd6e8;line-height:1.9}
   .ar-label{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;direction:ltr;text-align:left}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px}
   .chapter-card{position:relative;min-height:360px;background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:24px;overflow:hidden;backdrop-filter:blur(5px);transition:.22s ease;display:flex;flex-direction:column;justify-content:space-between}
   .chapter-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 0%,rgba(0,200,255,.12),transparent 42%);pointer-events:none}
   .chapter-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 42px rgba(0,0,0,.28),0 0 24px rgba(0,200,255,.12)}
@@ -79,7 +79,7 @@
       <p><strong>Welcome.</strong> This page collects the prepared COA chapters in order for easy studying and quick access.</p>
       <div class="ar-box">
         <div class="ar-label">Arabic</div>
-        هاي الصفحة تجمع ملفات الملخصات الجاهزة بالترتيب المطلوب: الشابتر الأول، الثاني، والرابع فقط. كل ملف مرتب بنفس الستايل ويحتوي شرح إنجليزي + عربي + أمثلة + جداول مراجعة.
+        هاي الصفحة تجمع ملفات الملخصات الجاهزة بالترتيب المطلوب: الشابتر الأول، الثاني، والرابع، بالإضافة إلى ملف Quiz واضح للمراجعة والاختبار. كل ملف مرتب بنفس الستايل ويحتوي شرح إنجليزي + عربي + أمثلة + جداول مراجعة.
       </div>
     </div>
 
@@ -136,6 +136,21 @@
           <a class="btn" href="CH4.html">Open Chapter 4 →</a>
         </div>
       </article>
+
+      <article class="chapter-card" style="border-color:rgba(180,138,255,.35)">
+        <div class="chapter-top">
+          <div class="chapter-no">Practice Quiz</div>
+          <h3>Comprehensive <span>COA Quiz</span></h3>
+          <div class="ar">اختبار شامل للفصول 1 و 2 و 4</div>
+          <p>Interactive quiz with 60 questions covering Chapter 1, Chapter 2, and Chapter 4. Includes MCQ, True/False, instant feedback, live score, and final result.</p>
+          <div class="tags">
+            <span class="tag p">60 Questions</span><span class="tag g">Score</span><span class="tag y">MCQ</span><span class="tag o">T/F</span>
+          </div>
+        </div>
+        <div class="chapter-bottom">
+          <a class="btn secondary" href="quiz.html">Open Quiz →</a>
+        </div>
+      </article>
     </section>
 
     <section class="quick">
@@ -144,10 +159,11 @@
         <li><strong>Start with Chapter 1:</strong> understand the big picture, abstraction, and performance equations.</li>
         <li><strong>Then Chapter 2:</strong> focus on ISA, MIPS, binary conversion, complements, and assembly examples.</li>
         <li><strong>Finish with Chapter 4:</strong> study cache concepts, mapping, replacement, and write policies.</li>
+        <li><strong>Then open the Quiz:</strong> test yourself on Chapters 1, 2, and 4 with instant feedback and final score.</li>
       </ul>
       <div class="ar-box">
         <div class="ar-label">Arabic</div>
-        ادرسهم بهذا الترتيب: الأول لفهم الصورة العامة والأداء، الثاني لفهم لغة المعالج و MIPS والتحويلات، والرابع لفهم الكاش والتعيين وسياسات الكتابة والاستبدال.
+        ادرسهم بهذا الترتيب: الأول لفهم الصورة العامة والأداء، الثاني لفهم لغة المعالج و MIPS والتحويلات، والرابع لفهم الكاش والتعيين وسياسات الكتابة والاستبدال. بعدها افتح ملف الـ Quiz واختبر نفسك حتى تعرف نقاط ضعفك.
       </div>
     </section>
   </main>
