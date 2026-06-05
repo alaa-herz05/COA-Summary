@@ -105,94 +105,143 @@ Average CPI = 9 / 6 = 1.5</div><div class="highlight"><strong>Important:</strong
 <div class="card"><div class="card-title">Concept Questions <span class="ar">أسئلة مفاهيم</span></div><div class="table-wrap"><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody><tr><td>What is Moore’s Law?</td><td>Transistor count/capability improves rapidly over time, enabling better cost/performance.</td></tr><tr><td>Name four classes of computers.</td><td>PCs, servers, supercomputers, embedded computers.</td></tr><tr><td>What does a compiler do?</td><td>Translates high-level language into machine code.</td></tr><tr><td>What does the OS manage?</td><td>I/O, memory, storage, scheduling, resources.</td></tr><tr><td>What is abstraction?</td><td>Hiding lower-level details to manage complexity.</td></tr><tr><td>What is ISA?</td><td>The hardware/software interface.</td></tr><tr><td>What is volatile memory?</td><td>Memory that loses data when power is off.</td></tr><tr><td>What is throughput?</td><td>Total work completed per unit time.</td></tr></tbody></table></div></div>
 <div class="card"><div class="card-title">Calculation Questions <span class="ar">أسئلة حسابية</span></div><div class="note"><div class="note-label">Q1</div>A program takes 8s on A and 12s on B. How much faster is A?<br><span class="answer">Answer:</span> 12 / 8 = 1.5 → A is 1.5 times faster.</div><div class="note"><div class="note-label">Q2</div>Clock cycles = 30 billion, clock rate = 3GHz. CPU time?<br><span class="answer">Answer:</span> CPU Time = 30 / 3 = 10 seconds.</div><div class="note"><div class="note-label">Q3</div>IC = 1,000 instructions, CPI = 2, Cycle Time = 1ns. CPU Time?<br><span class="answer">Answer:</span> CPU Time = 1000 × 2 × 1ns = 2000ns.</div><div class="note"><div class="note-label">Q4</div>Instruction classes: A CPI=1 count=5, B CPI=2 count=3, C CPI=4 count=2. Average CPI?<br><span class="answer">Answer:</span> Cycles = 5×1 + 3×2 + 2×4 = 19. IC = 10. Average CPI = 19/10 = 1.9.</div></div>
 
+
+<hr class="div">
+
+<div class="section-header">
+  <div class="sec-num">17</div>
+  <div class="sec-titles">
+    <h2>Chapter 1 Formula Sheet</h2>
+    <div class="ar">ملخص جميع القوانين والمعادلات — Chapter 1</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">1. Basic Performance Laws <span class="ar">قوانين الأداء الأساسية</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Formula</th><th>Symbol</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Performance = 1 / Execution Time</td><td>P = 1 / T</td><td>Performance is the inverse of execution time.</td></tr>
+        <tr><td>X is N times faster than Y</td><td>N = T<sub>Y</sub> / T<sub>X</sub></td><td>Used to compare two computers running the same program.</td></tr>
+        <tr><td>Speedup = Old Time / New Time</td><td>Speedup = T<sub>old</sub> / T<sub>new</sub></td><td>Measures improvement after an upgrade.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>الأداء عكس زمن التنفيذ: كلما قل وقت التنفيذ زاد الأداء. عند مقارنة جهازين نقسم زمن الجهاز الأبطأ على زمن الجهاز الأسرع.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">2. CPU Time Equations <span class="ar">معادلات وقت المعالج</span></div>
+  <div class="formula"><div class="flabel">CPU Time using cycles</div>CPU Time = CPU Clock Cycles × Clock Cycle Time</div>
+  <div class="formula"><div class="flabel">CPU Time using clock rate</div>CPU Time = CPU Clock Cycles / Clock Rate</div>
+  <div class="formula"><div class="flabel">Clock cycles</div>CPU Clock Cycles = Instruction Count × CPI</div>
+  <div class="formula"><div class="flabel">Complete equation</div>CPU Time = IC × CPI × Clock Cycle Time</div>
+  <div class="formula"><div class="flabel">Complete equation using clock rate</div>CPU Time = (IC × CPI) / Clock Rate</div>
+  <div class="formula"><div class="flabel">Clock cycle time</div>Clock Cycle Time = 1 / Clock Rate</div>
+  <div class="highlight"><strong>IC</strong> = Instruction Count &nbsp; · &nbsp; <strong>CPI</strong> = Cycles Per Instruction &nbsp; · &nbsp; <strong>Clock Rate</strong> is commonly measured in GHz.</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>زمن المعالج يعتمد على عدد التعليمات IC، ومتوسط الدورات لكل تعليمة CPI، وتردد الساعة أو زمن الدورة. لتقليل CPU Time نقلل IC أو CPI أو Clock Cycle Time.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">3. Power Equation <span class="ar">معادلة الطاقة</span></div>
+  <div class="formula"><div class="flabel">CMOS Power</div>Power = Capacitive Load × Voltage² × Frequency</div>
+  <ul><li>If frequency doubles, power approximately doubles.</li><li>If voltage doubles, power becomes four times larger.</li><li>Voltage has the strongest effect because it is squared.</li></ul>
+  <div class="ar-box"><div class="ar-label">Arabic</div>الطاقة تتناسب مع السعة الكهربائية × الجهد تربيع × التردد. لذلك زيادة الجهد أخطر من زيادة التردد لأنه مرفوع للأس 2.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">4. Integrated Circuit Cost <span class="ar">تكلفة الشريحة</span></div>
+  <div class="formula"><div class="flabel">Die Cost</div>Die Cost = Wafer Cost / (Dies per Wafer × Yield)</div>
+  <div class="formula"><div class="flabel">Dies per wafer approximation</div>Dies per Wafer ≈ Wafer Area / Die Area</div>
+  <div class="highlight">Larger die area → fewer dies per wafer → lower yield → higher cost.</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>كلما زاد حجم الـ Die يقل عدد القطع التي يمكن استخراجها من الـ Wafer، وتزيد احتمالية العيوب، فتزداد التكلفة.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">5. Weighted CPI <span class="ar">متوسط CPI الموزون</span></div>
+  <div class="formula"><div class="flabel">Using instruction counts</div>Average CPI = Σ(CPI<sub>i</sub> × IC<sub>i</sub>) / IC<sub>total</sub></div>
+  <div class="formula"><div class="flabel">Using total cycles</div>Average CPI = Total Clock Cycles / Total Instruction Count</div>
+  <div class="ar-box"><div class="ar-label">Arabic</div>إذا كانت التعليمات من أنواع مختلفة، نحسب مجموع الدورات لكل نوع ثم نقسم على عدد التعليمات الكلي.</div>
+</div>
+
+<hr class="div">
+
+<div class="section-header"><div class="sec-num">18</div><div class="sec-titles"><h2>Solved Examples — Chapter 1</h2><div class="ar">أمثلة محلولة — Chapter 1</div></div></div>
+
+<div class="card"><div class="card-title">Example 1 — Relative Performance <span class="ar">مقارنة الأداء</span></div><pre>Computer A Execution Time = 10s
+Computer B Execution Time = 15s
+
+N = T_B / T_A
+  = 15 / 10
+  = 1.5</pre><div class="highlight"><strong>Answer:</strong> Computer A is 1.5 times faster than Computer B.</div></div>
+
+<div class="card"><div class="card-title">Example 2 — Required Clock Rate <span class="ar">حساب Clock Rate</span></div><pre>Computer A:
+Clock Rate = 2 GHz
+CPU Time   = 10s
+
+Computer B:
+Target CPU Time = 6s
+Clock Cycles_B  = 1.2 × Clock Cycles_A
+
+Step 1:
+Clock Cycles_A = 10 × 2×10^9
+               = 20×10^9 cycles
+
+Step 2:
+Clock Cycles_B = 1.2 × 20×10^9
+               = 24×10^9 cycles
+
+Step 3:
+Clock Rate_B = 24×10^9 / 6
+             = 4×10^9 Hz
+             = 4 GHz</pre><div class="highlight"><strong>Answer:</strong> Computer B must have a 4 GHz clock rate.</div></div>
+
+<div class="card"><div class="card-title">Example 3 — Weighted CPI <span class="ar">متوسط CPI</span></div><div class="table-wrap"><table><thead><tr><th>Class</th><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr><td>CPI</td><td>1</td><td>2</td><td>3</td></tr><tr><td>Sequence 1</td><td>2</td><td>1</td><td>2</td></tr><tr><td>Sequence 2</td><td>4</td><td>1</td><td>1</td></tr></tbody></table></div><pre>Sequence 1:
+Cycles = 2×1 + 1×2 + 2×3 = 10
+IC = 5
+Average CPI = 10 / 5 = 2.0
+
+Sequence 2:
+Cycles = 4×1 + 1×2 + 1×3 = 9
+IC = 6
+Average CPI = 9 / 6 = 1.5</pre><div class="highlight"><strong>Important:</strong> Sequence 2 has more instructions, but fewer total cycles. It can be faster.</div></div>
+
+<div class="card"><div class="card-title">Example 4 — Power Reduction <span class="ar">تأثير تخفيض الطاقة</span></div><pre>New CPU:
+Capacitive Load = 85% = 0.85C
+Voltage         = 85% = 0.85V
+Frequency       = 85% = 0.85F
+
+Power_new = 0.85 × (0.85)^2 × 0.85 × Power_old
+          = 0.85 × 0.7225 × 0.85 × Power_old
+          ≈ 0.521 × Power_old</pre><div class="highlight"><strong>Answer:</strong> New power is about 52.1% of old power, so power reduction is about 48%.</div></div>
+
+<div class="card"><div class="card-title">Example 5 — Find Instruction Count <span class="ar">حساب عدد التعليمات</span></div><pre>Given:
+CPU Time   = 10s
+Clock Rate = 2 GHz
+CPI        = 4
+
+CPU Time = (IC × CPI) / Clock Rate
+
+10 = (IC × 4) / (2×10^9)
+
+IC = (10 × 2×10^9) / 4
+IC = 5×10^9 instructions</pre><div class="highlight"><strong>Answer:</strong> Instruction Count = 5 billion instructions.</div></div>
+
+<hr class="div">
+
+<div class="section-header"><div class="sec-num">19</div><div class="sec-titles"><h2>Practice Questions — Chapter 1</h2><div class="ar">أسئلة تدريبية — Chapter 1</div></div></div>
+
+<div class="card"><div class="card-title">Practice Questions with Answers <span class="ar">أسئلة مع الحل</span></div>
+<div class="note"><div class="note-label">Q1</div>Computer A takes 20s and Computer B takes 8s for the same program. How many times is B faster than A?</div><div class="highlight"><strong>Answer:</strong> N = T_A / T_B = 20 / 8 = 2.5 → B is 2.5 times faster than A.</div>
+<div class="note"><div class="note-label">Q2</div>A processor has Clock Rate = 3 GHz, CPI = 2, and IC = 6×10⁹. What is the CPU Time?</div><div class="highlight"><strong>Answer:</strong> CPU Time = (IC × CPI) / Clock Rate = (6×10⁹ × 2) / 3×10⁹ = 4 seconds.</div>
+<div class="note"><div class="note-label">Q3</div>What is the difference between Response Time and Throughput?</div><div class="highlight"><strong>Answer:</strong> Response Time is the time needed to complete one task. Throughput is the number of tasks completed per unit time.</div>
+<div class="note"><div class="note-label">Q4</div>Why can’t processor clock frequency keep increasing forever?</div><div class="highlight"><strong>Answer:</strong> Because of the Power Wall. Power and heat rise significantly, and heat cannot be removed efficiently.</div>
+<div class="note"><div class="note-label">Q5</div>What is the solution to the Power Wall?</div><div class="highlight"><strong>Answer:</strong> Multicore processors and explicit parallel programming.</div></div>
+
+<div class="card"><div class="card-title">Final Exam Quick Facts <span class="ar">نقاط سريعة للامتحان</span></div><ul><li>Performance = 1 / Execution Time.</li><li>Lower CPU Time means better performance.</li><li>Clock Rate = 1 / Clock Cycle Time.</li><li>CPU Time = IC × CPI × Clock Cycle Time.</li><li>CPU Time = (IC × CPI) / Clock Rate.</li><li>Voltage affects power more than frequency because power depends on Voltage².</li><li>The Power Wall caused the shift toward multicore processors.</li><li>Response Time and Throughput are not the same.</li><li>Larger die area usually means higher cost.</li><li>Average CPI = Total Clock Cycles / Total Instruction Count.</li></ul></div>
+
 <div class="final"><h2>Quick Reference — Everything You Need to Know <span class="ar">مراجعة سريعة — كل ما تحتاجه</span></h2><div class="table-wrap"><table><thead><tr><th>Concept</th><th>Core Idea</th><th>Arabic — الجوهر</th></tr></thead><tbody><tr><td>Moore’s Law</td><td>Technology improves chip capability over time</td><td>تطور مستمر في قدرة الشرائح</td></tr><tr><td>PC</td><td>General-purpose computer</td><td>حاسوب شخصي عام</td></tr><tr><td>Server</td><td>Network-based, reliable, high capacity</td><td>خادم قوي وموثوق</td></tr><tr><td>Embedded</td><td>Computer hidden inside a device</td><td>حاسوب مدمج داخل جهاز</td></tr><tr><td>PMD</td><td>Battery-operated Internet device</td><td>هاتف أو تابلت متصل بالإنترنت</td></tr><tr><td>Compiler</td><td>HLL → machine code</td><td>يترجم الكود للغة الآلة</td></tr><tr><td>OS</td><td>Manages resources and services</td><td>يدير الذاكرة والملفات والمهام</td></tr><tr><td>ISA</td><td>Hardware/software interface</td><td>واجهة بين البرنامج والهاردوير</td></tr><tr><td>Elapsed Time</td><td>Total response time</td><td>الزمن الكلي</td></tr><tr><td>CPU Time</td><td>Processing time for a job</td><td>زمن المعالج فقط</td></tr><tr><td>CPI</td><td>Cycles per instruction</td><td>دورات لكل تعليمة</td></tr><tr><td>CPU Time Formula</td><td>IC × CPI × Cycle Time</td><td>القانون الأساسي للأداء</td></tr><tr><td>Power Wall</td><td>Heat/power limits clock rate</td><td>الحرارة والطاقة تحد التردد</td></tr><tr><td>Multiprocessor</td><td>Multiple cores/processors</td><td>عدة أنوية لتحسين الأداء</td></tr></tbody></table></div></div>
 <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:36px">Computer Organization & Architecture — Chapter 1: Computer Abstractions and Technology · Study Guide</p>
 
-<hr class="div">
-<div class="section-header"><div class="sec-num">17</div><div class="sec-titles"><h2>Power Equation & Performance Trade-offs</h2><div class="ar">قانون الطاقة (Power) وأمثلة الامتحان</div></div></div>
-
-<div class="card">
-<div class="card-title">CMOS Power Formula <span class="ar">قانون الطاقة</span></div>
-<div class="formula">
-Power ∝ Capacitive Load × Voltage² × Frequency
-</div>
-<div class="highlight">
-Increasing voltage has a much larger effect because power depends on Voltage².
-</div>
-<div class="ar-box"><div class="ar-label">Arabic</div>
-الطاقة المستهلكة تعتمد على ثلاثة عوامل:
-السعة الكهربائية (Capacitive Load)، الجهد (Voltage)، والتردد (Frequency).
-الجهد هو الأكثر تأثيراً لأنه مرفوع للأس 2.
-</div>
-</div>
-
-<div class="card">
-<div class="card-title">Important Rules <span class="ar">قواعد مهمة</span></div>
-<ul>
-<li>If Frequency doubles → Power doubles.</li>
-<li>If Voltage doubles → Power becomes 4 times larger.</li>
-<li>If Voltage increases by 10% → Power increases by (1.1)².</li>
-</ul>
-<div class="ar-box"><div class="ar-label">Arabic</div>
-مضاعفة التردد تضاعف الطاقة.
-أما مضاعفة الجهد فتجعل الطاقة تزداد أربع مرات.
-</div>
-</div>
-
-<div class="card">
-<div class="card-title">Solved Example 1 <span class="ar">مثال محلول 1</span></div>
-<pre>
-Old Frequency = 2 GHz
-New Frequency = 4 GHz
-
-Power Ratio = 4 / 2 = 2
-</pre>
-<p><strong>Answer:</strong> Power doubles.</p>
-</div>
-
-<div class="card">
-<div class="card-title">Solved Example 2 <span class="ar">مثال محلول 2</span></div>
-<pre>
-Old Voltage = 1V
-New Voltage = 2V
-
-Power Ratio = (2²)/(1²)
-            = 4
-</pre>
-<p><strong>Answer:</strong> Power becomes 4× larger.</p>
-</div>
-
-<div class="card">
-<div class="card-title">Solved Example 3 <span class="ar">مثال محلول 3</span></div>
-<pre>
-Voltage increases from 1V to 1.5V
-
-Power Ratio = (1.5²)/(1²)
-            = 2.25
-</pre>
-<p><strong>Answer:</strong> Power increases by 2.25×.</p>
-</div>
-
-<div class="card">
-<div class="card-title">Exam Questions <span class="ar">أسئلة امتحان</span></div>
-<div class="note">
-Q1: If frequency increases by 50%, what happens to power?<br>
-<strong>Answer:</strong> Power increases by 50%.
-</div>
-
-<div class="note">
-Q2: If voltage increases from 1V to 3V?<br>
-<strong>Answer:</strong> Power = 3² = 9 times larger.
-</div>
-
-<div class="note">
-Q3: Which affects power more, voltage or frequency?<br>
-<strong>Answer:</strong> Voltage, because it is squared.
-</div>
-
-<div class="note">
-Q4: Why can't we keep increasing clock frequency forever?<br>
-<strong>Answer:</strong> Because of the Power Wall (heat and energy limits).
-</div>
-</div>
 </div></body></html>
